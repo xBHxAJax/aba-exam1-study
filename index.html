@@ -229,11 +229,18 @@
   .q.incorrect{border-left-color:var(--bad)}
   .q .qnum{font-weight:700;color:var(--desk-deep)}
   .q .qtext{font-weight:700;margin:2px 0 12px;line-height:1.5}
-  .opt{display:block;position:relative;padding:11px 12px 11px 42px;margin:6px 0;border:1.5px solid rgba(0,0,0,.14);
+  .opt{display:block;position:relative;padding:11px 46px 11px 42px;margin:6px 0;border:1.5px solid rgba(0,0,0,.14);
     border-radius:9px;cursor:pointer;line-height:1.4;font-size:.93rem;transition:background .12s,border-color .12s}
   .opt:hover{border-color:var(--gold);background:rgba(232,180,76,.08)}
   .opt input{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;accent-color:var(--desk-deep)}
   .opt .letter{font-weight:700;margin-right:6px;color:var(--ink-soft)}
+  .opt .elim{position:absolute;right:9px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;
+    border:1.5px solid rgba(0,0,0,.22);background:var(--paper);color:var(--ink-soft);font-size:.74rem;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;font-family:inherit;z-index:2}
+  .opt .elim:hover{border-color:var(--bad);color:var(--bad)}
+  .opt.eliminated{opacity:.5;text-decoration:line-through;text-decoration-color:var(--bad);text-decoration-thickness:2px}
+  .opt.eliminated .elim{background:var(--bad);border-color:var(--bad);color:#fff;text-decoration:none}
+  .graded .opt .elim{display:none}
   .opt.chosen{border-color:var(--desk-deep);background:rgba(46,125,107,.07)}
   .graded .opt{cursor:default}
   .graded .opt:hover{background:none;border-color:rgba(0,0,0,.14)}
@@ -251,8 +258,8 @@
   .results{display:none;background:var(--paper);color:var(--ink);border-radius:var(--radius);
     padding:24px;margin:16px 0;box-shadow:0 12px 24px rgba(0,0,0,.3);text-align:center}
   .results.show{display:block}
-  .results .score{font-family:'Fraunces',Georgia,serif;font-size:2.6rem;color:var(--desk-deep);line-height:1}
-  .results .score span{font-size:1.3rem;color:var(--ink-soft)}
+  .results .score{font-family:'Fraunces',Georgia,serif;font-size:3rem;color:var(--desk-deep);line-height:1}
+  .results .score span{display:block;font-size:1.05rem;color:var(--ink-soft);margin-top:4px;font-family:'Karla',sans-serif}
   .results .verdict{font-weight:700;font-size:1.05rem;margin:10px 0 6px}
   .results .verdict.ready{color:var(--good)}
   .results .verdict.solid{color:var(--cat-sci)}
@@ -886,7 +893,7 @@
 
 <!-- ================= PRACTICE TEST ================= -->
 <section class="view" id="view-test">
-  <p class="lead">Answer every question, then hit <b>Grade my test</b> for your score, explanations, and a section-by-section breakdown. Your answers save automatically as you go, and the <b>question order is reshuffled every attempt</b> — just like the real exam.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
+  <p class="lead">Answer every question, then hit <b>Grade my test</b> for your score, explanations, and a section-by-section breakdown. Your answers save automatically as you go, and the <b>question order is reshuffled every attempt</b> — just like the real exam. Tap the <b>✕</b> beside any choice to cross it out while you narrow things down.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
 
   <div class="results" id="results">
     <div class="score" id="scoreNum">0<span>/40</span></div>
@@ -1375,10 +1382,11 @@ function buildTest(){
     optOrder.forEach((oi, slot)=>{
       const checked = answers[idx]===oi ? 'checked' : '';
       const chosen = answers[idx]===oi ? ' chosen' : '';
-      opts += `<label class="opt${chosen}" data-oi="${oi}">
+      opts += `<div class="opt${chosen}" data-oi="${oi}">
         <input type="radio" name="q${idx}" value="${oi}" ${checked}>
         <span class="letter">${LETTERS[slot]}.</span>${item.o[oi]}
-        <span class="mark"></span></label>`;
+        <button type="button" class="elim" title="Cross out this answer" aria-label="Cross out this answer">✕</button>
+        <span class="mark"></span></div>`;
     });
     const correctLetter = LETTERS[optOrder.indexOf(item.a)];
     const trickTag = item.trick ? `<div class="trick-badge">⚠️ Classic trap — read carefully</div>` : '';
@@ -1397,8 +1405,26 @@ function buildTest(){
       answers[idx]=oi;
       box.querySelectorAll('.opt').forEach(o=>o.classList.remove('chosen'));
       lbl.classList.add('chosen');
+      lbl.classList.remove('eliminated'); // choosing an option un-crosses it
       const input = lbl.querySelector('input'); if(input) input.checked=true;
       saveAnswers(); updateProgress();
+    });
+  });
+  // "Eliminate" (✕) buttons — a test-taking aid that crosses out an option. It does NOT
+  // select the answer; crossing out your current pick clears that selection.
+  testQEl.querySelectorAll('.elim').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault(); e.stopPropagation();
+      if(graded) return;
+      const opt = btn.closest('.opt');
+      const crossedNow = opt.classList.toggle('eliminated');
+      if(crossedNow && opt.classList.contains('chosen')){
+        const box = opt.closest('.q'); const idx = +box.dataset.idx;
+        opt.classList.remove('chosen');
+        const input = opt.querySelector('input'); if(input) input.checked=false;
+        delete answers[idx];
+        saveAnswers(); updateProgress();
+      }
     });
   });
 }
@@ -1429,6 +1455,7 @@ function gradeTest(){
   }
   graded = true;
   stopTimer();
+  testQEl.querySelectorAll('.opt.eliminated').forEach(o=>o.classList.remove('eliminated'));
   let correct=0;
   const secScores = {}; SECTIONS.forEach(s=>{ secScores[s.id]={c:0,t:0}; });
   TEST.forEach((item,idx)=>{
@@ -1449,7 +1476,8 @@ function gradeTest(){
     });
   });
   // Results panel
-  document.getElementById('scoreNum').innerHTML = `${correct}<span>/${QCOUNT}</span>`;
+  const pct = QCOUNT ? Math.round(correct/QCOUNT*100) : 0;
+  document.getElementById('scoreNum').innerHTML = `${pct}%<span>${correct} / ${QCOUNT} correct</span>`;
   const v = document.getElementById('verdict');
   if(correct>=Math.ceil(QCOUNT*0.9)){ v.textContent='🎉 Exam ready!'; v.className='verdict ready'; }
   else if(correct>=Math.ceil(QCOUNT*0.75)){ v.textContent='Solid — re-drill the sections you missed with flashcards.'; v.className='verdict solid'; }
@@ -1458,8 +1486,9 @@ function gradeTest(){
   SECTIONS.forEach(s=>{
     const shortName = s.name.split('·')[1].trim();
     const sc = secScores[s.id];
+    const sp = sc.t ? Math.round(sc.c/sc.t*100) : 0;
     const el=document.createElement('div'); el.className='bd';
-    el.innerHTML=`<b>${sc.c}/${sc.t}</b>${shortName}`;
+    el.innerHTML=`<b>${sc.c}/${sc.t} · ${sp}%</b>${shortName}`;
     bd.appendChild(el);
   });
   const res=document.getElementById('results'); res.classList.add('show');
