@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABA Exam 1 — Study System</title>
-<meta name="description" content="Everything for ABA Exam 1 in one place: a study guide, a flip-card deck, and a graded 40-question practice test.">
+<title>ABA Study System — Exams 1 & 2</title>
+<meta name="description" content="Everything for ABA Exams 1 & 2 in one place: study guides, flip-card decks, and graded practice tests.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
@@ -24,6 +24,11 @@
     --cat-dim:#2E7D6B;         /* dimensions */
     --cat-sci:#3A6EA5;         /* science */
     --cat-term:#B0812F;        /* key terms */
+    --cat-ante:#7A5EA8;        /* exam2: antecedents & motivation */
+    --cat-match:#C2557A;       /* exam2: matching law */
+    --cat-sched:#2E7D6B;       /* exam2: schedules */
+    --cat-assess:#3A6EA5;      /* exam2: assessments */
+    --cat-app:#B0812F;         /* exam2: application */
     --good:#2F7D5F;
     --bad:#B4543F;
     --radius:14px;
@@ -63,6 +68,20 @@
   .tab:hover{border-color:var(--gold)}
   .tab.active{background:var(--gold);border-color:var(--gold);color:var(--desk-deep)}
   .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  /* ---------- Exam switcher ---------- */
+  .exam-switch{display:flex;gap:8px;justify-content:center;padding:8px 10px 2px;flex-wrap:wrap}
+  .exam-btn{display:flex;flex-direction:column;align-items:center;gap:1px;
+    border:1.5px solid rgba(234,242,236,.3);background:transparent;color:var(--chalk);
+    border-radius:12px;padding:6px 16px;font-family:inherit;font-weight:700;font-size:.9rem;
+    cursor:pointer;transition:background .15s,border-color .15s,color .15s;line-height:1.15}
+  .exam-btn small{font-weight:500;font-size:.63rem;opacity:.72;letter-spacing:.01em}
+  .exam-btn:hover{border-color:var(--gold)}
+  .exam-btn.active{background:var(--gold);border-color:var(--gold);color:var(--desk-deep)}
+  .exam-btn.active small{opacity:.85}
+  .exam-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .exam-content{display:none}
+  .exam-content.active{display:block}
 
   /* ---------- Views ---------- */
   .view{display:none;animation:fade .25s ease}
@@ -191,7 +210,7 @@
 
   /* ---------- Practice test ---------- */
   .testbar{
-    position:sticky;top:104px;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    position:sticky;top:150px;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
     background:var(--desk-deep);border:1px solid rgba(234,242,236,.15);
     border-radius:12px;padding:12px 16px;margin:16px 0;box-shadow:0 6px 16px rgba(0,0,0,.3)
   }
@@ -255,7 +274,9 @@
     html{scroll-behavior:auto}
   }
   @media(max-width:520px){
-    .testbar{top:98px}
+    .testbar{position:static}
+    .exam-btn small{display:none}
+    .exam-btn{padding:7px 20px;font-size:.95rem}
     .card{height:56vh}
     .face-body{padding:70px 20px 28px}
   }
@@ -264,7 +285,11 @@
 <body>
 
 <div class="topbar">
-  <div class="brand"><h1>ABA Exam 1 <span class="accent">Study System</span></h1></div>
+  <div class="brand"><h1>ABA <span class="accent">Study System</span></h1></div>
+  <div class="exam-switch" id="examSwitch" role="group" aria-label="Choose which exam to study">
+    <button class="exam-btn active" data-exam="1" type="button">Exam 1<small>Foundations &amp; Philosophy</small></button>
+    <button class="exam-btn" data-exam="2" type="button">Exam 2<small>Reinforcement · Schedules · Assessment</small></button>
+  </div>
   <nav class="tabs" id="tabs" role="tablist">
     <button class="tab active" data-view="overview" role="tab">Start Here</button>
     <button class="tab" data-view="guide" role="tab">Study Guide</button>
@@ -277,6 +302,7 @@
 
 <!-- ================= OVERVIEW ================= -->
 <section class="view active" id="view-overview">
+<div class="exam-content active" data-exam="1">
   <p class="lead">Everything for Exam 1 in one place — a study guide, a flip-card deck, and a graded practice test. Built to be done in <b>10–15 minute chunks</b> whenever you get a spare moment.</p>
 
   <div class="factbar">
@@ -334,10 +360,76 @@
       <li>Levels of understanding: <b>D</b>escribe → <b>P</b>redict → <b>C</b>ontrol ("Data Points Cause-effect")</li>
     </ul>
   </div>
+</div><!-- /exam1 overview -->
+
+<div class="exam-content" data-exam="2">
+  <p class="lead">Everything for Exam 2 in one place — a study guide, a flip-card deck, and a graded practice test. It's bigger than Exam 1 (60 questions), and <b>Part 4: Schedules</b> is the dense one — so give it extra time.</p>
+
+  <div class="factbar">
+    <div class="fact"><div class="n">60</div><div class="l">Questions</div></div>
+    <div class="fact"><div class="n">80</div><div class="l">Minutes</div></div>
+    <div class="fact"><div class="n">Scenario</div><div class="l">Heavy</div></div>
+  </div>
+  <div class="callout" style="color:var(--ink)">The exam won't ask you to <b>define</b> a schedule — it describes someone doing something and asks which concept or schedule it shows. Practice <b>applying</b>, not just reciting. <em>Readings: Cooper Ch. 11–15, Iwata (1987), Sidman (1993), Gover et al. (2023), Reed &amp; Kaplan (2011).</em></div>
+
+  <div class="panel">
+    <h2>Pick where to jump in</h2>
+    <div class="startgrid">
+      <div class="startcard sc-guide" data-go="guide"><h3>📖 Study Guide</h3><p>Six parts in plain language, with the dense Schedules section broken into chunks.</p></div>
+      <div class="startcard sc-flash" data-go="flash"><h3>🃏 Flashcards</h3><p>57 tap-to-flip cards across 6 categories. The ones you miss cycle back around.</p></div>
+      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>60 questions, auto-graded with explanations and a section-by-section breakdown.</p></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>The 7-session plan</h2>
+    <p class="plain">This exam is bigger, and Schedules (Part 4) is dense — so it gets two sessions. Short spaced sessions beat one long cram.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Session</th><th>What to do</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Part 1 (Contingencies &amp; consequence types) + those flashcards</td><td>15 min</td></tr>
+          <tr><td>2</td><td>Part 2 (Antecedents &amp; motivation) + flashcards</td><td>15 min</td></tr>
+          <tr><td>3</td><td>Part 3 (Matching Law) + Part 6 (Application) + flashcards</td><td>15 min</td></tr>
+          <tr><td>4</td><td>Part 4 (Schedules) — simple schedules only (FR/VR/FI/VI) + flashcards</td><td>15 min</td></tr>
+          <tr><td>5</td><td>Part 4 (Schedules) — compound schedules + flashcards</td><td>15 min</td></tr>
+          <tr><td>6</td><td>Part 5 (Assessments) + flashcards</td><td>15 min</td></tr>
+          <tr><td>7</td><td>Take the practice test, then redo flashcards on <em>only</em> what you missed</td><td>25 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Micro-drills for stolen moments</h3>
+    <ul class="plain">
+      <li>Open the Flashcards tab, do 10 cards.</li>
+      <li>Quiz yourself out loud: "Ratio depends on ___. Interval depends on ___. Fixed means ___. Variable means ___."</li>
+      <li>Narrate real life in ABA terms: "I nagged until he cleaned — his cleaning was negatively reinforced, and my nagging got reinforced too."</li>
+    </ul>
+    <div class="callout" style="color:var(--ink)"><b>The night before:</b> just the mnemonics (Ratio = Responses · VR gambles · FI scallops · CM-cued / TM-muted · 1-2-Many-Free) and the discrimination tables. Sleep beats cramming.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Mnemonic cheat card (screenshot this)</h2>
+    <ul class="plain">
+      <li><b>Positive = Plus (add). Negative = Minus (remove). Reinforcement = Rise. Punishment = Plummet.</b> (Math signs, not good/bad.)</li>
+      <li><b>Escape = Ends</b> what's present · <b>Avoidance = Averts</b> what hasn't arrived (both = negative reinforcement)</li>
+      <li><b>Un</b>conditioned = <b>Un</b>learned · <b>Generalized</b> = "goes with everything" (money/tokens)</li>
+      <li><b>SD signals AVAILABILITY · MO alters VALUE</b> · <b>E</b>O <b>E</b>levates value · <b>A</b>O <b>A</b>bolishes value</li>
+      <li><b>4-term:</b> MO → SD → R → C</li>
+      <li><b>Premack:</b> first the low-p behavior, THEN the high-p ("veggies before dessert")</li>
+      <li><b>CRF → acquisition · INT → maintenance + extinction-resistance · EXT → behavior drops</b></li>
+      <li><b>Ratio = Responses · Interval = Time.</b> Fixed = set · Variable = averaged</li>
+      <li><b>VR gambles</b> (highest, most extinction-resistant) · <b>FI scallops</b></li>
+      <li><b>CM-cued</b> = Chained &amp; Multiple have SDs · <b>TM-muted</b> = Tandem &amp; Mixed have none</li>
+      <li><b>1-2-Many-Free</b>: 1 = Single-stimulus, 2 = Paired, Many (remove each) = MSWO, Free = Free-operant</li>
+      <li><b>We reinforce behavior, not people.</b> Never time-out for escape-maintained behavior.</li>
+    </ul>
+  </div>
+</div><!-- /exam2 overview -->
 </section>
 
 <!-- ================= STUDY GUIDE ================= -->
 <section class="view" id="view-guide">
+<div class="exam-content active" data-exam="1">
   <div class="panel">
     <h2>Contents</h2>
     <nav class="toc">
@@ -552,6 +644,202 @@
       <li>Level = functional relation? → <b>Control</b>; uses past to assume future? → <b>Prediction</b>; helps make a diagram? → <b>Description</b></li>
     </ol>
   </div>
+</div><!-- /exam1 guide -->
+
+<div class="exam-content" data-exam="2">
+  <div class="panel">
+    <h2>Contents</h2>
+    <nav class="toc">
+      <a href="#e2g1">Part 1 · Contingencies &amp; Consequences</a>
+      <a href="#e2g2">Part 2 · Antecedents &amp; Motivation</a>
+      <a href="#e2g3">Part 3 · The Matching Law</a>
+      <a href="#e2g4">Part 4 · Schedules of Reinforcement</a>
+      <a href="#e2g5">Part 5 · Preference &amp; Reinforcer Assessments</a>
+      <a href="#e2g6">Part 6 · Function-Based Application</a>
+      <a href="#e2g7">Rapid-Fire Answer Sheet</a>
+    </nav>
+  </div>
+
+  <div class="panel" id="e2g1">
+    <h2>Part 1 · Contingencies &amp; Consequences <span style="font-size:.8rem;color:var(--ink-soft)">(highest yield)</span></h2>
+    <p class="plain">Same two-question trick as Exam 1: (1) Was something <b>ADDED (+)</b> or <b>REMOVED (−)</b>? (2) Did behavior <b>INCREASE</b> (reinforcement) or <b>DECREASE</b> (punishment)?</p>
+    <div class="tbl-scroll">
+      <table class="grid2">
+        <thead><tr><th></th><th>Behavior INCREASES</th><th>Behavior DECREASES</th></tr></thead>
+        <tbody>
+          <tr><th class="rowh">Stimulus ADDED (+)</th><td><b>Positive Reinforcement</b> — hand up → teacher calls on her → hand-raising rises</td><td><b>Positive Punishment</b> — throws food → must wipe the whole table → throwing drops</td></tr>
+          <tr><th class="rowh">Stimulus REMOVED (−)</th><td><b>Negative Reinforcement</b> — buckle seatbelt → chime stops → always buckles</td><td><b>Negative Punishment</b> — curses → loses 15 min of phone (response cost) → cursing drops</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Two classic traps (they LOVE these):</b><br>• <em>Negative reinforcement is NOT punishment, and NOT "artificial."</em> "Negative" only means a stimulus was <b>removed</b>; behavior still goes <b>UP</b>.<br>• <em>Punishment is defined by its suppressive EFFECT on future behavior</em> — not intent. No decrease = no punishment.</div>
+    <h3>Escape vs. Avoidance (both are negative reinforcement — behavior goes UP)</h3>
+    <ul class="plain">
+      <li><b>Escape</b> — the aversive thing is <em>already here</em>, and the response <b>ENDS</b> it. (Alarm blaring → cover ears → noise drops.)</li>
+      <li><b>Avoidance</b> — the response happens <em>first</em> and <b>PREVENTS</b> the aversive thing from ever showing up. (Finish early → the warning never comes.)</li>
+      <li>Hook: <b>Escape = Ends</b> what's present · <b>Avoidance = Averts</b> what hasn't arrived.</li>
+    </ul>
+    <h3>The "nagging" question (two contingencies at once)</h3>
+    <ul class="plain">
+      <li>The <b>child's cleaning</b> is <em>negatively reinforced</em> — it turns off the aversive nagging.</li>
+      <li>The <b>parent's nagging</b> is <em>also</em> negatively reinforced — it "worked," so the parent nags more. Nagging functions as the <b>aversive stimulus / EO</b>.</li>
+    </ul>
+    <div class="callout"><b>"Do we reinforce people?" — No.</b> We reinforce <b>behavior</b>. Saying "I reinforced Marcus" is technically wrong — you strengthened <em>a response</em> he made.</div>
+    <h3>Conditioned vs. Unconditioned vs. Generalized</h3>
+    <ul class="plain">
+      <li><b>Unconditioned (primary):</b> no learning history (phylogeny). Reinforcers: food, water, warmth, sleep, oxygen. Punishers: pain, extreme heat/cold, intense stimuli.</li>
+      <li><b>Conditioned (secondary):</b> power through a <em>history of pairing</em> (ontogeny). Reinforcers: praise, grades, a token. Punishers: "No," a reprimand, a fine, "the look."</li>
+      <li><b>Generalized conditioned reinforcer:</b> paired with <em>many</em> backups → works regardless of any single MO/deprivation state. <b>Money and tokens</b> are the classic examples.</li>
+      <li>Hook: <b>Un</b>conditioned = <b>Un</b>learned · <b>Generalized</b> = "goes with everything."</li>
+    </ul>
+    <h3>Automatic vs. Socially mediated reinforcement</h3>
+    <ul class="plain">
+      <li><b>Automatic:</b> the behavior <em>produces its own consequence</em> — no other person (humming alone, scratching an itch).</li>
+      <li><b>Socially mediated:</b> <em>another person delivers</em> the consequence.</li>
+      <li>Tell: "even when completely alone / no one around" → <b>automatic</b>.</li>
+    </ul>
+    <p class="plain"><b>Classifications of reinforcers</b> (for assessments): Edible · Tangible/leisure · Activity · Social (attention) · Automatic/sensory.</p>
+  </div>
+
+  <div class="panel" id="e2g2">
+    <h2>Part 2 · Antecedents &amp; Motivation</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Term</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><b>Discriminative stimulus (SD)</b></td><td>Response <em>has been reinforced</em> in its presence → signals reinforcement is <b>AVAILABLE</b> → behavior more likely (vending light ON)</td></tr>
+          <tr><td><b>Stimulus delta (SΔ)</b></td><td>Response has <em>NOT</em> been reinforced → signals reinforcement <b>unavailable</b> → behavior less likely (vending light OFF)</td></tr>
+          <tr><td><b>Discriminated operant</b></td><td>An operant that occurs more in the presence of the SD — behavior "under stimulus control"</td></tr>
+          <tr><td><b>Motivating operation (MO)</b></td><td>(1) alters the <b>VALUE</b> of a consequence and (2) alters the <b>current frequency</b> of behavior that produced it</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>The single most-tested distinction — SD vs. MO:</b> the <b>MO changes how much you WANT it</b> (value-altering); the <b>SD signals it's AVAILABLE</b>. Deprivation is an MO; the vending light is an SD.</div>
+    <h3>The two MOs</h3>
+    <ul class="plain">
+      <li><b>Establishing operation (EO):</b> <b>INCREASES</b> value → <em>evokes</em> behavior. Deprivation (no food all day → food worth more). Hook: <b>E</b>O <b>E</b>levates.</li>
+      <li><b>Abolishing operation (AO):</b> <b>DECREASES</b> value → <em>abates</em> behavior. Satiation (just ate → food worth less). Hook: <b>A</b>O <b>A</b>bolishes.</li>
+    </ul>
+    <h3>The four-term contingency</h3>
+    <p class="plain"><b>MO → SD → R → C.</b> Exam 2 adds the MO in front of the old A-B-C. <em>Hungry (MO) → sees machine (SD) → inserts money (R) → gets snack, added (C).</em></p>
+    <h3>Premack principle</h3>
+    <p class="plain">Make a <b>high-probability behavior contingent on a low-probability behavior</b> to increase the low one. "First veggies (low-p), then dessert (high-p)." Order matters: work first, then play.</p>
+    <h3>Rule-governed vs. Contingency-shaped</h3>
+    <ul class="plain">
+      <li><b>Rule-governed:</b> controlled by a <em>verbal statement</em> of the contingency, before contacting consequences (new employee wears a hard hat because the sign says so).</li>
+      <li><b>Contingency-shaped:</b> shaped by <em>direct, repeated contact</em> with the actual consequences.</li>
+    </ul>
+    <div class="callout"><b>Delayed consequences:</b> immediate beats delayed. Delay weakens a consequence and blurs <em>which</em> response is being strengthened.</div>
+  </div>
+
+  <div class="panel" id="e2g3">
+    <h2>Part 3 · The Matching Law</h2>
+    <p class="plain">Under <b>concurrent schedules</b> (two options, each with its own reinforcement), the <b>relative rate of a response matches the relative rate of reinforcement</b> for it. Behavior distributes in proportion to available reinforcement.</p>
+    <div class="callout"><b>The graph:</b> y = relative rate of <b>responding</b>, x = relative rate of <b>reinforcement</b>. Points fall on a <b>straight diagonal line, slope ≈ 1.0</b> = a <b>perfect positive (linear) correlation</b>.</div>
+    <p class="plain"><b>Application:</b> to shift behavior toward a desired response, <b>raise its relative rate of reinforcement</b> — you don't have to punish the competing behavior.</p>
+  </div>
+
+  <div class="panel" id="e2g4">
+    <h2>Part 4 · Schedules of Reinforcement <span style="font-size:.8rem;color:var(--ink-soft)">(the dense one)</span></h2>
+    <h3>The three big-picture schedules</h3>
+    <ul class="plain">
+      <li><b>Continuous (CRF = FR-1):</b> reinforce <em>every</em> response. Best for <b>acquisition</b>.</li>
+      <li><b>Intermittent (INT):</b> reinforce <em>some</em> responses. Best for <b>maintenance</b> + <b>resistance to extinction</b>. Use <em>after</em> the skill is learned.</li>
+      <li><b>Extinction (EXT):</b> reinforce <em>none</em> → behavior <b>decreases</b> (often after an <b>extinction burst</b>).</li>
+    </ul>
+    <h3>The four simple schedules</h3>
+    <p class="plain">Two questions: <b>Ratio</b> (# of RESPONSES) or <b>Interval</b> (TIME elapses, then first response)? <b>Fixed</b> (same each time) or <b>Variable</b> (an average)?</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Schedule</th><th>Reinforcement after…</th><th>Response pattern</th></tr></thead>
+        <tbody>
+          <tr><td><b>FR</b> (fixed ratio)</td><td>a set # of responses</td><td>High rate, then a <b>post-reinforcement pause</b></td></tr>
+          <tr><td><b>VR</b> (variable ratio)</td><td>a varying # (avg.)</td><td><b>Highest, steadiest rate; most extinction-resistant</b> (gambling)</td></tr>
+          <tr><td><b>FI</b> (fixed interval)</td><td>first response after a set time</td><td>The <b>SCALLOP</b> — pause, then accelerating</td></tr>
+          <tr><td><b>VI</b> (variable interval)</td><td>first response after a varying time</td><td><b>Steady, moderate</b> (checking email)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Fast tells:</b> depends on TIME? → Interval (FI, VI). Depends on # of RESPONSES? → Ratio (FR, VR). Scallops? → <b>FI</b>. Highest, most extinction-resistant? → <b>VR</b>.</div>
+    <h3>Compound schedules — CM-cued / TM-muted</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Schedule</th><th>SDs?</th><th>Structure</th></tr></thead>
+        <tbody>
+          <tr><td><b>Chained</b></td><td>Yes</td><td>Components in <b>sequence</b>; only the <b>last</b> yields the terminal reinforcer; each step has its own SD</td></tr>
+          <tr><td><b>Tandem</b></td><td>No</td><td>Same as chained but <b>no SDs</b> marking the steps</td></tr>
+          <tr><td><b>Multiple</b></td><td>Yes</td><td>Components <b>alternate</b>; <b>each</b> gets its own reinforcement; each signaled by its own SD</td></tr>
+          <tr><td><b>Mixed</b></td><td>No</td><td>Same as multiple but <b>no SDs</b></td></tr>
+          <tr><td><b>Concurrent</b></td><td>(choice)</td><td>Two+ schedules available <b>at once</b> → the arrangement behind the matching law</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>CM-cued</b> = <b>C</b>hained &amp; <b>M</b>ultiple have SDs (discriminated). <b>TM-muted</b> = <b>T</b>andem &amp; <b>M</b>ixed have none.<br><b>Chained vs. Multiple:</b> chain = <b>one</b> payoff at the end of a required sequence; multiple = <b>each</b> component pays off, alternating.</div>
+  </div>
+
+  <div class="panel" id="e2g5">
+    <h2>Part 5 · Preference &amp; Reinforcer Assessments</h2>
+    <div class="callout"><b>Preference</b> = what a person <b>likes / will pick</b> (identifies <em>likely</em> reinforcers). <b>Reinforcer assessment</b> = tests whether that item actually <b>INCREASES behavior</b>. "What do they pick?" vs. "Does it actually work?"</div>
+    <h3>The 1-2-Many-Free family</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Assessment</th><th>How it's run</th></tr></thead>
+        <tbody>
+          <tr><td><b>Single-stimulus (SS)</b></td><td><b>ONE</b> item at a time; record approach. Good for learners who can't compare; poor at ranking</td></tr>
+          <tr><td><b>Paired-stimulus (PS)</b></td><td><b>TWO</b> at a time (forced choice); cycle all pairs → clear <b>preference hierarchy</b></td></tr>
+          <tr><td><b>MSWO</b></td><td>Array of <b>several</b>; pick one, <b>REMOVE it</b>, re-present the rest → efficient ranking; array shrinks</td></tr>
+          <tr><td><b>Free-operant</b></td><td>Items <b>freely available</b>; record <b>duration</b>; nothing removed/blocked → naturalistic, low risk</td></tr>
+          <tr><td><b>Contrived free-operant</b></td><td>Free-operant, but the clinician <b>deliberately arranges</b> the items ("contrived" = arranged on purpose)</td></tr>
+          <tr><td><b>Brief free-operant</b></td><td>A <b>short-duration</b> free-operant observation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="plain"><b>MSWO</b> = the chosen item is <em>NOT</em> put back ("without replacement"). <b>"Contrived"</b> = clinician set up the items on purpose; <b>"naturalistic"</b> = observe with whatever's already there.</p>
+  </div>
+
+  <div class="panel" id="e2g6">
+    <h2>Part 6 · Function-Based Application</h2>
+    <p class="plain"><b>Match the intervention to the FUNCTION</b> — this is the heart of the applied questions.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Function</th><th>What matches</th><th>What backfires</th></tr></thead>
+        <tbody>
+          <tr><td><b>Attention</b></td><td>Planned ignoring (extinction) + teach an appropriate way to recruit attention (DRA/FCT)</td><td>Reprimands (still attention)</td></tr>
+          <tr><td><b>Escape</b> from demands</td><td>Escape extinction (task continues) + teach a break request (FCT)</td><td><b>Time-out</b> — it <em>gives</em> the escape they wanted</td></tr>
+          <tr><td><b>Tangible</b></td><td>Teach appropriate requesting; manage access</td><td>Handing over the item after problem behavior</td></tr>
+          <tr><td><b>Automatic/sensory</b></td><td>Provide matched stimulation / enrichment</td><td>Attention-based plans (wrong function)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Time-out = time-out from positive reinforcement.</b> It only works if "time-in" is <b>rich with reinforcement</b>, it's kept <b>brief</b>, and <b>no attention</b> is given during it. <b>Never use it for escape-maintained behavior</b> — you'd be reinforcing escape.</div>
+  </div>
+
+  <div class="panel" id="e2g7">
+    <h2>Rapid-Fire Answer Sheet</h2>
+    <ol class="plain">
+      <li>Matching-law graph shows what correlation? → <b>Perfect positive (linear), slope ≈ 1.0</b></li>
+      <li>Rate of behavior vs. rate of reinforcement? → <b>They match / are proportional</b></li>
+      <li>Escape vs. avoidance? → <b>Escape ends a present aversive; avoidance prevents one that hasn't occurred</b> (both negative reinforcement)</li>
+      <li>Biggest SD vs. SΔ difference? → <b>SD = reinforcement available; SΔ = not available</b></li>
+      <li>SD vs. MO? → <b>MO alters VALUE; SD signals AVAILABILITY</b></li>
+      <li>EO vs. AO? → <b>EO elevates value (deprivation); AO abolishes value (satiation)</b></li>
+      <li>Do we reinforce people? → <b>No — we reinforce behavior</b></li>
+      <li>Premack? → <b>High-p behavior reinforces low-p behavior (first work, then play)</b></li>
+      <li>Automatic vs. socially mediated? → <b>Automatic needs no other person; socially mediated does</b></li>
+      <li>Money/tokens? → <b>Generalized conditioned reinforcers</b></li>
+      <li>CRF for? → <b>Acquisition.</b> INT for? → <b>Maintenance + resistance to extinction.</b> EXT? → <b>Behavior decreases</b></li>
+      <li>Which scallops? → <b>FI.</b> Highest, most extinction-resistant? → <b>VR</b></li>
+      <li>Ratio depends on ___ / Interval depends on ___ → <b># of responses / time</b></li>
+      <li>Chained vs. Multiple? → <b>Chained = one terminal reinforcer after a sequence; Multiple = each component reinforced, alternating</b> (both have SDs)</li>
+      <li>Which compound schedules have SDs? → <b>Chained &amp; Multiple</b> (Tandem &amp; Mixed do not)</li>
+      <li>Preference vs. reinforcer assessment? → <b>Preference = what they like/pick; Reinforcer = whether it increases behavior</b></li>
+      <li>"Contrived" free-operant means? → <b>The clinician deliberately arranged the items</b></li>
+      <li>Time-out for escape-maintained behavior? → <b>Backfires — it reinforces escape</b></li>
+      <li>Make time-out more effective? → <b>Enrich "time-in," keep it brief, no attention during it</b></li>
+      <li>Should negative reinforcement be called "artificial"? → <b>No — "negative" just means removal</b></li>
+    </ol>
+  </div>
+</div><!-- /exam2 guide -->
 </section>
 
 <!-- ================= FLASHCARDS ================= -->
@@ -598,7 +886,7 @@
 
 <!-- ================= PRACTICE TEST ================= -->
 <section class="view" id="view-test">
-  <p class="lead">40 questions. Answer them all, then hit <b>Grade my test</b> for your score, explanations, and a section breakdown. Your answers save automatically as you go.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
+  <p class="lead">Answer every question, then hit <b>Grade my test</b> for your score, explanations, and a section-by-section breakdown. Your answers save automatically as you go.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
 
   <div class="results" id="results">
     <div class="score" id="scoreNum">0<span>/40</span></div>
@@ -630,7 +918,7 @@
 </section>
 
 <footer>
-  ABA Exam 1 Study System · self-contained — works offline once loaded.<br>
+  ABA Study System · Exams 1 &amp; 2 · self-contained, works offline once loaded.<br>
   Made for scenario practice: apply the concept, don't just recite it.
 </footer>
 
@@ -654,14 +942,14 @@ document.querySelectorAll('.startcard').forEach(c=> c.onclick = ()=> showView(c.
 /* ============================================================
    FLASHCARDS
    ============================================================ */
-const CAT = {
+const CAT_1 = {
   cont:{name:"Contingencies", color:"var(--cat-cont)"},
   theo:{name:"Theorists & -isms", color:"var(--cat-theo)"},
   dim:{name:"7 Dimensions", color:"var(--cat-dim)"},
   sci:{name:"Science", color:"var(--cat-sci)"},
   term:{name:"Key Terms", color:"var(--cat-term)"},
 };
-const CARDS = [
+const CARDS_1 = [
  // Contingencies
  {c:"cont", f:"Positive Reinforcement", b:`Stimulus <b>ADDED</b> after behavior → behavior <b>INCREASES</b> in the future.<br><br><i>Kid says "please," gets the cookie → says "please" more.</i><br><br>Remember: positive = plus sign (add), not "good."`},
  {c:"cont", f:"Negative Reinforcement", b:`Stimulus <b>REMOVED</b> after behavior → behavior <b>INCREASES</b>.<br><br><i>You buckle the seatbelt → beeping stops → you always buckle.</i><br><br>It's an escape hatch — NOT punishment. Behavior goes UP.`},
@@ -725,6 +1013,80 @@ const CARDS = [
  {c:"term", f:"Behavior repertoire", b:`All the behaviors a person <b>can do</b> — or the subset of skills relevant to a specific setting or task (<i>"her math repertoire"</i>).`},
  {c:"term", f:"Independent vs. Dependent variable", b:`<b>IV</b> = what the experimenter <b>manipulates</b> (the intervention). Hook: <b>I</b> change it.<br><br><b>DV</b> = what is <b>measured</b> — in ABA, always the target <b>behavior</b>. It <i>depends</i> on the IV.`},
  {c:"term", f:"Science vs. Philosophy", b:`<b>Science</b> = systematic approach to knowledge about the natural world, built on <b>description, prediction, control</b>.<br><br><b>Philosophy</b> = the underlying assumptions/worldview — <b>behaviorism is the philosophy</b> of the science of behavior.`},
+];
+
+const CAT_2 = {
+  cont:{name:"Contingencies & Consequences", color:"var(--cat-cont)"},
+  ante:{name:"Antecedents & Motivation", color:"var(--cat-ante)"},
+  match:{name:"Matching Law", color:"var(--cat-match)"},
+  sched:{name:"Schedules", color:"var(--cat-sched)"},
+  assess:{name:"Assessments", color:"var(--cat-assess)"},
+  app:{name:"Application", color:"var(--cat-app)"},
+};
+const CARDS_2 = [
+ // Contingencies & Consequences
+ {c:"cont", f:"The two questions that solve ANY contingency", b:`<b>1. Added or removed?</b> Added = <b>Positive (+)</b>; Removed = <b>Negative (−)</b>.<br><b>2. Behavior up or down?</b> Up = <b>Reinforcement</b>; Down = <b>Punishment</b>.<br><br>+/− are math signs, <i>not</i> good/bad.`},
+ {c:"cont", f:"Positive Reinforcement", b:`Stimulus <b>ADDED</b> after behavior → behavior <b>INCREASES</b>.<br><br><i>Hand up → teacher calls on her → hand-raising rises.</i>`},
+ {c:"cont", f:"Negative Reinforcement", b:`Stimulus <b>REMOVED</b> after behavior → behavior <b>INCREASES</b>.<br><br><i>Buckle seatbelt → chime stops → always buckles.</i><br><br>NOT punishment, NOT "artificial" — behavior goes UP.`},
+ {c:"cont", f:"Positive Punishment", b:`Stimulus <b>ADDED</b> after behavior → behavior <b>DECREASES</b>.<br><br><i>Throws food → must wipe the whole table → throwing drops.</i>`},
+ {c:"cont", f:"Negative Punishment", b:`Stimulus <b>REMOVED</b> after behavior → behavior <b>DECREASES</b>.<br><br><i>Curses → loses 15 min of phone (response cost) → cursing drops.</i>`},
+ {c:"cont", f:"How do we DEFINE a punisher?", b:`By its <b>EFFECT</b>: a consequence that <b>decreases the future frequency</b> of the behavior it follows.<br><br>Not by intent, appearance, or whether the person dislikes it. <b>No decrease = no punishment.</b>`},
+ {c:"cont", f:"Escape vs. Avoidance", b:`Both = <b>negative reinforcement</b> (behavior goes UP). Difference is timing:<br><br><b>Escape</b> = the aversive thing is <b>already here</b>; the response <b>ENDS</b> it.<br><b>Avoidance</b> = the response <b>PREVENTS</b> it from ever occurring.<br><br>Hook: Escape <b>E</b>nds · Avoidance <b>A</b>verts.`},
+ {c:"cont", f:"What is “nagging” an example of?", b:`An <b>aversive stimulus</b> that maintains behavior via <b>negative reinforcement</b>.<br><br>Kid cleans to <b>end</b> the nagging (his cleaning is neg. reinforced) — and the parent's nagging is <b>also</b> neg. reinforced because it "worked."`},
+ {c:"cont", f:"Do we reinforce PEOPLE?", b:`<b>No — we reinforce BEHAVIOR.</b><br><br>Reinforcement is defined by its effect on a response. Saying "I reinforced Marcus" is technically wrong.`},
+ {c:"cont", f:"Should negative reinforcement be called “artificial”?", b:`<b>No.</b> "Negative" only means a stimulus was <b>removed</b> — not that it's bad or fake.<br><br>Both positive and negative reinforcement are normal, powerful processes that <b>increase</b> behavior.`},
+ {c:"cont", f:"Unconditioned reinforcers & punishers", b:`Work with <b>NO learning history</b> (phylogeny/survival).<br><br><b>Reinforcers:</b> food, water, warmth, sleep, oxygen.<br><b>Punishers:</b> pain, extreme heat/cold, intense stimuli.<br><br>Hook: <b>UN</b>conditioned = <b>UN</b>learned.`},
+ {c:"cont", f:"Conditioned reinforcers & punishers", b:`Get their power through a <b>history of pairing</b> (ontogeny).<br><br><b>Reinforcers:</b> praise, grades, a specific token.<br><b>Punishers:</b> "No," a reprimand, a fine, "the look."`},
+ {c:"cont", f:"Generalized conditioned reinforcer", b:`A conditioned reinforcer paired with <b>MANY</b> backups → works <b>regardless of any single MO / deprivation state</b>.<br><br><i>Money and tokens</i> are the classic examples.<br><br>Hook: "goes with everything."`},
+ {c:"cont", f:"Automatic vs. Socially mediated reinforcement", b:`<b>Automatic</b> = the behavior <b>produces its own consequence</b>; no other person needed (humming alone, scratching an itch).<br><br><b>Socially mediated</b> = <b>another person delivers</b> the consequence.<br><br>Tell: "alone / no one around" → automatic.`},
+ {c:"cont", f:"Classifications of reinforcers", b:`<b>Edible · Tangible/leisure · Activity · Social (attention) · Automatic/sensory.</b><br><br>Used to pick items for preference assessments and to design programming.`},
+ // Antecedents & Motivation
+ {c:"ante", f:"Discriminative stimulus (SD)", b:`An antecedent in whose presence the response <b>has been reinforced</b> → signals reinforcement is <b>AVAILABLE</b> → behavior more likely.<br><br><i>Vending light ON → inserting money pays off.</i>`},
+ {c:"ante", f:"Stimulus delta (SΔ)", b:`An antecedent in whose presence the response has <b>NOT been reinforced</b> → signals reinforcement <b>UNAVAILABLE</b> → behavior less likely.<br><br><i>Vending light OFF.</i>`},
+ {c:"ante", f:"Biggest SD vs. SΔ difference", b:`<b>SD</b> = reinforcement is <b>available</b> for the response.<br><b>SΔ</b> = reinforcement is <b>not available</b>.<br><br>(Both got their power through a history of <b>differential reinforcement</b>.)`},
+ {c:"ante", f:"SD vs. MO — the #1 tested distinction", b:`<b>MO alters the VALUE</b> of a consequence (how much you want it).<br><b>SD signals AVAILABILITY</b> of that consequence.<br><br><i>Deprivation is an MO; the vending light is an SD.</i>`},
+ {c:"ante", f:"Motivating operation (MO)", b:`An event that <b>(1) alters the VALUE</b> of a consequence and <b>(2) alters the current frequency</b> of all behavior that has produced it.<br><br>Two types: EO and AO.`},
+ {c:"ante", f:"Establishing operation (EO)", b:`<b>INCREASES</b> the value of a reinforcer → <b>evokes</b> behavior that got it.<br><br><i>Deprivation: no food all day → food worth more, food-seeking up.</i><br><br>Hook: <b>E</b>O <b>E</b>levates.`},
+ {c:"ante", f:"Abolishing operation (AO)", b:`<b>DECREASES</b> the value of a reinforcer → <b>abates</b> behavior that got it.<br><br><i>Satiation: just ate a big meal → food worth less, food-seeking down.</i><br><br>Hook: <b>A</b>O <b>A</b>bolishes.`},
+ {c:"ante", f:"Discriminated operant", b:`An operant that occurs <b>more in the presence of the SD</b> than the SΔ — behavior <b>under stimulus control</b>.<br><br><i>Child says "cookie" only when a parent is present and looking.</i>`},
+ {c:"ante", f:"The four-term contingency", b:`<b>MO → SD → R → C</b><br><br><i>Hungry (MO) → sees machine (SD) → inserts money (R) → gets snack, added (C).</i><br><br>Exam 2 adds the MO in front of the old A-B-C.`},
+ {c:"ante", f:"Premack principle", b:`Make a <b>high-probability behavior contingent on a low-probability behavior</b> to increase the low one.<br><br><i>"First veggies (low-p), then dessert (high-p)."</i><br><br>Order matters: work first, then play.`},
+ {c:"ante", f:"Rule-governed vs. Contingency-shaped", b:`<b>Rule-governed</b> = controlled by a <b>verbal statement</b> of the contingency, before contacting consequences ("wear a hard hat" sign on day one).<br><br><b>Contingency-shaped</b> = shaped by <b>direct contact</b> with the consequences over time.`},
+ {c:"ante", f:"Delayed consequences — effective?", b:`<b>Immediate beats delayed.</b> Delay weakens a consequence and blurs which response is being strengthened.<br><br>(Verbal humans can partly bridge delays with rules — but sooner is stronger.)`},
+ // Matching Law
+ {c:"match", f:"The Matching Law — what it says", b:`Under <b>concurrent schedules</b>, the <b>relative rate of a response matches the relative rate of reinforcement</b> for it.<br><br>Behavior distributes in <b>proportion</b> to available reinforcement.`},
+ {c:"match", f:"The Matching Law graph — what is it telling you?", b:`Y = relative rate of <b>responding</b>; X = relative rate of <b>reinforcement</b>.<br><br>A <b>straight diagonal line, slope ≈ 1.0</b> = a <b>perfect positive (linear) correlation</b>: more relative reinforcement → proportionally more relative responding.`},
+ {c:"match", f:"Matching Law — how do you apply it?", b:`To shift behavior toward a desired response, <b>raise its relative rate of reinforcement</b>.<br><br>You don't have to punish the competing behavior — out-reinforce it.`},
+ // Schedules
+ {c:"sched", f:"Continuous reinforcement (CRF = FR-1)", b:`Reinforce <b>EVERY</b> response.<br><br>Best for <b>ACQUISITION</b> — teaching a brand-new skill quickly.`},
+ {c:"sched", f:"Intermittent reinforcement (INT)", b:`Reinforce <b>SOME</b> responses.<br><br>Best for <b>MAINTENANCE</b> and building <b>resistance to extinction</b>. Use it <i>after</i> the skill is learned.`},
+ {c:"sched", f:"Extinction (EXT)", b:`Reinforce <b>NONE</b> — stop the reinforcement a behavior used to get → behavior <b>DECREASES</b>.<br><br>Often preceded by an <b>extinction burst</b> (brief increase first).`},
+ {c:"sched", f:"Ratio vs. Interval / Fixed vs. Variable", b:`<b>Ratio</b> = a number of <b>RESPONSES</b>. <b>Interval</b> = <b>TIME</b> must elapse, then the first response is reinforced.<br><br><b>Fixed</b> = same set number/time. <b>Variable</b> = changes (an average).`},
+ {c:"sched", f:"Fixed Ratio (FR)", b:`Reinforcement after a <b>set # of responses</b> (e.g., every 10th).<br><br>Graph: high rate, then a <b>post-reinforcement pause</b>, then high again.`},
+ {c:"sched", f:"Variable Ratio (VR)", b:`Reinforcement after a <b>varying # of responses</b> (average).<br><br>Graph: <b>highest, steadiest rate; most resistant to extinction</b>.<br><br><i>Slot machines / gambling.</i>`},
+ {c:"sched", f:"Fixed Interval (FI) — which schedule scallops?", b:`Reinforcement for the first response after a <b>set time</b>.<br><br>Graph: the classic <b>SCALLOP</b> — pause after reinforcement, then accelerating responding as the interval ends.`},
+ {c:"sched", f:"Variable Interval (VI)", b:`Reinforcement for the first response after a <b>varying time</b> (average).<br><br>Graph: <b>steady, moderate</b> rate.<br><br><i>Checking email for an important message.</i>`},
+ {c:"sched", f:"Which depends on TIME vs. # of RESPONSES?", b:`<b>Interval</b> (FI, VI) depends on <b>time</b>.<br><b>Ratio</b> (FR, VR) depends on <b>number of responses</b>.`},
+ {c:"sched", f:"Chained schedule", b:`Components done <b>in sequence</b>; only the <b>last</b> yields the terminal reinforcer; <b>each step has its own SD</b>.<br><br>Discriminated (has cues).`},
+ {c:"sched", f:"Tandem schedule", b:`Same as chained (sequence → one terminal reinforcer) but with <b>NO SDs</b> marking the steps.<br><br>Nondiscriminated (muted).`},
+ {c:"sched", f:"Multiple schedule", b:`Two+ components <b>alternate</b>; <b>each</b> produces its <b>own</b> reinforcement; each signaled by its <b>own SD</b>.<br><br>Discriminated (has cues).`},
+ {c:"sched", f:"Mixed schedule", b:`Same as multiple (alternating, each reinforced) but with <b>NO SDs</b>.<br><br>Nondiscriminated (muted).`},
+ {c:"sched", f:"Concurrent schedule", b:`Two+ schedules available <b>at the same time</b> for <b>two+ responses</b> → the person can choose.<br><br>This is the arrangement behind the <b>matching law</b>.`},
+ {c:"sched", f:"Which compound schedules are discriminated (have SDs)?", b:`<b>Discriminated: Chained &amp; Multiple.</b><br><b>Nondiscriminated: Tandem &amp; Mixed.</b><br><br>Hook: <b>CM-cued</b> (Chained/Multiple) · <b>TM-muted</b> (Tandem/Mixed).`},
+ {c:"sched", f:"Chained vs. Multiple — the difference?", b:`<b>Chained</b> = <b>one</b> payoff after a <b>required sequence</b> of components.<br><b>Multiple</b> = <b>each</b> component pays off on its own as they <b>alternate</b>.<br><br>(Both have SDs.)`},
+ // Assessments
+ {c:"assess", f:"Preference vs. Reinforcer assessment", b:`<b>Preference</b> = what a person <b>likes / will pick or approach</b> (identifies <i>likely</i> reinforcers).<br><br><b>Reinforcer assessment</b> = tests whether that item <b>actually INCREASES behavior</b> when delivered contingently.<br><br>"What do they pick?" vs. "Does it actually work?"`},
+ {c:"assess", f:"Single-stimulus (SS) preference assessment", b:`Present <b>ONE item at a time</b>; record approach/engagement.<br><br>Good for learners who can't compare; poor at ranking.`},
+ {c:"assess", f:"Paired-stimulus (PS) preference assessment", b:`Present <b>TWO at a time</b> (forced choice); cycle through all pairs.<br><br>Produces a clear <b>preference hierarchy</b>.`},
+ {c:"assess", f:"Multiple-stimulus without replacement (MSWO)", b:`Array of several items; pick one, <b>REMOVE it</b>, re-present the rest; repeat.<br><br>Efficient <b>ranking</b>; the array <b>shrinks</b> each trial ("without replacement").`},
+ {c:"assess", f:"Free-operant observation (naturalistic)", b:`Items <b>freely available</b>; record <b>duration of engagement</b>; nothing removed or blocked.<br><br>Low risk of making items aversive.`},
+ {c:"assess", f:"What does “contrived” mean (contrived free-operant)?", b:`The clinician <b>deliberately arranges / pre-selects</b> the items in the setting beforehand.<br><br>vs. <b>naturalistic</b> = observe with whatever the person already has.`},
+ {c:"assess", f:"Brief free-operant preference assessment", b:`A <b>short-duration</b> free-operant observation of engagement with freely available items.<br><br>A time-efficient version of free-operant.`},
+ // Application
+ {c:"app", f:"Match the intervention to the FUNCTION", b:`<b>Attention</b> → planned ignoring + teach appropriate attention-seeking (DRA/FCT).<br><b>Escape</b> → escape extinction + teach a break request.<br><b>Tangible</b> → teach requesting; manage access.<br><b>Automatic</b> → provide matched stimulation.`},
+ {c:"app", f:"Time-out for ESCAPE-maintained behavior?", b:`<b>Backfires.</b> Time-out is time-out <i>from positive reinforcement</i> — if the task is what they want to escape, removing them <b>reinforces escape</b> → behavior <b>increases</b>.`},
+ {c:"app", f:"How do you make time-out MORE effective?", b:`Make <b>"time-in" rich with reinforcement</b> so removal actually costs something.<br><br>Keep time-out <b>brief</b>, and give <b>no attention</b> during it.`},
+ {c:"app", f:"Attention-maintained problem behavior — best plan?", b:`<b>Extinction of attention</b> (planned ignoring) for the problem behavior <b>+</b> reinforce an <b>appropriate</b> way to recruit attention (e.g., raising a hand). Interventions must match the function.`},
 ];
 
 let filter = "all";
@@ -809,19 +1171,18 @@ document.getElementById('btnGot').onclick = gotIt;
 document.getElementById('btnShuffle').onclick = ()=>{ shuffle(queue); flippedWasTrue=flipped; showCard(); };
 document.getElementById('btnRestart').onclick = startSession;
 document.getElementById('btnStudyAgain').onclick = startSession;
-buildChips();
 
 /* ============================================================
    PRACTICE TEST
    ============================================================ */
-const SECTIONS = [
+const SECTIONS_1 = [
   {name:"Section A · Contingencies", range:[1,10]},
   {name:"Section B · Theorists, -isms & Branches", range:[11,20]},
   {name:"Section C · The 7 Dimensions of ABA", range:[21,27]},
   {name:"Section D · Assumptions of Science", range:[28,32]},
   {name:"Section E · Key Terms & Concepts", range:[33,40]},
 ];
-const TEST = [
+const TEST_1 = [
  {q:"Every time Maya whines in the grocery store, her dad hands her his phone. Whining in stores increases. For Maya, this is an example of:",o:["Negative reinforcement","Positive reinforcement","Positive punishment","Negative punishment"],a:1,e:"A stimulus (phone) is ADDED after whining, and whining INCREASES → positive reinforcement."},
  {q:"In the same scenario, Dad's behavior of handing over the phone stops the whining, and Dad hands the phone over faster each trip. Dad's phone-handing behavior is being maintained by:",o:["Positive reinforcement","Positive punishment","Negative reinforcement","Negative punishment"],a:2,e:"For Dad, an aversive stimulus (whining) is REMOVED after his behavior, and his behavior INCREASES → negative reinforcement. (Classic two-sided contingency question.)"},
  {q:"A teen comes home an hour past curfew. His parents take his gaming console for the week. Missing curfew decreases. This is:",o:["Negative punishment","Positive punishment","Negative reinforcement","Extinction"],a:0,e:"A stimulus (console) is REMOVED, behavior DECREASES → negative punishment."},
@@ -865,11 +1226,120 @@ const TEST = [
 ];
 
 const LETTERS = ["A","B","C","D"];
-const STORAGE_KEY = "aba_exam1_answers";
+
+const SECTIONS_2 = [
+  {name:"Section A · The Matching Law", range:[1,3]},
+  {name:"Section B · Contingencies & Consequences", range:[4,20]},
+  {name:"Section C · Antecedents & Motivation", range:[21,36]},
+  {name:"Section D · Preference & Reinforcer Assessments", range:[37,44]},
+  {name:"Section E · Schedules of Reinforcement", range:[45,57]},
+  {name:"Section F · Function-Based Application", range:[58,60]},
+];
+const TEST_2 = [
+ {q:"A therapist tracks a client's talk-outs across two staff members. The client talks out about twice as often to Staff A as to Staff B, and Staff A delivers attention for talk-outs about twice as often as Staff B. Plotted as relative rate of responding against relative rate of reinforcement, the data fall on a straight line with a slope near 1.0. What does this demonstrate?",o:["The matching law: relative response rate matches the relative rate of reinforcement","Behavioral contrast between the two staff members","That Staff A is a conditioned punisher","Spontaneous recovery of the talk-out response"],a:0,e:"The matching law (Herrnstein): the relative rate of a response matches the relative rate of reinforcement for it under concurrent schedules. A straight line with slope ≈ 1.0 is perfect matching."},
+ {q:"On the classic matching-law graph (relative rate of responding on the y-axis, relative rate of reinforcement on the x-axis), the plotted points form a straight diagonal line rising to the right. This tells you the correlation between rate of behavior and rate of reinforcement is:",o:["A perfect positive (linear) correlation","A negative correlation","No correlation","A curvilinear correlation that reverses at high rates"],a:0,e:"A straight line rising left-to-right with slope ≈ 1.0 is a perfect positive linear relationship: as relative reinforcement rises, relative responding rises proportionally."},
+ {q:"A teen splits homework time between math (frequent teacher praise) and reading (infrequent praise), spending far more time on math. According to the matching law, the most direct way to increase reading is to:",o:["Increase the relative rate of reinforcement available for reading","Punish time spent on math","Add a motivating operation for praise","Place reading on extinction"],a:0,e:"Behavior distributes in proportion to available reinforcement. To pull responding toward reading, raise reading's relative rate of reinforcement rather than punishing the alternative."},
+ {q:"A student raises her hand, the teacher calls on her, and hand-raising increases over the following weeks. The teacher's attention was ADDED after the response. This is an example of:",o:["Positive reinforcement","Negative reinforcement","Positive punishment","Negative punishment"],a:0,e:"A stimulus (attention) was added following the behavior and the future frequency increased → positive reinforcement."},
+ {q:"A supervisor says, 'I reinforced Marcus today.' From a behavior-analytic standpoint, the most accurate correction is:",o:["We reinforce behavior, not people","We reinforce people, not behavior","Reinforcement and reward are identical terms","Reinforcement only applies to involuntary responses"],a:0,e:"Reinforcement is defined by its effect on a response. We strengthen behavior, not a person — saying you reinforced a person is imprecise."},
+ {q:"In a discussion of terminology, a behavior analyst argues that negative reinforcement should NOT be called 'artificial' or 'bad' reinforcement. The best rationale is that:",o:["'Negative' refers only to the removal of a stimulus, not to something undesirable","Negative reinforcement is always less effective than positive reinforcement","Negative reinforcement only occurs in laboratory settings","Negative reinforcement is a type of punishment"],a:0,e:"'Positive' and 'negative' denote addition vs. removal of a stimulus, not good vs. bad. Both positive and negative reinforcement increase behavior.",trick:1,trickWhy:`Students hear "negative" and assume it means bad, weak, or fake — so they reject the correct option. But in this vocabulary <b>"negative" just means a stimulus was removed</b>, exactly as "positive" means one was added. Both positive and negative reinforcement are normal, powerful processes that <b>increase</b> behavior. Nothing about negative reinforcement is artificial.`},
+ {q:"A parent nags a child to clean his room. The child cleans, the nagging stops, and over weeks the child's cleaning-in-response-to-nagging increases. Meanwhile the parent's nagging also increases because it 'works.' The child's cleaning behavior is maintained by, and nagging is an example of:",o:["Negative reinforcement; an aversive stimulus that is removed by compliance","Positive reinforcement; a pleasant stimulus added by compliance","Positive punishment; an aversive stimulus added after cleaning","Automatic reinforcement produced by the act of cleaning"],a:0,e:"The child cleans to terminate the aversive nagging (negative reinforcement). Nagging is the aversive stimulus; the parent's nagging is also negatively reinforced when it ends the noncompliance.",trick:1,trickWhy:`This one has <b>two contingencies running at once</b>, which is what trips people up. The child's cleaning is negatively reinforced (it turns off the nagging), and — easy to miss — the parent's nagging is <i>also</i> negatively reinforced because it "worked." Nagging itself is the <b>aversive stimulus</b> that compliance removes.`},
+ {q:"A child throws food, and each time she must wipe the entire table (an added effortful task). Food-throwing decreases. This is:",o:["Positive punishment","Negative punishment","Positive reinforcement","Negative reinforcement"],a:0,e:"A stimulus/task (wiping) was added following the behavior and the behavior decreased → positive punishment."},
+ {q:"A teen loses 15 minutes of phone time each time he curses at a sibling, and cursing decreases. Losing phone time (a response cost) is an example of:",o:["Negative punishment","Positive punishment","Negative reinforcement","Extinction"],a:0,e:"A preferred stimulus (phone time) was removed following the behavior and behavior decreased → negative punishment (response cost)."},
+ {q:"A staff member says, 'Time-out is a punishment.' Under the behavior-analytic definition, how is a punisher correctly defined?",o:["By its effect: a consequence that decreases the future frequency of the behavior it follows","By the appearance of the procedure being unpleasant","By the intention of the person delivering it","By whether the client dislikes it"],a:0,e:"Punishment is defined functionally, by its effect on future behavior — not by intent, appearance, or dislike. No decrease = no punishment."},
+ {q:"An FBA shows a student's disruption is maintained by escape from work (negative reinforcement). A team proposes 'time-out from the classroom' for disruption. The likely outcome is:",o:["Disruption will increase, because time-out lets the student escape the work he was trying to avoid","Disruption will decrease, because time-out is inherently punishing","No change, because time-out never affects behavior","Disruption will decrease due to automatic reinforcement"],a:0,e:"Time-out is time-out from positive reinforcement. If the work is aversive, removing the student reinforces escape. Match the intervention to the function — for escape-maintained behavior, time-out backfires.",trick:1,trickWhy:`The instinct is "time-out is punishment, so behavior goes down." The trap: time-out is time-out <i>from positive reinforcement</i>. If the student is trying to <b>escape the work</b>, removing them from it gives them exactly what they want → escape is <b>reinforced</b> and disruption <b>increases</b>. Always match the intervention to the function — never use time-out for escape-maintained behavior.`},
+ {q:"A team wants time-out to actually reduce attention-maintained behavior. Which change would most likely make time-out MORE effective?",o:["Ensure the 'time-in' environment is rich with reinforcement so removal from it is meaningful","Make the time-out area more comfortable and stimulating","Extend the time-out to 45 minutes regardless of behavior","Deliver attention and comments during time-out"],a:0,e:"Time-out only works if 'time-in' is more reinforcing than time-out. Enrich the time-in environment (and keep time-out brief and attention-free)."},
+ {q:"Food, water, oxygen, and sleep function as reinforcers without any prior learning history. These are best classified as:",o:["Unconditioned (primary) reinforcers","Conditioned (secondary) reinforcers","Generalized conditioned reinforcers","Conditioned punishers"],a:0,e:"Unconditioned reinforcers work due to phylogeny (evolution), without prior pairing — typically survival-related (food, water, warmth)."},
+ {q:"A token becomes an effective reinforcer only after it is repeatedly paired with snacks and activities the child already values. The token is a:",o:["Conditioned reinforcer","Unconditioned reinforcer","Conditioned punisher","Motivating operation"],a:0,e:"A conditioned (secondary) reinforcer acquires its function through a history of pairing with existing reinforcers (ontogeny). Tokens are the classic example."},
+ {q:"Money and tokens are especially durable reinforcers because they have been paired with many different backup reinforcers and thus don't depend on a single deprivation state. This defines a:",o:["Generalized conditioned reinforcer","Unconditioned reinforcer","Automatic reinforcer","Discriminative stimulus"],a:0,e:"A generalized conditioned reinforcer is paired with numerous reinforcers, so it works relatively independent of any one MO. Money and tokens are prototypical."},
+ {q:"A painful pinch, extreme heat, and a loud startling noise suppress behavior without any prior learning. These are:",o:["Unconditioned punishers","Conditioned punishers","Generalized reinforcers","Establishing operations"],a:0,e:"Unconditioned punishers suppress behavior due to phylogeny (pain, extreme temperatures, intense stimuli) with no learning history."},
+ {q:"A previously neutral word, 'No,' begins to suppress behavior after it has repeatedly preceded loss of privileges. 'No' now functions as a:",o:["Conditioned punisher","Unconditioned punisher","Generalized reinforcer","Abolishing operation"],a:0,e:"A conditioned punisher acquires its suppressive function by being paired with established punishers. 'No' becomes punishing through pairing."},
+ {q:"During a fire drill, a worker who is already hearing the alarm covers his ears, which reduces the noise. This behavior is maintained by:",o:["Escape (negative reinforcement): the aversive stimulus is already present and is terminated","Avoidance: the aversive stimulus is prevented before it occurs","Positive reinforcement","Positive punishment"],a:0,e:"Escape: a response terminates an aversive stimulus that is already present. The alarm is on; covering the ears reduces it now."},
+ {q:"A student completes an assignment before the deadline so the teacher never issues a warning at all. No warning ever occurs. This is best described as:",o:["Avoidance: the response prevents the aversive stimulus from occurring","Escape: the response terminates an aversive stimulus that is present","Positive reinforcement of studying","Automatic reinforcement"],a:0,e:"Avoidance postpones or prevents an aversive stimulus that has not yet occurred. The warning never happens because the student responded in time."},
+ {q:"The key difference between escape and avoidance is:",o:["In escape the aversive stimulus is already present; in avoidance the response prevents it from occurring","Escape increases behavior; avoidance decreases behavior","Escape is positive reinforcement; avoidance is negative reinforcement","There is no functional difference between the two"],a:0,e:"Both are negative reinforcement (behavior increases). The distinction is timing: escape terminates a present aversive; avoidance prevents one that hasn't appeared."},
+ {q:"When the vending machine's light is ON, inserting money produces a drink; when the light is OFF, it never does. The person only inserts money when the light is on. The illuminated light is a(n) ___ and the off light is a(n) ___.",o:["Discriminative stimulus (SD); S-delta (SΔ)","S-delta (SΔ); discriminative stimulus (SD)","Motivating operation; discriminative stimulus","Unconditioned stimulus; conditioned stimulus"],a:0,e:"An SD signals reinforcement is available for a response; an SΔ signals it is not. Responding is more likely in the presence of the SD."},
+ {q:"The single biggest difference between a discriminative stimulus (SD) and a stimulus delta (SΔ) is that:",o:["In the presence of an SD reinforcement is available for the response; in the presence of an SΔ it is not","An SD increases the value of a reinforcer, while an SΔ decreases it","An SD evokes respondent behavior; an SΔ evokes operant behavior","An SD is always a person and an SΔ is always an object"],a:0,e:"Both are antecedents with a discriminative function from differential reinforcement. The SD correlates with reinforcement availability; the SΔ with unavailability."},
+ {q:"A person hasn't eaten all day. Food is now more valuable, and all behaviors that have produced food in the past are more likely. This describes a ___, not a ___.",o:["Motivating operation (specifically an EO); discriminative stimulus","Discriminative stimulus; motivating operation","Conditioned reinforcer; unconditioned reinforcer","Stimulus delta; discriminative stimulus"],a:0,e:"Food deprivation is a motivating operation (an EO) that alters the value of food and evokes food-related behavior. An SD instead signals reinforcer availability for a specific response.",trick:1,trickWhy:`This is the single most-tested distinction on the exam, and SD is the tempting wrong answer. Deprivation changes <b>how much you want</b> food (value) and evokes <i>all</i> food-related behavior → that's a <b>motivating operation (an EO)</b>. An <b>SD</b> would merely <b>signal</b> that reinforcement is available for one specific response. <b>MO = value; SD = availability.</b>`},
+ {q:"Which statement best captures the difference between a motivating operation (MO) and a discriminative stimulus (SD)?",o:["An MO alters the value/effectiveness of a consequence; an SD signals the availability of that consequence","An MO signals availability; an SD alters value","They are two names for the same antecedent event","An MO only affects respondent behavior"],a:0,e:"MOs are value-altering (and evocative/abative); SDs are availability-signaling from a history of differential reinforcement. Both are antecedents with different functions."},
+ {q:"Water deprivation makes water more effective as a reinforcer and increases the frequency of behavior that has produced water. This is an example of a(n):",o:["Establishing operation (EO)","Abolishing operation (AO)","Discriminative stimulus","Conditioned punisher"],a:0,e:"An EO increases the current effectiveness of a reinforcer and evokes behavior that obtained it. Deprivation is a common EO."},
+ {q:"Immediately after a large meal, food is far less effective as a reinforcer and food-seeking behavior decreases. Satiation here functions as a(n):",o:["Abolishing operation (AO)","Establishing operation (EO)","Discriminative stimulus","Negative reinforcer"],a:0,e:"An AO decreases the momentary effectiveness of a reinforcer and abates behavior that produced it. Satiation is a common AO."},
+ {q:"'First eat your vegetables, then you can have dessert.' Access to a high-probability behavior (eating dessert) is made contingent on a low-probability behavior (eating vegetables) to increase the latter. This is the:",o:["Premack principle","Matching law","Response-deprivation hypothesis exception","Behavioral contrast"],a:0,e:"The Premack principle: a higher-probability behavior reinforces a lower-probability behavior when access to the former is contingent on the latter."},
+ {q:"Which arrangement correctly applies the Premack principle for a child who rarely reads but frequently plays video games?",o:["Require 20 minutes of reading before granting video-game time","Require 20 minutes of video games before granting reading time","Remove video games whenever the child reads","Allow video games and reading at the same time with no contingency"],a:0,e:"The high-probability behavior (video games) reinforces the low-probability behavior (reading) only when access to games is contingent on reading first."},
+ {q:"A child hums the same tune repeatedly even when completely alone, with no one attending and no tangible outcome. The behavior most likely produces:",o:["Automatic reinforcement (the behavior itself produces its own reinforcing consequence)","Socially mediated positive reinforcement","Socially mediated negative reinforcement","Positive punishment"],a:0,e:"Automatic reinforcement: the response produces a reinforcing consequence directly, with no other person mediating it (sensory/self-produced stimulation)."},
+ {q:"The primary distinction between automatic and socially mediated reinforcement is:",o:["Automatic reinforcement does not require another person to deliver the consequence; socially mediated reinforcement does","Automatic reinforcement is always stronger","Socially mediated reinforcement is always negative","Automatic reinforcement only applies to punishment"],a:0,e:"In socially mediated reinforcement another person provides the consequence; in automatic reinforcement the response itself generates the reinforcing effect."},
+ {q:"A new employee follows the written instruction, 'Wear a hard hat in Zone B,' the first day—before ever contacting any consequence for doing or not doing so. This behavior is best described as:",o:["Rule-governed behavior (controlled by a verbal statement of the contingency)","Contingency-shaped behavior (shaped by direct contact with consequences)","Automatically reinforced behavior","Respondent behavior"],a:0,e:"Rule-governed behavior is controlled by a verbal description of a contingency rather than direct exposure to consequences. The employee follows the rule without having contacted it."},
+ {q:"Contingency-shaped behavior differs from rule-governed behavior in that contingency-shaped behavior is:",o:["Directly shaped by contact with the actual consequences over time","Always faster to acquire","Controlled only by written rules","Impossible in humans"],a:0,e:"Contingency-shaped behavior develops through direct, repeated contact with consequences, whereas rule-governed behavior is evoked by a verbal statement of the contingency."},
+ {q:"Regarding the effectiveness of consequences, which statement is most accurate?",o:["Immediate consequences are generally more effective than delayed consequences at changing behavior","Delayed consequences are always more effective than immediate ones","Delay has no effect on the strength of a consequence","Only punishment is weakened by delay; reinforcement is not"],a:0,e:"The more immediate the consequence, the more effective it is. Delayed consequences are generally weaker, though verbal humans can bridge delays with rules."},
+ {q:"A child says 'cookie' only when a parent is present and looking, because that is when saying 'cookie' has produced cookies. Saying 'cookie' under the control of the parent's presence is a:",o:["Discriminated operant (an operant under stimulus control by an SD)","Respondent (elicited) behavior","Reflex","Unconditioned response"],a:0,e:"A discriminated operant occurs more often in the presence of an SD due to differential reinforcement. The parent's presence is the SD."},
+ {q:"A complete four-term contingency for positive reinforcement includes the motivating operation, the antecedent (SD), the response, and the consequence. In 'hungry (MO) → sees vending machine (SD) → inserts money (R) → gets snack (C, added),' the consequence functions as:",o:["Positive reinforcement (a stimulus is added and behavior increases)","Negative reinforcement (a stimulus is removed)","Positive punishment","An abolishing operation"],a:0,e:"The snack is added following the response and increases future money-inserting → positive reinforcement. The MO (hunger) sets value; the SD (machine) signals availability."},
+ {q:"Consider: 'loud alarm present (MO/aversive) → sees the OFF button (SD) → presses button (R) → alarm stops (C, removed).' The consequence in this four-term contingency is:",o:["Negative reinforcement (a stimulus is removed and behavior increases)","Positive reinforcement (a stimulus is added)","Negative punishment","Positive punishment"],a:0,e:"Terminating the alarm (removal) strengthens button-pressing → negative reinforcement (escape). MO = ongoing alarm, SD = the button, R = press, C = alarm removed."},
+ {q:"A clinician wants to know which items a client will WORK to obtain (i.e., which actually strengthen behavior), not merely which the client approaches. The clinician should conduct a:",o:["Reinforcer assessment","Preference assessment","Functional analysis","Descriptive assessment"],a:0,e:"A preference assessment identifies likely reinforcers via approach/selection. A reinforcer assessment goes further, testing whether an item actually increases responding when contingent."},
+ {q:"The essential difference between a preference assessment and a reinforcer assessment is that a preference assessment:",o:["Identifies what a person likes/selects, whereas a reinforcer assessment tests whether that item actually increases behavior","Tests reinforcing effects, whereas a reinforcer assessment tests only liking","Is used only for punishers","Requires a concurrent-operant arrangement, unlike a reinforcer assessment"],a:0,e:"Preference = likely reinforcers based on selection/approach. Reinforcer assessment = empirical demonstration that the stimulus increases responding when delivered contingently."},
+ {q:"A therapist presents ONE item at a time and records whether the child approaches, engages with, or ignores it. No comparisons between items are made. This is a:",o:["Single-stimulus (successive choice) preference assessment","Paired-stimulus preference assessment","MSWO","Free-operant observation"],a:0,e:"In a single-stimulus assessment, items are presented one at a time and approach/engagement recorded. Useful for clients who can't compare; poor at ranking."},
+ {q:"A therapist presents items TWO at a time and records which of the pair the child selects, cycling through all possible pairs to produce a preference hierarchy. This is a:",o:["Paired-stimulus (forced-choice) preference assessment","Single-stimulus preference assessment","Free-operant observation","Multiple-stimulus without replacement"],a:0,e:"The paired-stimulus (Fisher et al.) method presents two items per trial across all pairings, yielding a clear relative ranking by percent selected."},
+ {q:"A therapist arrays several items in a line, lets the child pick one, then REMOVES the chosen item and re-presents the rest, repeating until items are gone—producing a rank order. This is a:",o:["Multiple-stimulus without replacement (MSWO)","Multiple-stimulus with replacement (MSW)","Paired-stimulus assessment","Single-stimulus assessment"],a:0,e:"In MSWO the selected item is not replaced; the array shrinks each trial, efficiently generating a hierarchy. MSW would put the chosen item back."},
+ {q:"A clinician simply watches a child in a room full of freely available toys and records how long the child engages with each, without requiring any selection and without removing items. This naturalistic method is a:",o:["Free-operant observation","Paired-stimulus assessment","MSWO","Single-stimulus assessment"],a:0,e:"In free-operant observation, items are freely available and duration of engagement recorded. Nothing is blocked or demanded, minimizing the risk of making items aversive."},
+ {q:"In a free-operant preference assessment, 'contrived' means that the:",o:["Clinician deliberately arranges/pre-selects and positions the specific items available in the environment beforehand","Items are presented two at a time","Assessment is conducted in the client's natural home with whatever is already there","Selected items are removed after each choice"],a:0,e:"A contrived free-operant observation uses an environment the clinician has purposely arranged with chosen items, vs. a naturalistic one that uses whatever the client already has."},
+ {q:"A brief free-operant preference assessment is best defined as:",o:["A short-duration free-operant observation of engagement with freely available items, requiring little time","A lengthy paired comparison of every possible item pair","An assessment that removes items after each selection","A reinforcer assessment measuring response rate under an FR schedule"],a:0,e:"The brief free-operant method is a time-efficient version of free-operant observation: freely available items, engagement recorded, over a short period."},
+ {q:"A factory worker is paid for every 10th unit assembled. Reinforcement depends on a set number of responses. This is a:",o:["Fixed-ratio (FR-10) schedule","Fixed-interval schedule","Variable-ratio schedule","Variable-interval schedule"],a:0,e:"Ratio schedules deliver reinforcement after a number of responses; 'fixed' means the number is constant (every 10th). FR produces high rates with a brief post-reinforcement pause."},
+ {q:"A slot machine pays off after an unpredictable, varying number of pulls that averages about 1 in 20. This schedule, known for high, steady rates and resistance to extinction, is:",o:["Variable-ratio (VR-20)","Fixed-ratio","Fixed-interval","Variable-interval"],a:0,e:"A variable-ratio schedule reinforces after a varying number of responses around an average. VR produces high, steady rates and strong resistance to extinction — hence gambling."},
+ {q:"Which schedule of reinforcement characteristically produces a 'scalloped' cumulative record—little responding right after reinforcement, then accelerating responding as the interval ends?",o:["Fixed-interval (FI)","Variable-ratio (VR)","Fixed-ratio (FR)","Variable-interval (VI)"],a:0,e:"Fixed-interval schedules reinforce the first response after a fixed time, producing the classic FI scallop: a post-reinforcement pause then accelerating responding as the interval ends."},
+ {q:"A worker checks email and is occasionally reinforced by an important message; reinforcement is available after varying, unpredictable amounts of time. Checking occurs at a steady, moderate rate. This is a:",o:["Variable-interval (VI) schedule","Fixed-interval schedule","Fixed-ratio schedule","Variable-ratio schedule"],a:0,e:"Interval schedules reinforce the first response after time elapses; 'variable' means the time varies around an average. VI produces steady, moderate rates."},
+ {q:"Which pair correctly identifies which schedules depend on TIME versus NUMBER OF RESPONSES?",o:["Interval schedules depend on time; ratio schedules depend on number of responses","Ratio schedules depend on time; interval schedules depend on responses","Both depend only on time","Both depend only on number of responses"],a:0,e:"Ratio = number of responses (FR/VR). Interval = elapsed time before a response is reinforced (FI/VI). A core exam distinction."},
+ {q:"When teaching a brand-new skill, a therapist reinforces EVERY correct response (FR-1). Continuous reinforcement (CRF) is most appropriate for:",o:["Acquisition—establishing a new behavior","Maintaining a well-established behavior over time","Building resistance to extinction","Thinning reinforcement"],a:0,e:"CRF (reinforcing every response) is best during acquisition to strengthen a new behavior quickly. Later, thinning to intermittent aids maintenance and extinction-resistance."},
+ {q:"After a child reliably uses a new greeting, the therapist gradually reinforces only some greetings to promote durability. Intermittent reinforcement is chosen because it:",o:["Maintains behavior and increases resistance to extinction","Is the fastest way to establish a brand-new behavior","Guarantees extinction of the behavior","Eliminates the need for any reinforcement"],a:0,e:"Intermittent schedules maintain established behavior and make it more resistant to extinction than CRF. Used after acquisition, not during it."},
+ {q:"A behavior that was previously reinforced now produces NO reinforcement at all, and over time it decreases. This is:",o:["Extinction","Negative punishment","A variable-interval schedule","An abolishing operation"],a:0,e:"Extinction is the discontinuation of reinforcement for a previously reinforced response, resulting in a decrease (often after an initial extinction burst)."},
+ {q:"In a CHAINED schedule, two or more component schedules must be completed in a specific sequence to earn a single terminal reinforcer, and each component has its own SD. How does a MULTIPLE schedule differ?",o:["In a multiple schedule each component has its own SD but produces its own reinforcement and components alternate rather than forming a required sequence to one terminal reinforcer","A multiple schedule has no discriminative stimuli","A multiple schedule requires components to be completed in a fixed order for one final reinforcer","There is no difference between chained and multiple schedules"],a:0,e:"Both present distinct SDs for each component. The difference: a chain requires sequential completion for a single terminal reinforcer; a multiple delivers reinforcement within each component and alternates them."},
+ {q:"A tandem schedule is identical to a chained schedule EXCEPT that a tandem schedule:",o:["Presents no discriminative stimuli signaling the components","Requires no responses at all","Delivers separate reinforcers for each component","Reverses the order of components each time"],a:0,e:"Chained and tandem both require sequential completion for one terminal reinforcer; a tandem has NO distinct SDs marking the components (chained does)."},
+ {q:"A mixed schedule is the counterpart of a multiple schedule but WITHOUT the distinctive stimuli. This means a mixed schedule:",o:["Alternates two or more component schedules with no SD signaling which is in effect","Requires components in a fixed sequence for one terminal reinforcer","Always uses only a single component","Is another name for a concurrent schedule"],a:0,e:"Multiple and mixed both alternate components that each produce reinforcement; the distinction is stimuli. Multiple = with SDs, Mixed = without (parallel to chained vs. tandem)."},
+ {q:"Two different responses are simultaneously available, each on its own schedule of reinforcement, and the person can allocate behavior between them (this is the arrangement underlying the matching law). This is a:",o:["Concurrent schedule","Chained schedule","Multiple schedule","Tandem schedule"],a:0,e:"Concurrent schedules present two or more schedules simultaneously for two or more responses, allowing choice. Allocation across them is what the matching law describes."},
+ {q:"Which grouping correctly lists the compound schedules that INCLUDE discriminative stimuli (discriminated) versus those that do NOT (nondiscriminated)?",o:["Discriminated: chained and multiple; Nondiscriminated: tandem and mixed","Discriminated: tandem and mixed; Nondiscriminated: chained and multiple","Discriminated: concurrent only; Nondiscriminated: all others","All compound schedules are discriminated"],a:0,e:"Chained and multiple use distinct SDs (discriminated). Their stimulus-free counterparts are tandem (like chained) and mixed (like multiple), which have no SDs."},
+ {q:"An FBA indicates a student's screaming is maintained by adult attention. Which intervention is MOST consistent with the function?",o:["Planned ignoring (extinction of attention) plus reinforcing appropriate attention-seeking (e.g., raising a hand)","Time-out from the classroom","Escape extinction","Providing a break from work after screaming"],a:0,e:"For attention-maintained behavior, withhold attention for screaming (extinction) and teach/reinforce an appropriate way to recruit attention (DRA/FCT). Match the function."},
+ {q:"A student's aggression is maintained by escape from academic tasks. Which intervention matches this function?",o:["Teach a functional communication response for a break and use escape extinction (task continues until criterion) rather than removing the task for aggression","Deliver enthusiastic verbal attention after each aggression","Give a preferred snack immediately after aggression","Use time-out from the classroom for aggression"],a:0,e:"For escape-maintained behavior, stop reinforcing escape via aggression (escape extinction) and teach an appropriate break request (FCT). Time-out would reinforce escape."},
+ {q:"Reinforcers are commonly CLASSIFIED into which of the following broad categories used in preference and reinforcer assessments?",o:["Edible, tangible, activity, social, and automatic/sensory","Fixed, variable, interval, and ratio","Chained, tandem, mixed, and multiple","SD, SΔ, EO, and AO"],a:0,e:"Reinforcers are frequently classified by type — edibles, tangibles/leisure, activities, social (attention), and automatic/sensory. This guides assessment and programming."},
+];
+
+/* The source answer key marks every correct answer as "A" (gameable). Shuffle each
+   question's options so the answer is spread across A–D. Seeding by question index keeps
+   the arrangement stable across reloads, so saved progress stays valid. */
+(function(){
+  const mul = (a)=>()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; };
+  TEST_2.forEach((item, qi)=>{
+    const rnd = mul((qi+1)*2654435761 >>> 0);
+    const order=[0,1,2,3];
+    for(let k=3;k>0;k--){ const j=Math.floor(rnd()*(k+1)); [order[k],order[j]]=[order[j],order[k]]; }
+    item.o = order.map(i=>item.o[i]);
+    item.a = order.indexOf(item.a);
+  });
+})();
+
+const EXAM_CFG = {
+  1:{cat:CAT_1, cards:CARDS_1, sections:SECTIONS_1, test:TEST_1, qCount:40, timerMin:50},
+  2:{cat:CAT_2, cards:CARDS_2, sections:SECTIONS_2, test:TEST_2, qCount:60, timerMin:80},
+};
+let currentExam = 1;
+let CAT, CARDS, SECTIONS, TEST, STORAGE_KEY, QCOUNT, TIMER_MIN;
 let answers = {};
 let graded = false;
 
-try { answers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ answers = {}; }
+function setExam(n){
+  currentExam = n;
+  const cfg = EXAM_CFG[n];
+  CAT = cfg.cat; CARDS = cfg.cards; SECTIONS = cfg.sections; TEST = cfg.test;
+  QCOUNT = cfg.qCount; TIMER_MIN = cfg.timerMin;
+  STORAGE_KEY = 'aba_exam' + n + '_answers';
+  document.querySelectorAll('.exam-btn').forEach(b=>b.classList.toggle('active', +b.dataset.exam===n));
+  document.querySelectorAll('.exam-content').forEach(el=>el.classList.toggle('active', +el.dataset.exam===n));
+  // flashcards → fresh deck for this exam
+  filter='all'; flashStarted=false; buildChips();
+  // practice test → load this exam's saved answers, rebuild
+  graded=false;
+  try{ answers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ answers={}; }
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('warnUnanswered').classList.remove('show');
+  resetTimer();
+  buildTest(); updateProgress();
+  if(document.getElementById('view-flash').classList.contains('active')){ startSession(); flashStarted=true; }
+}
 
 const testQEl = document.getElementById('testQuestions');
 function buildTest(){
@@ -916,12 +1386,12 @@ function buildTest(){
 function saveAnswers(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); }catch(e){} }
 function answeredCount(){ return Object.keys(answers).length; }
 function updateProgress(){
-  document.getElementById('progressTxt').textContent = `${answeredCount()} of 40 answered`;
+  document.getElementById('progressTxt').textContent = `${answeredCount()} of ${QCOUNT} answered`;
 }
 
 function gradeTest(){
   const missing = [];
-  for(let i=0;i<40;i++){ if(answers[i]===undefined) missing.push(i+1); }
+  for(let i=0;i<QCOUNT;i++){ if(answers[i]===undefined) missing.push(i+1); }
   const warn = document.getElementById('warnUnanswered');
   if(missing.length){
     warn.textContent = `You still have ${missing.length} unanswered question${missing.length>1?'s':''} (#${missing.join(', #')}). You can grade anyway — they'll be counted wrong.`;
@@ -951,10 +1421,10 @@ function gradeTest(){
     });
   });
   // Results panel
-  document.getElementById('scoreNum').innerHTML = `${correct}<span>/40</span>`;
+  document.getElementById('scoreNum').innerHTML = `${correct}<span>/${QCOUNT}</span>`;
   const v = document.getElementById('verdict');
-  if(correct>=36){ v.textContent='🎉 Exam ready!'; v.className='verdict ready'; }
-  else if(correct>=30){ v.textContent='Solid — re-drill the sections you missed with flashcards.'; v.className='verdict solid'; }
+  if(correct>=Math.ceil(QCOUNT*0.9)){ v.textContent='🎉 Exam ready!'; v.className='verdict ready'; }
+  else if(correct>=Math.ceil(QCOUNT*0.75)){ v.textContent='Solid — re-drill the sections you missed with flashcards.'; v.className='verdict solid'; }
   else { v.textContent='Reread the study guide parts matching your missed sections, then retake just those tomorrow.'; v.className='verdict retry'; }
   const bd = document.getElementById('breakdown'); bd.innerHTML='';
   SECTIONS.forEach((s,i)=>{
@@ -994,8 +1464,8 @@ function startTimer(){
     if(timeLeft<=0){ stopTimer(); timerEl.textContent="Time!"; if(!graded) gradeTest(); }
   },1000);
 }
-function stopTimer(){ if(timerId){ clearInterval(timerId); timerId=null; } btnTimer.textContent='Start 50-min timer'; }
-function resetTimer(){ stopTimer(); timeLeft=50*60; timerEl.textContent='50:00'; timerEl.classList.add('hidden'); }
+function stopTimer(){ if(timerId){ clearInterval(timerId); timerId=null; } btnTimer.textContent='Start '+TIMER_MIN+'-min timer'; }
+function resetTimer(){ stopTimer(); timeLeft=TIMER_MIN*60; timerEl.textContent=fmt(timeLeft); timerEl.classList.add('hidden'); }
 btnTimer.onclick=()=>{ if(timerId){ stopTimer(); } else { startTimer(); } };
 
 document.getElementById('btnGrade').onclick=gradeTest;
@@ -1004,8 +1474,12 @@ document.getElementById('btnRetake').onclick=retake;
 document.getElementById('btnShowMissed').onclick=showMissedOnly;
 document.getElementById('btnShowAll').onclick=showAllQuestions;
 
-buildTest();
-updateProgress();
+/* Exam switcher: swap all data + content, and jump to that exam's Start Here */
+document.querySelectorAll('.exam-btn').forEach(b=>{
+  b.onclick = ()=>{ const n=+b.dataset.exam; if(n!==currentExam){ setExam(n); showView('overview'); } };
+});
+
+setExam(1);
 </script>
 </body>
 </html>
