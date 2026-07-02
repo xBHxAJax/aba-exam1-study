@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABA Exam 1 — Study System</title>
+<meta name="description" content="Everything for ABA Exam 1 in one place: a study guide, a flip-card deck, and a graded 40-question practice test.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --desk:#24413A;            /* chalkboard green desk */
+    --desk-deep:#1B322D;
+    --paper:#FDF9EF;           /* index card */
+    --paper-line:#BFD9E8;      /* pale blue rule lines */
+    --margin-red:#E2766B;      /* red margin rule */
+    --ink:#2B2B26;
+    --ink-soft:#5C5B52;
+    --chalk:#EAF2EC;
+    --gold:#E8B44C;
+    --cat-cont:#D95F43;        /* contingencies */
+    --cat-theo:#7A5EA8;        /* theorists */
+    --cat-dim:#2E7D6B;         /* dimensions */
+    --cat-sci:#3A6EA5;         /* science */
+    --cat-term:#B0812F;        /* key terms */
+    --good:#2F7D5F;
+    --bad:#B4543F;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Karla',system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,.06), transparent 60%),
+      var(--desk);
+    color:var(--chalk);
+    min-height:100vh;
+    padding-bottom:60px;
+  }
+  .wrap{width:100%;max-width:820px;margin:0 auto;padding:0 14px}
+
+  /* ---------- Top bar / nav ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(180deg, var(--desk-deep), rgba(27,50,45,.96));
+    box-shadow:0 4px 18px rgba(0,0,0,.35);
+    backdrop-filter:blur(4px);
+  }
+  .brand{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px 6px;text-align:center}
+  .brand h1{
+    font-family:'Fraunces',Georgia,serif;font-weight:700;
+    font-size:clamp(1.15rem,4.4vw,1.55rem);letter-spacing:.2px;line-height:1.1;
+  }
+  .brand h1 .accent{color:var(--gold)}
+  .tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:4px 10px 12px}
+  .tab{
+    border:1.5px solid rgba(234,242,236,.28);background:transparent;color:var(--chalk);
+    border-radius:999px;padding:8px 15px;font-size:.85rem;font-weight:700;font-family:inherit;
+    cursor:pointer;transition:background .15s,border-color .15s,color .15s;
+  }
+  .tab:hover{border-color:var(--gold)}
+  .tab.active{background:var(--gold);border-color:var(--gold);color:var(--desk-deep)}
+  .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  /* ---------- Views ---------- */
+  .view{display:none;animation:fade .25s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* ---------- Generic panels / prose ---------- */
+  .lead{color:rgba(234,242,236,.82);font-size:.95rem;margin:16px 0 6px;line-height:1.55}
+  .panel{
+    background:var(--paper);color:var(--ink);border-radius:var(--radius);
+    padding:22px 22px;margin:16px 0;box-shadow:0 10px 22px rgba(0,0,0,.28);
+  }
+  .panel.tight{padding:16px 18px}
+  .panel h2{
+    font-family:'Fraunces',Georgia,serif;font-size:1.3rem;color:var(--desk-deep);
+    margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid rgba(0,0,0,.08);
+  }
+  .panel h3{font-family:'Fraunces',Georgia,serif;font-size:1.05rem;color:var(--desk-deep);margin:18px 0 6px}
+  .panel h3:first-child{margin-top:0}
+  .panel p{line-height:1.6;margin:8px 0}
+  .panel ul,.panel ol{margin:8px 0 8px 22px;line-height:1.6}
+  .panel li{margin:5px 0}
+  .panel b,.panel strong{color:#8C2F24}
+  .panel .plain b{color:var(--ink)}
+  .panel em{color:var(--ink-soft)}
+  .callout{
+    background:#F3ECDA;border-left:4px solid var(--gold);border-radius:8px;
+    padding:12px 14px;margin:14px 0;font-size:.95rem;line-height:1.55;
+  }
+  .callout b{color:#8C2F24}
+
+  /* Tables */
+  .tbl-scroll{overflow-x:auto;margin:12px 0;border-radius:10px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+  table{border-collapse:collapse;width:100%;min-width:460px;font-size:.9rem}
+  th,td{border:1px solid rgba(0,0,0,.1);padding:9px 11px;text-align:left;vertical-align:top;line-height:1.45}
+  th{background:var(--desk-deep);color:var(--chalk);font-weight:700}
+  tbody tr:nth-child(even){background:rgba(0,0,0,.03)}
+  td b,th b{color:inherit}
+  .grid2{border:1px solid rgba(0,0,0,.12)}
+  .grid2 th{background:var(--cat-cont);text-align:center}
+  .grid2 .rowh{background:var(--desk-deep)}
+
+  /* ---------- Overview cards ---------- */
+  .factbar{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+  .fact{
+    flex:1;min-width:140px;background:var(--desk-deep);border:1px solid rgba(234,242,236,.15);
+    border-radius:12px;padding:14px 16px;text-align:center;
+  }
+  .fact .n{font-family:'Fraunces',Georgia,serif;font-size:1.7rem;color:var(--gold);line-height:1}
+  .fact .l{font-size:.78rem;color:rgba(234,242,236,.75);margin-top:6px;text-transform:uppercase;letter-spacing:.06em}
+  .startgrid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .startcard{
+    flex:1;min-width:220px;background:var(--paper);color:var(--ink);border-radius:var(--radius);
+    padding:18px;box-shadow:0 8px 18px rgba(0,0,0,.25);cursor:pointer;
+    border-top:5px solid var(--gold);transition:transform .1s,box-shadow .1s;text-align:left;
+  }
+  .startcard:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.32)}
+  .startcard h3{font-family:'Fraunces',Georgia,serif;color:var(--desk-deep);font-size:1.15rem;margin-bottom:4px}
+  .startcard p{font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+  .sc-flash{border-top-color:var(--cat-theo)}
+  .sc-test{border-top-color:var(--cat-cont)}
+  .sc-guide{border-top-color:var(--cat-dim)}
+
+  .toc{columns:2;column-gap:22px}
+  .toc a{display:block;color:var(--desk-deep);text-decoration:none;padding:5px 0;font-weight:600;
+    border-bottom:1px dashed rgba(0,0,0,.12);break-inside:avoid}
+  .toc a:hover{color:#8C2F24}
+  @media(max-width:520px){.toc{columns:1}}
+
+  /* ---------- Flashcards ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:16px 0 4px}
+  .chip{
+    border:1.5px solid rgba(234,242,236,.35);background:transparent;color:var(--chalk);
+    border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:700;font-family:inherit;
+    cursor:pointer;transition:background .15s,border-color .15s;
+  }
+  .chip:hover{border-color:var(--gold)}
+  .chip.active{background:var(--gold);border-color:var(--gold);color:var(--desk-deep)}
+  .chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .meta{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(234,242,236,.8);margin:12px 0 6px}
+  .bar{height:7px;background:rgba(0,0,0,.3);border-radius:99px;overflow:hidden}
+  .bar-fill{height:100%;width:0%;background:var(--gold);border-radius:99px;transition:width .3s ease}
+  .stage{margin-top:18px;perspective:1400px}
+  .card{
+    position:relative;width:100%;min-height:330px;height:50vh;max-height:420px;
+    transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,.1,.2,1);cursor:pointer;
+  }
+  .card.flipped{transform:rotateY(180deg)}
+  .face{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 27px, var(--paper-line) 27px 28px),
+      var(--paper);
+    background-position:0 64px;border-radius:var(--radius);
+    box-shadow:0 12px 24px rgba(0,0,0,.35), 0 2px 0 rgba(255,255,255,.15) inset;
+    color:var(--ink);display:flex;flex-direction:column;overflow:hidden;
+  }
+  .face::before{content:"";position:absolute;left:0;right:0;top:56px;height:2px;background:var(--margin-red);opacity:.85}
+  .face.back{transform:rotateY(180deg)}
+  .tab-lbl{position:absolute;top:12px;left:18px;font-size:.68rem;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;color:#fff;padding:4px 11px;border-radius:6px 6px 0 0}
+  .side-label{position:absolute;top:16px;right:18px;font-size:.68rem;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-soft)}
+  .face-body{flex:1;display:flex;align-items:center;justify-content:center;padding:76px 26px 30px;overflow-y:auto}
+  .front .face-body{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(1.2rem,4.4vw,1.55rem);text-align:center;line-height:1.35}
+  .back .face-body{font-size:clamp(.95rem,3.6vw,1.05rem);line-height:1.65;text-align:left}
+  .back .face-body b{color:#8C2F24}
+  .hint{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:.7rem;color:var(--ink-soft);letter-spacing:.05em}
+  .controls{display:flex;gap:12px;margin-top:18px}
+  .btn{flex:1;border:none;border-radius:12px;padding:15px 10px;font-size:.95rem;font-weight:700;
+    font-family:inherit;cursor:pointer;color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.28);transition:transform .08s,box-shadow .08s}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.28)}
+  .btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .btn-again{background:var(--bad)}
+  .btn-got{background:var(--good)}
+  .btn small{display:block;font-weight:500;font-size:.68rem;opacity:.85;margin-top:2px}
+  .toolbar{display:flex;gap:14px;justify-content:center;margin-top:14px}
+  .link-btn{background:none;border:none;color:rgba(234,242,236,.75);font-family:inherit;
+    font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .link-btn:hover{color:var(--gold)}
+  .done{display:none;margin-top:26px;text-align:center;background:var(--paper);color:var(--ink);
+    border-radius:var(--radius);padding:38px 24px;box-shadow:0 12px 24px rgba(0,0,0,.35)}
+  .done h2{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;margin-bottom:8px;color:var(--desk-deep)}
+  .done p{color:var(--ink-soft);font-size:.95rem;margin-bottom:20px}
+  .done .btn{max-width:280px;margin:0 auto;display:block;background:var(--good)}
+
+  /* ---------- Practice test ---------- */
+  .testbar{
+    position:sticky;top:104px;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    background:var(--desk-deep);border:1px solid rgba(234,242,236,.15);
+    border-radius:12px;padding:12px 16px;margin:16px 0;box-shadow:0 6px 16px rgba(0,0,0,.3)
+  }
+  .testbar .progress-txt{font-size:.85rem;font-weight:700;color:var(--chalk)}
+  .testbar .timer{font-family:'Fraunces',Georgia,serif;font-size:1.1rem;color:var(--gold);margin-left:auto}
+  .testbar .timer.hidden{display:none}
+  .test-actions{display:flex;gap:8px}
+  .mini-btn{border:none;border-radius:9px;padding:9px 14px;font-family:inherit;font-weight:700;font-size:.82rem;cursor:pointer;color:#fff;background:var(--good)}
+  .mini-btn.secondary{background:transparent;border:1.5px solid rgba(234,242,236,.4);color:var(--chalk)}
+  .mini-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .sec-head{font-family:'Fraunces',Georgia,serif;color:var(--gold);font-size:1.15rem;margin:22px 0 4px;padding-top:6px}
+  .q{background:var(--paper);color:var(--ink);border-radius:12px;padding:16px 18px;margin:12px 0;box-shadow:0 6px 14px rgba(0,0,0,.22);border-left:5px solid transparent}
+  .q.correct{border-left-color:var(--good)}
+  .q.incorrect{border-left-color:var(--bad)}
+  .q .qnum{font-weight:700;color:var(--desk-deep)}
+  .q .qtext{font-weight:700;margin:2px 0 12px;line-height:1.5}
+  .opt{display:block;position:relative;padding:11px 12px 11px 42px;margin:6px 0;border:1.5px solid rgba(0,0,0,.14);
+    border-radius:9px;cursor:pointer;line-height:1.4;font-size:.93rem;transition:background .12s,border-color .12s}
+  .opt:hover{border-color:var(--gold);background:rgba(232,180,76,.08)}
+  .opt input{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;accent-color:var(--desk-deep)}
+  .opt .letter{font-weight:700;margin-right:6px;color:var(--ink-soft)}
+  .opt.chosen{border-color:var(--desk-deep);background:rgba(46,125,107,.07)}
+  .graded .opt{cursor:default}
+  .graded .opt:hover{background:none;border-color:rgba(0,0,0,.14)}
+  .opt.ans-correct{border-color:var(--good);background:rgba(47,125,95,.14)}
+  .opt.ans-wrong{border-color:var(--bad);background:rgba(180,84,63,.12)}
+  .opt .mark{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-weight:700;font-size:.9rem}
+  .opt.ans-correct .mark{color:var(--good)}
+  .opt.ans-wrong .mark{color:var(--bad)}
+  .exp{display:none;margin-top:10px;background:#F3ECDA;border-left:4px solid var(--gold);border-radius:8px;
+    padding:10px 12px;font-size:.88rem;line-height:1.5}
+  .graded .exp{display:block}
+  .exp b{color:#8C2F24}
+  .results{display:none;background:var(--paper);color:var(--ink);border-radius:var(--radius);
+    padding:24px;margin:16px 0;box-shadow:0 12px 24px rgba(0,0,0,.3);text-align:center}
+  .results.show{display:block}
+  .results .score{font-family:'Fraunces',Georgia,serif;font-size:2.6rem;color:var(--desk-deep);line-height:1}
+  .results .score span{font-size:1.3rem;color:var(--ink-soft)}
+  .results .verdict{font-weight:700;font-size:1.05rem;margin:10px 0 6px}
+  .results .verdict.ready{color:var(--good)}
+  .results .verdict.solid{color:var(--cat-sci)}
+  .results .verdict.retry{color:var(--bad)}
+  .results .breakdown{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .results .bd{background:#F3ECDA;border-radius:9px;padding:9px 12px;font-size:.82rem;min-width:130px}
+  .results .bd b{display:block;font-size:1.1rem;color:var(--desk-deep)}
+  .results .after-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .warn{display:none;background:#F3ECDA;border-left:4px solid var(--bad);color:var(--ink);border-radius:8px;
+    padding:10px 14px;margin:10px 0;font-size:.88rem;font-weight:600}
+  .warn.show{display:block}
+
+  footer{text-align:center;color:rgba(234,242,236,.5);font-size:.75rem;margin-top:30px;line-height:1.5}
+
+  @media (prefers-reduced-motion:reduce){
+    .card,.bar-fill,.view{transition:none;animation:none}
+    html{scroll-behavior:auto}
+  }
+  @media(max-width:520px){
+    .testbar{top:98px}
+    .card{height:56vh}
+    .face-body{padding:70px 20px 28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><h1>ABA Exam 1 <span class="accent">Study System</span></h1></div>
+  <nav class="tabs" id="tabs" role="tablist">
+    <button class="tab active" data-view="overview" role="tab">Start Here</button>
+    <button class="tab" data-view="guide" role="tab">Study Guide</button>
+    <button class="tab" data-view="flash" role="tab">Flashcards</button>
+    <button class="tab" data-view="test" role="tab">Practice Test</button>
+  </nav>
+</div>
+
+<div class="wrap">
+
+<!-- ================= OVERVIEW ================= -->
+<section class="view active" id="view-overview">
+  <p class="lead">Everything for Exam 1 in one place — a study guide, a flip-card deck, and a graded practice test. Built to be done in <b>10–15 minute chunks</b> whenever you get a spare moment.</p>
+
+  <div class="factbar">
+    <div class="fact"><div class="n">40</div><div class="l">Questions</div></div>
+    <div class="fact"><div class="n">50</div><div class="l">Minutes</div></div>
+    <div class="fact"><div class="n">Scenario</div><div class="l">Heavy</div></div>
+  </div>
+  <div class="callout" style="color:var(--ink)">The exam won't ask you to <b>define</b> a term — it describes a BCBA doing something and asks which concept it shows. Practice <b>applying</b>, not just reciting.</div>
+
+  <div class="panel">
+    <h2>Pick where to jump in</h2>
+    <div class="startgrid">
+      <div class="startcard sc-guide" data-go="guide"><h3>📖 Study Guide</h3><p>Read the concepts in plain language, chunked into short sessions with parent-life examples.</p></div>
+      <div class="startcard sc-flash" data-go="flash"><h3>🃏 Flashcards</h3><p>58 tap-to-flip cards. Sort by category; the ones you miss cycle back around.</p></div>
+      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>40 questions, auto-graded with explanations and a section-by-section breakdown.</p></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>The 6-session plan (for when you have no time)</h2>
+    <p class="plain">Short, spaced-out sessions beat one long cram — your brain consolidates in between.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Session</th><th>What to do</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Read Part 1 (Contingencies) + do those flashcards</td><td>15 min</td></tr>
+          <tr><td>2</td><td>Read Part 2 (Theorists &amp; -isms) + flashcards</td><td>15 min</td></tr>
+          <tr><td>3</td><td>Read Part 3 (7 Dimensions) + Part 4 (Assumptions) + flashcards</td><td>15 min</td></tr>
+          <tr><td>4</td><td>Read Part 5 (Key Terms) — skim, star what feels shaky</td><td>15 min</td></tr>
+          <tr><td>5</td><td>Take the practice test (untimed, guide open in another tab)</td><td>20 min</td></tr>
+          <tr><td>6</td><td>Redo flashcards on <em>only</em> what you missed; retake missed questions</td><td>10 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Micro-drills for stolen moments</h3>
+    <ul class="plain">
+      <li>Open the Flashcards tab on your phone, do 10 cards.</li>
+      <li>Quiz yourself out loud: "Positive means ___. Negative means ___. Reinforcement means ___. Punishment means ___."</li>
+      <li>Narrate your own parenting in ABA terms ("I just gave attention after whining… that's positive reinforcement of whining, oops"). Real-life tagging is the fastest route to scenario fluency.</li>
+    </ul>
+    <div class="callout" style="color:var(--ink)"><b>The night before:</b> only the mnemonics (GET A CAB, Dr. PEEP², SORE) and the discrimination tables. Sleep beats cramming.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Mnemonic cheat card (screenshot this)</h2>
+    <ul class="plain">
+      <li><b>GET A CAB</b> = 7 dimensions (Generality, Effective, Technological, Applied, Conceptually systematic, Analytic, Behavioral) — Baer, Wolf &amp; Risley, 1968</li>
+      <li><b>Dr. PEEP²</b> = 6 assumptions of science (Determinism, Replication, Parsimony, Empiricism, Experimentation, Philosophical doubt)</li>
+      <li><b>Positive = Plus (add). Negative = Minus (remove). Reinforcement = Rise. Punishment = Plummet.</b></li>
+      <li><b>Un</b>conditioned = <b>Un</b>learned (a newborn responds to it)</li>
+      <li><b>R</b>espondent = <b>R</b>eflex = elicited = <b>S-R</b> = Pavlov</li>
+      <li><b>O</b>perant = <b>O</b>utcome = emitted = <b>A-B-C</b> = Skinner</li>
+      <li><b>Dead Man's Test:</b> if a dead man can do it, it's not behavior</li>
+      <li>Watson = <b>W</b>atchable only (methodological); Skinner = <b>S</b>elf-included (radical)</li>
+      <li>Levels of understanding: <b>D</b>escribe → <b>P</b>redict → <b>C</b>ontrol ("Data Points Cause-effect")</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= STUDY GUIDE ================= -->
+<section class="view" id="view-guide">
+  <div class="panel">
+    <h2>Contents</h2>
+    <nav class="toc">
+      <a href="#g1">Part 1 · The Four Contingencies</a>
+      <a href="#g2">Part 2 · Theorists &amp; the "-isms"</a>
+      <a href="#g3">Part 3 · The 7 Dimensions of ABA</a>
+      <a href="#g4">Part 4 · Assumptions of Science</a>
+      <a href="#g5">Part 5 · Key Terms</a>
+      <a href="#g6">Rapid-Fire Answer Sheet</a>
+    </nav>
+  </div>
+
+  <div class="panel" id="g1">
+    <h2>Part 1 · The Four Contingencies <span style="font-size:.8rem;color:var(--ink-soft)">(highest yield)</span></h2>
+    <p class="plain">Every contingency question is two questions in disguise:</p>
+    <ol class="plain">
+      <li><b>Was something ADDED or REMOVED after the behavior?</b> Added = <em>Positive (+)</em>. Removed = <em>Negative (−)</em>. (Positive/negative are math signs, NOT good/bad.)</li>
+      <li><b>Does the behavior INCREASE or DECREASE in the future?</b> Increases = <em>Reinforcement</em>. Decreases = <em>Punishment</em>.</li>
+    </ol>
+    <div class="tbl-scroll">
+      <table class="grid2">
+        <thead><tr><th></th><th>Behavior INCREASES</th><th>Behavior DECREASES</th></tr></thead>
+        <tbody>
+          <tr><th class="rowh">Stimulus ADDED (+)</th><td><b>Positive Reinforcement</b> — kid cleans room → gets praise → cleans more</td><td><b>Positive Punishment</b> — kid touches stove → gets burned → stops touching</td></tr>
+          <tr><th class="rowh">Stimulus REMOVED (−)</th><td><b>Negative Reinforcement</b> — you buckle seatbelt → beeping stops → you always buckle</td><td><b>Negative Punishment</b> — kid hits sibling → tablet taken away → hitting decreases</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Parent-life anchors</h3>
+    <ul class="plain">
+      <li><b>Positive reinforcement:</b> Toddler says "please," gets the cookie → says "please" more.</li>
+      <li><b>Negative reinforcement:</b> Baby cries, you pick baby up, crying stops → <em>you</em> pick baby up faster next time (the removal of crying reinforced YOUR behavior). Also: ibuprofen removes a headache → you take it again.</li>
+      <li><b>Positive punishment:</b> Child runs into street → you deliver a loud reprimand → running into street decreases.</li>
+      <li><b>Negative punishment:</b> Teen misses curfew → loses car keys for a week → curfews stop being missed.</li>
+    </ul>
+    <div class="callout"><b>Two classic traps:</b><br>• <em>Negative reinforcement is NOT punishment.</em> It's an escape hatch — behavior goes UP because something aversive went away.<br>• <em>It's only reinforcement/punishment if future behavior actually changes.</em> The consequence's <b>effect</b> defines it, not the parent's intent.</div>
+    <h3>Conditioned vs. Unconditioned consequences</h3>
+    <ul class="plain">
+      <li><b>Unconditioned (primary):</b> works with no learning history — tied to survival. Food, water, warmth, sleep, escape from pain. (Cookie = unconditioned reinforcer; a burn = unconditioned punisher.)</li>
+      <li><b>Conditioned (secondary):</b> got its power by being <em>paired</em> with other reinforcers/punishers. Praise, money, tokens, grades, stickers; reprimands, fines, "the look."</li>
+      <li>Hook: <b>Un</b>conditioned = <b>Un</b>learned. If a newborn would respond to it, it's unconditioned.</li>
+    </ul>
+    <p class="plain">Full label example: sticker chart → sticker after potty use → potty use increases = <b>positive reinforcement with a conditioned reinforcer</b>.</p>
+  </div>
+
+  <div class="panel" id="g2">
+    <h2>Part 2 · Theorists &amp; the "-isms"</h2>
+    <h3>The three theorists — one line each</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Theorist</th><th>Known for</th><th>Letters</th><th>Behaviorism</th></tr></thead>
+        <tbody>
+          <tr><td><b>Pavlov</b></td><td>Respondent (classical) conditioning — dogs, bells, salivation</td><td>S-R</td><td>(physiologist, pre-behaviorism)</td></tr>
+          <tr><td><b>Watson</b></td><td>Founded behaviorism; S-R psychology; Little Albert</td><td>S-R</td><td><b>Methodological</b></td></tr>
+          <tr><td><b>Skinner</b></td><td>Operant conditioning; EAB; <em>Behavior of Organisms</em> (1938); Skinner box</td><td>A-B-C</td><td><b>Radical</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="plain">Hook: <b>P</b>avlov = <b>P</b>hysiology &amp; <b>P</b>airing. <b>W</b>atson = <b>W</b>atchable-only. <b>S</b>kinner = <b>S</b>elf-included (private events count).</p>
+    <h3>Assumptions good science accepts</h3>
+    <ul class="plain">
+      <li><b>Determinism</b> — the universe is lawful; behavior has <em>causes</em> we can discover. (Opposite of free will, fatalism, accidentalism.)</li>
+      <li><b>Pragmatism</b> — truth is judged by what <em>works</em>; an intervention is "good" if it produces effective change.</li>
+      <li><b>Selectionism</b> — behavior is <em>selected by its consequences</em>. Three levels: species (phylogeny), individual learning (ontogeny), culture.</li>
+    </ul>
+    <h3>Explanatory dead ends (spot the WRONG answer)</h3>
+    <ul class="plain">
+      <li><b>Mentalism</b> — explains behavior by an inner dimension: mind, willpower, "he hit because he's angry inside." Relies on <b>hypothetical constructs and explanatory fictions</b>. ← answer to "which uses explanatory fiction?"</li>
+      <li><b>Fatalism</b> — everything is predetermined and <em>nothing you do can change it</em>. ("He'll always be aggressive; it's just who he is.")</li>
+      <li><b>Accidentalism</b> — behavior happens randomly, with no lawful causes. (Anti-determinism.)</li>
+    </ul>
+    <div class="callout"><b>The two behaviorisms (guaranteed question):</b><br>• <b>Methodological (Watson):</b> study ONLY publicly observable behavior. Private events off-limits. ← "does NOT include private events."<br>• <b>Radical (Skinner):</b> private events ARE behavior, same principles — just observable to one person. ← "DOES include private events." ("Radical" = thorough, not extreme.)</div>
+    <h3>The three branches of behavior analysis</h3>
+    <ol class="plain">
+      <li><b>Behaviorism</b> — the <em>philosophy</em> of the science of behavior.</li>
+      <li><b>Experimental Analysis of Behavior (EAB)</b> — <em>basic</em> lab research discovering principles (Skinner, rats/pigeons, schedules). Founded with <em>Behavior of Organisms</em> (1938).</li>
+      <li><b>Applied Behavior Analysis (ABA)</b> — <em>applied</em> science on <b>socially significant behavior</b>. Defined by <b>Baer, Wolf &amp; Risley (1968)</b>.</li>
+    </ol>
+    <div class="callout"><b>ABA — memorize:</b> the science in which tactics derived from the principles of behavior are applied systematically to improve socially significant behavior, and experimentation is used to identify the variables responsible for behavior change.</div>
+    <ul class="plain">
+      <li>"Skinner box with animals" → <b>EAB</b> (basic research).</li>
+      <li>"Teaching a child to request instead of tantrum" → <b>ABA</b>.</li>
+    </ul>
+  </div>
+
+  <div class="panel" id="g3">
+    <h2>Part 3 · The 7 Dimensions of ABA</h2>
+    <p class="plain">Established by <b>Baer, Wolf, and Risley, 1968</b> — expect a direct question on this. Mnemonic: <b>GET A CAB</b>.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Dimension</th><th>Plain-English test</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><b>Applied</b></td><td>Does this behavior <em>matter</em> in the person's life?</td><td>Teaching communication, not a pigeon to peck</td></tr>
+          <tr><td><b>Behavioral</b></td><td>Observable &amp; measurable? Measuring the behavior itself?</td><td>Counting tantrums/day, not rating "anger"</td></tr>
+          <tr><td><b>Analytic</b></td><td>Did we <em>prove</em> the intervention caused the change?</td><td>Improves when reinforcement is on; reverses when off</td></tr>
+          <tr><td><b>Technological</b></td><td>Written clearly enough that anyone could replicate it?</td><td>A step-by-step plan a substitute could run</td></tr>
+          <tr><td><b>Conceptually Systematic</b></td><td>Tied to basic behavioral <em>principles</em> (not a bag of tricks)?</td><td>A token system described as conditioned reinforcement</td></tr>
+          <tr><td><b>Effective</b></td><td>A <em>practically meaningful</em> change?</td><td>Smoking 20/day → 2/day, not 20 → 19</td></tr>
+          <tr><td><b>Generality</b></td><td>Does the change last, transfer, or spread?</td><td>Greets peers at school AND the park, months later</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Discrimination tip:</b> "socially important?" = Applied · "measurable?" = Behavioral · "proved cause?" = Analytic · "recipe-level detail?" = Technological · "named the principle?" = Conceptually systematic · "big enough change?" = Effective · "lasts/transfers?" = Generality.</div>
+  </div>
+
+  <div class="panel" id="g4">
+    <h2>Part 4 · Assumptions &amp; Attitudes of Science</h2>
+    <p class="plain">Mnemonic: <b>Dr. PEEP²</b> — Determinism, Replication, Parsimony, Empiricism, Experimentation, Philosophical Doubt. (6 attitudes, 2 P's, 2 E's.)</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Assumption</th><th>Meaning</th><th>Scenario keyword</th></tr></thead>
+        <tbody>
+          <tr><td><b>Determinism</b></td><td>Behavior is lawful — it has causes; nothing is random</td><td>"assumes there's a reason," "not random"</td></tr>
+          <tr><td><b>Empiricism</b></td><td>Objective observation &amp; measurement — data over opinion</td><td>"directly observes," "takes data," "reviews the graph"</td></tr>
+          <tr><td><b>Experimentation</b></td><td>Manipulate a variable and watch the effect</td><td>"functional analysis," "reversal design," "introduces/withdraws"</td></tr>
+          <tr><td><b>Replication</b></td><td>Repeat the experiment — same results build confidence</td><td>"another team/classroom, same results"</td></tr>
+          <tr><td><b>Parsimony</b></td><td>Rule out the simplest explanation first</td><td>"before assuming trauma, checks reinforcement first"</td></tr>
+          <tr><td><b>Philosophical Doubt</b></td><td>Continually question what we know; stay open</td><td>"reviews new research," "willing to adjust," "keeps questioning"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Determinism vs. Free Will do NOT align.</b> Science requires determinism — if behavior were uncaused, there'd be nothing to study.</div>
+    <h3>Common confusion pairs</h3>
+    <ul class="plain">
+      <li><b>Empiricism vs. Experimentation:</b> measuring/observing vs. changing something to see the effect. Watching = empiricism; manipulating = experimentation.</li>
+      <li><b>Replication vs. Experimentation:</b> replication = doing the same study again (new people/places, same result).</li>
+      <li><b>Parsimony vs. Philosophical Doubt:</b> simplest explanation first vs. healthy skepticism about all conclusions, always.</li>
+    </ul>
+  </div>
+
+  <div class="panel" id="g5">
+    <h2>Part 5 · Key Terms</h2>
+    <h3>The building blocks</h3>
+    <ul class="plain">
+      <li><b>Behavior</b> — anything a living organism <em>does</em>. <b>Dead Man's Test:</b> if a dead man can do it (sit still, "not hit"), it is NOT behavior — behavior must be an action, not the absence of one.</li>
+      <li><b>Environment</b> — everything in the physical world <em>except</em> the behavior itself (internal body events count as environment for other behavior).</li>
+      <li><b>Stimulus</b> — an energy change affecting the organism through receptor cells (sound, light, touch, smell).</li>
+      <li><b>Response</b> — one single occurrence of behavior. (Behavior = the class; response = one instance.)</li>
+      <li><b>Response topography</b> — the physical <em>form/shape</em> of a response (waving left vs. right hand = different topographies).</li>
+      <li><b>Antecedent</b> — a stimulus change that occurs <em>before</em> behavior.</li>
+      <li><b>Consequence</b> — a stimulus change that <em>follows</em> behavior.</li>
+      <li><b>Contingency</b> — the "if-then" dependency: IF the behavior occurs, THEN the consequence follows.</li>
+    </ul>
+    <h3>Classes (favorite trick question)</h3>
+    <ul class="plain">
+      <li><b>Response class</b> — a group of <em>responses</em> that serve the <b>same function</b>, even with different topographies (tap, call "Mom!", tug sleeve → all get attention).</li>
+      <li><b>Stimulus class</b> — a group of <em>stimuli</em> sharing common elements: <b>formal</b> (look alike), <b>temporal</b> (same time), or <b>functional</b> (same effect).</li>
+      <li><b>The difference:</b> response class = grouped <em>behaviors</em> (by what they DO); stimulus class = grouped <em>events</em> (by shared features/effects).</li>
+    </ul>
+    <h3>Operant vs. Respondent (the verb trick)</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th></th><th>Respondent</th><th>Operant</th></tr></thead>
+        <tbody>
+          <tr><td><b>Caused by</b></td><td>Antecedent stimulus (BEFORE)</td><td>Consequences (what came AFTER in the past)</td></tr>
+          <tr><td><b>Verb</b></td><td>ELICITED (pulled out)</td><td>EMITTED (put out), selected, shaped</td></tr>
+          <tr><td><b>Model</b></td><td>S-R</td><td>A-B-C</td></tr>
+          <tr><td><b>Learned?</b></td><td>Reflexive — born with it</td><td>Learned through consequences</td></tr>
+          <tr><td><b>Theorist</b></td><td>Pavlov (&amp; Watson)</td><td>Skinner</td></tr>
+          <tr><td><b>Examples</b></td><td>Pupil constricts; salivating; startle</td><td>Talking, cooking, driving, tantrums</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="plain">Hook: <b>SORE</b> — <b>S</b>-R = respondent (reflex); <b>O</b>perant = <b>E</b>mitted &amp; A-B-C. Also: <b>R</b>espondent = <b>R</b>eflex; <b>O</b>perant = <b>O</b>utcome-driven.</p>
+    <ul class="plain">
+      <li><b>Reflex</b> — a simple unlearned S-R relation (US→UR); respondent behavior. We have them for <b>survival</b> (eye blink, hand from heat, infant rooting).</li>
+      <li><b>Habituation</b> — a <em>decrease</em> in responsiveness when the same stimulus repeats (you stop noticing the ticking clock).</li>
+      <li><b>Respondent conditioning (Pavlov)</b> — pair NS + US until NS becomes a <b>CS</b> that elicits a <b>CR</b>. (Bell + food → bell alone → salivation.)</li>
+      <li><b>Respondent extinction</b> — present the CS <em>without</em> the US → the CR fades. (Bell, never food → salivation stops.)</li>
+      <li><b>Operant conditioning (Skinner)</b> — consequences change the <em>future frequency</em> of behavior.</li>
+      <li><b>Three-term contingency</b> — <b>A-B-C</b>: the basic unit of analysis for operant behavior.</li>
+      <li><b>Behavior repertoire</b> — all behaviors a person <em>can</em> do (or the subset for a task: "her math repertoire").</li>
+    </ul>
+    <h3>The antecedent team</h3>
+    <ul class="plain">
+      <li><b>Discriminative stimulus (SD)</b> — an antecedent in whose presence behavior <em>has been reinforced</em> → more likely now (Grandma always says yes).</li>
+      <li><b>Stimulus delta (SΔ)</b> — an antecedent in whose presence behavior has <em>NOT</em> been reinforced → less likely (Dad never says yes).</li>
+      <li><b>Discriminated operant</b> — an operant that occurs more under some antecedents than others (behavior "under stimulus control").</li>
+      <li><b>Motivating operation (MO)</b> — an event that (1) alters the <em>value</em> of a consequence and (2) alters the <em>current frequency</em> of related behavior. Food deprivation makes food more valuable AND food-seeking more likely now. (SD signals <em>availability</em>; MO changes how much you <em>want</em> it.)</li>
+    </ul>
+    <h3>Science &amp; research terms</h3>
+    <ul class="plain">
+      <li><b>Science</b> — a systematic approach to knowledge about the natural world, built on <b>description, prediction, and control</b>.</li>
+      <li><b>Philosophy</b> — the study of fundamental assumptions; <b>behaviorism is the philosophy</b> underlying the science of behavior.</li>
+      <li><b>Independent variable (IV)</b> — what the experimenter <em>manipulates</em> (the intervention). Hook: <b>I</b> change it.</li>
+      <li><b>Dependent variable (DV)</b> — what is <em>measured</em>; in ABA, always the target <b>behavior</b>. It <em>depends</em> on the IV.</li>
+    </ul>
+    <h3>Three levels of scientific understanding</h3>
+    <ol class="plain">
+      <li><b>Description</b> — collecting observable facts → lets you organize/graph what's happening.</li>
+      <li><b>Prediction</b> — repeated observation shows two events <b>correlate</b>; use the past to assume the future. (Correlation, not causation.)</li>
+      <li><b>Control</b> — the highest level: manipulating one event reliably changes the other = a <b>FUNCTIONAL RELATION</b>. This is what the Analytic dimension demands.</li>
+    </ol>
+  </div>
+
+  <div class="panel" id="g6">
+    <h2>Rapid-Fire Answer Sheet</h2>
+    <ol class="plain">
+      <li>Hypothetical concepts &amp; explanatory fictions? → <b>Mentalism</b></li>
+      <li>Includes internal/private events? → <b>Radical behaviorism (Skinner)</b></li>
+      <li>Does NOT include private events? → <b>Methodological behaviorism (Watson)</b></li>
+      <li>Operant aligns with → <b>A-B-C</b> | Respondent aligns with → <b>S-R</b></li>
+      <li>Goal of ABA? → <b>Improve socially significant behavior</b> (and demonstrate the variables responsible)</li>
+      <li>What makes ABA different? → focus on <b>socially significant behavior</b> + demonstration of <b>functional relations</b></li>
+      <li><em>Behavior of Organisms</em> (1938) supported → <b>EAB</b></li>
+      <li>Baer, Wolf &amp; Risley (1968) defined → <b>ABA</b> (and its 7 dimensions)</li>
+      <li>Watson most known for → <b>(Methodological) Behaviorism / S-R</b></li>
+      <li>Skinner most known for → <b>EAB / operant / radical behaviorism</b></li>
+      <li>Pavlov most known for → <b>Respondent (classical) conditioning</b></li>
+      <li>Skinner box with animals → <b>EAB</b></li>
+      <li>Do determinism and free will align? → <b>No, they're opposites</b></li>
+      <li>Level = functional relation? → <b>Control</b>; uses past to assume future? → <b>Prediction</b>; helps make a diagram? → <b>Description</b></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= FLASHCARDS ================= -->
+<section class="view" id="view-flash">
+  <p class="lead" style="text-align:center">Tap a card to flip · sort it · missed cards come back around.</p>
+  <div class="chips" id="chips" role="group" aria-label="Choose a category"></div>
+  <div class="meta">
+    <span id="counter">Card 1</span>
+    <span id="mastered">0 mastered</span>
+  </div>
+  <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+
+  <div class="stage" id="stage">
+    <div class="card" id="card" role="button" aria-label="Flashcard, tap to flip" tabindex="0">
+      <div class="face front">
+        <div class="tab-lbl" id="tabF">Category</div>
+        <div class="side-label">Term</div>
+        <div class="face-body" id="frontText"></div>
+        <div class="hint">tap to flip</div>
+      </div>
+      <div class="face back">
+        <div class="tab-lbl" id="tabB">Category</div>
+        <div class="side-label">Answer</div>
+        <div class="face-body" id="backText"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls" id="controls">
+    <button class="btn btn-again" id="btnAgain">Again<small>keep it in the pile</small></button>
+    <button class="btn btn-got" id="btnGot">Got it<small>remove for this round</small></button>
+  </div>
+  <div class="toolbar">
+    <button class="link-btn" id="btnShuffle">Reshuffle</button>
+    <button class="link-btn" id="btnRestart">Restart deck</button>
+  </div>
+
+  <div class="done" id="done">
+    <h2>Deck cleared! 🎉</h2>
+    <p id="doneText"></p>
+    <button class="btn" id="btnStudyAgain">Study this deck again</button>
+  </div>
+</section>
+
+<!-- ================= PRACTICE TEST ================= -->
+<section class="view" id="view-test">
+  <p class="lead">40 questions. Answer them all, then hit <b>Grade my test</b> for your score, explanations, and a section breakdown. Your answers save automatically as you go.</p>
+
+  <div class="results" id="results">
+    <div class="score" id="scoreNum">0<span>/40</span></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="after-actions">
+      <button class="mini-btn" id="btnShowMissed">Show only what I missed</button>
+      <button class="mini-btn secondary" id="btnShowAll">Show all questions</button>
+      <button class="mini-btn secondary" id="btnRetake">Retake test</button>
+    </div>
+  </div>
+
+  <div class="testbar">
+    <span class="progress-txt" id="progressTxt">0 of 40 answered</span>
+    <div class="test-actions">
+      <button class="mini-btn" id="btnGrade">Grade my test</button>
+      <button class="mini-btn secondary" id="btnTimer">Start 50-min timer</button>
+    </div>
+    <span class="timer hidden" id="timer">50:00</span>
+  </div>
+  <div class="warn" id="warnUnanswered"></div>
+
+  <div id="testQuestions"></div>
+
+  <div style="text-align:center;margin-top:8px">
+    <button class="mini-btn" id="btnGradeBottom" style="padding:13px 26px">Grade my test</button>
+  </div>
+</section>
+
+<footer>
+  ABA Exam 1 Study System · self-contained — works offline once loaded.<br>
+  Made for scenario practice: apply the concept, don't just recite it.
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+const tabs = document.querySelectorAll('.tab');
+const views = document.querySelectorAll('.view');
+function showView(name){
+  views.forEach(v=>v.classList.toggle('active', v.id === 'view-'+name));
+  tabs.forEach(t=>t.classList.toggle('active', t.dataset.view === name));
+  window.scrollTo({top:0, behavior:'auto'});
+  if(name==='flash' && !flashStarted){ startSession(); flashStarted = true; }
+}
+tabs.forEach(t=> t.onclick = ()=> showView(t.dataset.view));
+document.querySelectorAll('.startcard').forEach(c=> c.onclick = ()=> showView(c.dataset.go));
+
+/* ============================================================
+   FLASHCARDS
+   ============================================================ */
+const CAT = {
+  cont:{name:"Contingencies", color:"var(--cat-cont)"},
+  theo:{name:"Theorists & -isms", color:"var(--cat-theo)"},
+  dim:{name:"7 Dimensions", color:"var(--cat-dim)"},
+  sci:{name:"Science", color:"var(--cat-sci)"},
+  term:{name:"Key Terms", color:"var(--cat-term)"},
+};
+const CARDS = [
+ // Contingencies
+ {c:"cont", f:"Positive Reinforcement", b:`Stimulus <b>ADDED</b> after behavior → behavior <b>INCREASES</b> in the future.<br><br><i>Kid says "please," gets the cookie → says "please" more.</i><br><br>Remember: positive = plus sign (add), not "good."`},
+ {c:"cont", f:"Negative Reinforcement", b:`Stimulus <b>REMOVED</b> after behavior → behavior <b>INCREASES</b>.<br><br><i>You buckle the seatbelt → beeping stops → you always buckle.</i><br><br>It's an escape hatch — NOT punishment. Behavior goes UP.`},
+ {c:"cont", f:"Positive Punishment", b:`Stimulus <b>ADDED</b> after behavior → behavior <b>DECREASES</b>.<br><br><i>Child touches hot stove → pain → never touches it again.</i>`},
+ {c:"cont", f:"Negative Punishment", b:`Stimulus <b>REMOVED</b> after behavior → behavior <b>DECREASES</b>.<br><br><i>Teen misses curfew → loses the car keys → curfew missing stops.</i>`},
+ {c:"cont", f:"Unconditioned reinforcer", b:`Reinforces with <b>NO learning history</b> — tied to survival.<br><br>Food, water, warmth, sleep, escape from pain.<br><br>Hook: <b>UN</b>conditioned = <b>UN</b>learned (a newborn responds to it).`},
+ {c:"cont", f:"Conditioned reinforcer", b:`Gets its power through <b>pairing</b> with other reinforcers.<br><br>Praise, money, tokens, stickers, grades.`},
+ {c:"cont", f:"Unconditioned punisher", b:`Punishes with no learning history: pain, extreme heat or cold, very loud sounds.`},
+ {c:"cont", f:"Conditioned punisher", b:`Learned its punishing power through pairing: reprimands, fines, "the look."`},
+ {c:"cont", f:`Does "positive" mean good and "negative" mean bad?`, b:`<b>No — they're math signs.</b><br><br>Positive = a stimulus is <b>ADDED</b>.<br>Negative = a stimulus is <b>REMOVED</b>.<br><br>Reinforcement/punishment tell you the effect: increase vs. decrease.`},
+ {c:"cont", f:"Time-out is used every day, but hitting never decreases. Is it punishment?", b:`<b>No.</b> Reinforcement and punishment are defined by their <b>EFFECT on future behavior</b>, not by the adult's intent.<br><br>No decrease = no punishment happened.`},
+ // Theorists & isms
+ {c:"theo", f:"Pavlov", b:`<b>Respondent (classical) conditioning.</b><br><br>S-R model. Dogs + bell + salivation. Learning by <b>pairing</b> stimuli.`},
+ {c:"theo", f:"Watson", b:`Founded <b>behaviorism</b>; <b>methodological behaviorism</b>.<br><br>S-R psychology — study only <b>observable</b> behavior. Little Albert study.<br><br>Hook: <b>W</b>atson = <b>W</b>atchable only.`},
+ {c:"theo", f:"Skinner", b:`<b>Operant conditioning</b>, founded <b>EAB</b> (<i>Behavior of Organisms</i>, 1938), and <b>radical behaviorism</b> (private events count as behavior).<br><br>A-B-C model. Skinner box.<br><br>Hook: <b>S</b>kinner = <b>S</b>elf-included.`},
+ {c:"theo", f:"Mentalism", b:`Explains behavior by an <b>inner dimension</b> — mind, willpower, drives.<br><br>Relies on <b>hypothetical constructs & explanatory fictions</b> ("he hits because of inner anger").<br><br>★ The answer to "which uses explanatory fiction?"`},
+ {c:"theo", f:"Fatalism", b:`Everything is <b>predetermined and unchangeable</b> — so why bother intervening?<br><br><i>"He was born aggressive; nothing will change him."</i><br><br>Opposite spirit of ABA (which says environment can change behavior).`},
+ {c:"theo", f:"Accidentalism", b:`Behavior happens by <b>chance</b> — no lawful causes.<br><br>The opposite of determinism.`},
+ {c:"theo", f:"Pragmatism", b:`Truth is judged by <b>what works</b> — practical usefulness and effective outcomes.<br><br>ABA is pragmatic: keep interventions that produce meaningful change.`},
+ {c:"theo", f:"Selectionism", b:`Behavior is <b>selected by its consequences</b> — like evolution, within a lifetime.<br><br>Three levels: species (phylogeny), individual learning (ontogeny), culture.`},
+ {c:"theo", f:"Methodological behaviorism", b:`<b>Watson.</b> Science should study <b>ONLY publicly observable behavior</b>.<br><br>Private events (thoughts, feelings) are excluded.<br><br>★ Answer to "which does NOT include private events?"`},
+ {c:"theo", f:"Radical behaviorism", b:`<b>Skinner.</b> Private events (thinking, feeling) <b>ARE behavior</b>, governed by the same principles — just observable to only one person.<br><br>★ Answer to "which DOES include private events?"<br><br>"Radical" = thorough, not extreme.`},
+ {c:"theo", f:"EAB vs. ABA", b:`<b>EAB</b> = basic lab research on principles (Skinner box, pigeons, schedules). Founded by <i>Behavior of Organisms</i> (1938).<br><br><b>ABA</b> = applying those principles to <b>socially significant behavior</b>. Defined by <b>Baer, Wolf & Risley (1968)</b>.`},
+ {c:"theo", f:"Definition + goal of ABA", b:`The science in which <b>tactics derived from the principles of behavior</b> are applied systematically to improve <b>socially significant behavior</b>, and <b>experimentation</b> identifies the variables responsible for change.<br><br>Goal: meaningful improvement in real lives — and proof the intervention caused it.`},
+ // 7 Dimensions
+ {c:"dim", f:"The 7 dimensions of ABA — mnemonic + who established them?", b:`<b>GET A CAB</b> — Generality, Effective, Technological, Applied, Conceptually systematic, Analytic, Behavioral.<br><br>Established by <b>Baer, Wolf & Risley (1968)</b>.`},
+ {c:"dim", f:"Applied", b:`Targets <b>socially significant</b> behavior — things that matter in the person's daily life.<br><br><i>Teaching communication, not lever-pressing.</i>`},
+ {c:"dim", f:"Behavioral", b:`The behavior itself is <b>observable and measurable</b>.<br><br><i>Count tantrums per day — don't rate "anger."</i>`},
+ {c:"dim", f:"Analytic", b:`Demonstrates a <b>functional relation</b> — proof the intervention (not chance) caused the change.<br><br><i>Behavior improves only when reinforcement is on; reverses when off.</i>`},
+ {c:"dim", f:"Technological", b:`Procedures written so <b>clearly and completely</b> that anyone could replicate them.<br><br><i>A step-by-step plan a substitute could run on day one.</i>`},
+ {c:"dim", f:"Conceptually Systematic", b:`Procedures are tied to <b>basic behavioral principles</b>, not a random bag of tricks.<br><br><i>Describing a token program in terms of conditioned reinforcement.</i>`},
+ {c:"dim", f:"Effective", b:`Produces a change big enough to be <b>practically meaningful</b>.<br><br><i>Smoking: 20/day → 2/day (not 20 → 19).</i>`},
+ {c:"dim", f:"Generality", b:`Behavior change <b>lasts over time</b>, <b>transfers to other settings</b>, or <b>spreads to related behaviors</b>.<br><br><i>Greets peers at school AND at the park, months later.</i>`},
+ // Science
+ {c:"sci", f:"The 6 assumptions/attitudes of science — mnemonic?", b:`<b>Dr. PEEP²</b>: <b>D</b>eterminism, <b>R</b>eplication, <b>P</b>arsimony, <b>E</b>mpiricism, <b>E</b>xperimentation, <b>P</b>hilosophical doubt.`},
+ {c:"sci", f:"Determinism", b:`Behavior is <b>lawful and caused</b> — nothing is random.<br><br>Scenario keywords: "assumes there's a reason," "not random."<br><br>Does NOT align with free will — they're opposites.`},
+ {c:"sci", f:"Empiricism", b:`<b>Objective observation and measurement</b> — data over opinion.<br><br>Keywords: "directly observes," "takes frequency data," "reviews the graph before concluding."`},
+ {c:"sci", f:"Experimentation", b:`<b>Manipulate a variable</b> and watch its effect on behavior.<br><br>Keywords: "functional analysis," "reversal design," "introduces and withdraws the intervention."`},
+ {c:"sci", f:"Replication", b:`<b>Repeat the experiment</b> — same results across people, places, or teams build confidence.<br><br>Keywords: "another clinic/classroom, same results."`},
+ {c:"sci", f:"Parsimony", b:`Rule out the <b>simplest logical explanation FIRST</b> before accepting complex ones.<br><br>Keywords: "before assuming trauma/disorder, checks reinforcement patterns first."`},
+ {c:"sci", f:"Philosophical Doubt", b:`<b>Continually question</b> what we think we know; stay open to new evidence.<br><br>Keywords: "reviews new research," "willing to adjust," "keeps questioning procedures."`},
+ {c:"sci", f:"Empiricism vs. Experimentation — the difference?", b:`<b>Empiricism</b> = measuring/observing.<br><b>Experimentation</b> = <b>changing</b> something to test its effect.<br><br>Watching = empiricism. Manipulating = experimentation.`},
+ {c:"sci", f:"Three levels of scientific understanding", b:`<b>1. Description</b> — collect observable facts (lets you diagram/graph it).<br><b>2. Prediction</b> — correlation; use past situations to assume the future.<br><b>3. Control</b> — the highest level: a <b>functional relation</b> (manipulate one thing, reliably change the other).`},
+ // Key terms
+ {c:"term", f:"Behavior + the Dead Man's Test", b:`Anything a living organism <b>does</b> — action/movement interacting with the environment.<br><br><b>Dead Man's Test:</b> if a dead man can do it (sit still, "not hit," stay quiet), it is <b>NOT behavior</b>.`},
+ {c:"term", f:"Environment", b:`Everything in the physical world <b>except the behavior itself</b> — all real circumstances the organism can sense (including events inside the body).`},
+ {c:"term", f:"Stimulus vs. Response", b:`<b>Stimulus</b> = an energy change affecting the organism through receptor cells (sound, light, touch).<br><br><b>Response</b> = one single instance of behavior.`},
+ {c:"term", f:"Response class vs. Stimulus class", b:`<b>Response class</b> = group of <b>behaviors</b> with the <b>same function</b> (tap, call "Mom," tug sleeve → all get attention).<br><br><b>Stimulus class</b> = group of <b>stimuli</b> sharing formal, temporal, or functional features (all red things).`},
+ {c:"term", f:"Response topography", b:`The physical <b>form or shape</b> of a response — what it <i>looks like</i>.<br><br>Waving left-handed vs. right-handed = different topographies, possibly the same function.`},
+ {c:"term", f:"Antecedent / Consequence / Contingency", b:`<b>Antecedent</b> = comes <b>before</b> behavior.<br><b>Consequence</b> = stimulus change that <b>follows</b> behavior.<br><b>Contingency</b> = the if-then dependency: IF behavior, THEN consequence.`},
+ {c:"term", f:"Three-term contingency", b:`<b>A-B-C</b>: Antecedent → Behavior → Consequence.<br><br>The basic unit of analysis for <b>operant</b> behavior.`},
+ {c:"term", f:"Operant vs. Respondent behavior (the verb trick)", b:`<b>Respondent</b> = <b>ELICITED</b> by an antecedent stimulus. Reflexive. <b>S-R</b>. Pavlov.<br><br><b>Operant</b> = <b>EMITTED</b>; shaped/selected by <b>consequences</b>. <b>A-B-C</b>. Skinner.<br><br>Hook: <b>R</b>espondent = <b>R</b>eflex; <b>O</b>perant = <b>O</b>utcome.`},
+ {c:"term", f:"Reflex — and why do we have them?", b:`An <b>unlearned</b> stimulus-response relation (US → UR). A type of <b>respondent</b> behavior.<br><br>Why? <b>Survival</b> — built-in protection from birth (blink at air puff, pull hand from heat, infant rooting).`},
+ {c:"term", f:"Habituation", b:`A <b>decrease in responsiveness</b> when the same stimulus is presented over and over — the reflex wears down.<br><br><i>You stop noticing the ticking clock.</i>`},
+ {c:"term", f:"Respondent conditioning", b:`Pair a Neutral Stimulus with an Unconditioned Stimulus → the NS becomes a <b>Conditioned Stimulus</b> eliciting a <b>Conditioned Response</b>.<br><br><i>Bell + food … then bell alone → salivation. (Pavlov)</i>`},
+ {c:"term", f:"Respondent extinction", b:`Present the <b>CS repeatedly WITHOUT the US</b> → the conditioned response fades.<br><br><i>Bell over and over, never food → salivating to the bell stops.</i>`},
+ {c:"term", f:"Operant conditioning", b:`Consequences (reinforcement and punishment) change the <b>future frequency</b> of behavior. (Skinner)`},
+ {c:"term", f:"Discriminative stimulus (SD) vs. Stimulus delta (SΔ)", b:`<b>SD</b> = antecedent in whose presence behavior <b>has been reinforced</b> → behavior more likely. <i>(Grandma always says yes.)</i><br><br><b>SΔ</b> = antecedent in whose presence behavior has <b>NOT been reinforced</b> → less likely. <i>(Dad never says yes.)</i>`},
+ {c:"term", f:"Discriminated operant", b:`An operant that occurs <b>more often under some antecedent conditions</b> than others — the behavior is under <b>stimulus control</b> (the result of SD/SΔ learning).`},
+ {c:"term", f:"Motivating operation (MO)", b:`An event that <b>(1) alters the VALUE</b> of a consequence and <b>(2) alters the current frequency</b> of related behavior.<br><br><i>Food deprivation makes snacks more valuable AND makes food-seeking more likely right now.</i><br><br>Contrast: SD signals <i>availability</i>; MO changes <i>wanting</i>.`},
+ {c:"term", f:"Behavior repertoire", b:`All the behaviors a person <b>can do</b> — or the subset of skills relevant to a specific setting or task (<i>"her math repertoire"</i>).`},
+ {c:"term", f:"Independent vs. Dependent variable", b:`<b>IV</b> = what the experimenter <b>manipulates</b> (the intervention). Hook: <b>I</b> change it.<br><br><b>DV</b> = what is <b>measured</b> — in ABA, always the target <b>behavior</b>. It <i>depends</i> on the IV.`},
+ {c:"term", f:"Science vs. Philosophy", b:`<b>Science</b> = systematic approach to knowledge about the natural world, built on <b>description, prediction, control</b>.<br><br><b>Philosophy</b> = the underlying assumptions/worldview — <b>behaviorism is the philosophy</b> of the science of behavior.`},
+];
+
+let filter = "all";
+let queue = [];
+let total = 0;
+let masteredCount = 0;
+let flipped = false;
+let flippedWasTrue = false;
+let flashStarted = false;
+
+const chipsEl = document.getElementById('chips');
+const cardEl = document.getElementById('card');
+const frontText = document.getElementById('frontText');
+const backText = document.getElementById('backText');
+const tabF = document.getElementById('tabF');
+const tabB = document.getElementById('tabB');
+const counter = document.getElementById('counter');
+const masteredEl = document.getElementById('mastered');
+const barFill = document.getElementById('barFill');
+const doneEl = document.getElementById('done');
+const stageEl = document.getElementById('stage');
+const controlsEl = document.getElementById('controls');
+
+function buildChips(){
+  const cats = [["all","All cards"], ...Object.entries(CAT).map(([k,v])=>[k,v.name])];
+  chipsEl.innerHTML = "";
+  cats.forEach(([key,label])=>{
+    const b = document.createElement('button');
+    b.className = 'chip' + (filter===key ? ' active' : '');
+    const n = key==="all" ? CARDS.length : CARDS.filter(c=>c.c===key).length;
+    b.textContent = `${label} (${n})`;
+    b.onclick = ()=>{ filter=key; buildChips(); startSession(); };
+    chipsEl.appendChild(b);
+  });
+}
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function startSession(){
+  const pool = filter==="all" ? [...CARDS] : CARDS.filter(c=>c.c===filter);
+  queue = shuffle([...pool]);
+  total = queue.length; masteredCount = 0;
+  doneEl.style.display='none'; stageEl.style.display=''; controlsEl.style.display='';
+  showCard();
+}
+function showCard(){
+  if(queue.length===0){ finish(); return; }
+  flipped=false; cardEl.classList.remove('flipped');
+  const c = queue[0];
+  setTimeout(()=>{
+    frontText.innerHTML=c.f; backText.innerHTML=c.b;
+    tabF.textContent=CAT[c.c].name; tabB.textContent=CAT[c.c].name;
+    tabF.style.background=CAT[c.c].color; tabB.style.background=CAT[c.c].color;
+  }, flippedWasTrue ? 220 : 0);
+  flippedWasTrue=false;
+  counter.textContent=`${queue.length} left in pile`;
+  masteredEl.textContent=`${masteredCount} of ${total} mastered`;
+  barFill.style.width=(total ? (masteredCount/total*100) : 0)+'%';
+}
+function flip(){ flipped=!flipped; cardEl.classList.toggle('flipped', flipped); }
+function again(){ if(queue.length===0)return; flippedWasTrue=flipped; const c=queue.shift(); queue.push(c); showCard(); }
+function gotIt(){ if(queue.length===0)return; flippedWasTrue=flipped; queue.shift(); masteredCount++; showCard(); }
+function finish(){
+  stageEl.style.display='none'; controlsEl.style.display='none';
+  barFill.style.width='100%'; counter.textContent=`0 left in pile`;
+  masteredEl.textContent=`${masteredCount} of ${total} mastered`;
+  document.getElementById('doneText').textContent =
+    `You worked through all ${total} cards in this deck. Cards you marked "Again" cycled back until you got them — that's spaced practice doing its job. Tomorrow, run it once more; it'll be faster.`;
+  doneEl.style.display='block';
+}
+cardEl.addEventListener('click', flip);
+cardEl.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); flip(); } });
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('view-flash').classList.contains('active')) return;
+  if(e.target.tagName==='BUTTON') return;
+  if(e.key==='ArrowLeft') again();
+  if(e.key==='ArrowRight') gotIt();
+});
+document.getElementById('btnAgain').onclick = again;
+document.getElementById('btnGot').onclick = gotIt;
+document.getElementById('btnShuffle').onclick = ()=>{ shuffle(queue); flippedWasTrue=flipped; showCard(); };
+document.getElementById('btnRestart').onclick = startSession;
+document.getElementById('btnStudyAgain').onclick = startSession;
+buildChips();
+
+/* ============================================================
+   PRACTICE TEST
+   ============================================================ */
+const SECTIONS = [
+  {name:"Section A · Contingencies", range:[1,10]},
+  {name:"Section B · Theorists, -isms & Branches", range:[11,20]},
+  {name:"Section C · The 7 Dimensions of ABA", range:[21,27]},
+  {name:"Section D · Assumptions of Science", range:[28,32]},
+  {name:"Section E · Key Terms & Concepts", range:[33,40]},
+];
+const TEST = [
+ {q:"Every time Maya whines in the grocery store, her dad hands her his phone. Whining in stores increases. For Maya, this is an example of:",o:["Negative reinforcement","Positive reinforcement","Positive punishment","Negative punishment"],a:1,e:"A stimulus (phone) is ADDED after whining, and whining INCREASES → positive reinforcement."},
+ {q:"In the same scenario, Dad's behavior of handing over the phone stops the whining, and Dad hands the phone over faster each trip. Dad's phone-handing behavior is being maintained by:",o:["Positive reinforcement","Positive punishment","Negative reinforcement","Negative punishment"],a:2,e:"For Dad, an aversive stimulus (whining) is REMOVED after his behavior, and his behavior INCREASES → negative reinforcement. (Classic two-sided contingency question.)"},
+ {q:"A teen comes home an hour past curfew. His parents take his gaming console for the week. Missing curfew decreases. This is:",o:["Negative punishment","Positive punishment","Negative reinforcement","Extinction"],a:0,e:"A stimulus (console) is REMOVED, behavior DECREASES → negative punishment."},
+ {q:"A toddler touches the hot oven door once, feels pain, and never touches it again. The pain functions as a(n):",o:["Conditioned punisher in a positive punishment contingency","Unconditioned punisher in a positive punishment contingency","Unconditioned punisher in a negative punishment contingency","Conditioned reinforcer"],a:1,e:"Pain requires no learning history (unconditioned), pain is ADDED, behavior DECREASES → unconditioned punisher, positive punishment."},
+ {q:"A student earns a token after each correct math problem, and correct responding increases. Tokens are best described as:",o:["Unconditioned reinforcers","Unconditioned punishers","Conditioned reinforcers","Motivating operations"],a:2,e:"Tokens have value only through pairing with other reinforcers → conditioned reinforcers."},
+ {q:"Jordan takes ibuprofen when he has a headache; the headache goes away, and he now reliably takes ibuprofen at the first sign of pain. Taking ibuprofen is maintained by:",o:["Positive reinforcement","Negative reinforcement","Positive punishment","Respondent conditioning"],a:1,e:"An aversive stimulus (headache) is REMOVED, behavior INCREASES → negative reinforcement (escape)."},
+ {q:"A teacher gives a stern reprimand each time a student blurts out, and blurting decreases. The reprimand is functioning as a(n):",o:["Unconditioned punisher (positive punishment)","Conditioned punisher (positive punishment)","Conditioned punisher (negative punishment)","Conditioned reinforcer"],a:1,e:"Reprimands acquire punishing power through learning (conditioned); one is ADDED and behavior decreases → positive punishment with a conditioned punisher."},
+ {q:"A mom puts her son in “time-out” every day for hitting, but hitting continues at the same rate for a month. The time-out is functioning as:",o:["Negative punishment","Positive punishment","Negative reinforcement","None of the above — behavior didn't change, so no punishment occurred"],a:3,e:"Punishment is defined by its EFFECT. No decrease in behavior = no punishment, regardless of intent."},
+ {q:"Which of the following is TRUE of negative reinforcement?",o:["It decreases the future frequency of behavior","It involves the removal of a stimulus and increases future behavior","It is another name for punishment","It requires a conditioned stimulus"],a:1,e:"Negative = removal; reinforcement = increase. It is not punishment."},
+ {q:"Warmth provided to a cold infant, which increases the behavior that produced it, is a(n):",o:["Conditioned reinforcer","Unconditioned reinforcer","Unconditioned punisher","Discriminative stimulus"],a:1,e:"Warmth is survival-related and requires no learning → unconditioned reinforcer."},
+ {q:"A therapist explains a client's aggression by saying he has “pent-up rage in his subconscious that must be released.” This explanation is an example of:",o:["Radical behaviorism","Determinism","Mentalism","Pragmatism"],a:2,e:"“Pent-up rage in the subconscious” is a hypothetical inner cause / explanatory fiction → mentalism."},
+ {q:"Which perspective holds that private events like thinking and feeling are themselves behavior, subject to the same principles as public behavior?",o:["Methodological behaviorism","Radical behaviorism","Mentalism","Structuralism"],a:1,e:"Radical behaviorism (Skinner) includes private events as behavior."},
+ {q:"Which perspective restricts the science of behavior to only publicly observable events, excluding thoughts and feelings?",o:["Radical behaviorism","Methodological behaviorism","Fatalism","Selectionism"],a:1,e:"Methodological behaviorism (Watson) studies only what's publicly observable."},
+ {q:"A parent says, “There's no point in an intervention — he was born aggressive and he'll always be aggressive, nothing can change it.” This view reflects:",o:["Determinism","Parsimony","Fatalism","Empiricism"],a:2,e:"“Nothing can change it, it's predetermined” → fatalism (which undermines any reason to intervene)."},
+ {q:"The belief that behavior is lawful, orderly, and occurs as a result of identifiable causes is:",o:["Accidentalism","Fatalism","Free will","Determinism"],a:3,e:"Lawful, orderly, caused → determinism."},
+ {q:"A BCBA keeps an intervention because “it works — the data show meaningful improvement in the client's life.” Judging truth/value by practical effectiveness reflects:",o:["Pragmatism","Mentalism","Fatalism","Philosophical doubt"],a:0,e:"Truth judged by practical workability → pragmatism."},
+ {q:"Skinner's Behavior of Organisms (1938) laid the foundation for which branch of behavior analysis?",o:["Applied Behavior Analysis","Experimental Analysis of Behavior","Behaviorism (the philosophy)","Respondent conditioning"],a:1,e:"Behavior of Organisms founded the basic-research branch, EAB."},
+ {q:"Baer, Wolf, and Risley's 1968 article is best known for:",o:["Discovering respondent conditioning","Defining ABA and its seven dimensions","Founding methodological behaviorism","Describing the three-term contingency for the first time"],a:1,e:"Baer, Wolf & Risley (1968) defined ABA and its seven dimensions."},
+ {q:"A researcher studies schedules of reinforcement using pigeons pecking keys in an operant chamber (Skinner box). This work falls under:",o:["ABA","EAB","Methodological behaviorism","Mentalism"],a:1,e:"Basic laboratory research with animals → EAB, not applied work."},
+ {q:"Pavlov is most known for which of the following?",o:["Operant conditioning","The seven dimensions of ABA","Respondent (classical) conditioning","Radical behaviorism"],a:2,e:"Pavlov = respondent/classical conditioning (S-R pairing)."},
+ {q:"A BCBA chooses to target functional communication rather than hair-twirling because communication will meaningfully improve the child's daily life. Which dimension?",o:["Behavioral","Applied","Analytic","Technological"],a:1,e:"Choosing targets by social significance → Applied."},
+ {q:"A behavior plan is written in such precise, step-by-step detail that a brand-new staff member implements it identically on day one. Which dimension?",o:["Conceptually systematic","Effective","Technological","Generality"],a:2,e:"Replicable, recipe-level written detail → Technological."},
+ {q:"A team measures “episodes of screaming lasting 3+ seconds” rather than rating the child's “frustration level.” Which dimension?",o:["Behavioral","Applied","Analytic","Effective"],a:0,e:"Observable, measurable definition of the behavior itself → Behavioral."},
+ {q:"Compliance improves only when the reinforcement procedure is in place and reverses when it is withdrawn, demonstrating a functional relation. Which dimension?",o:["Empirical","Analytic","Replication","Technological"],a:1,e:"Demonstrating a functional relation (on/off control) → Analytic."},
+ {q:"A report describes a token program in terms of conditioned reinforcement and schedule thinning, linking every procedure to basic principles. Which dimension?",o:["Technological","Conceptually systematic","Generality","Behavioral"],a:1,e:"Procedures described in terms of basic principles → Conceptually systematic."},
+ {q:"After intervention, a client's new greeting skill appears at school, at home, and at the park — and is still strong six months later. Which dimension?",o:["Effective","Applied","Generality","Analytic"],a:2,e:"Lasts over time and transfers across settings → Generality."},
+ {q:"An intervention reduces self-injury from 50 instances per day to 1 per week — a change the family describes as life-altering. Which dimension?",o:["Effective","Technological","Behavioral","Conceptually systematic"],a:0,e:"Practically meaningful magnitude of change → Effective."},
+ {q:"Before attributing a student's reading failure to dyslexia, the teacher first checks whether the student ever received systematic phonics instruction. Which attitude?",o:["Determinism","Parsimony","Replication","Philosophical doubt"],a:1,e:"Ruling out the simpler explanation (no instruction) before the complex one → parsimony."},
+ {q:"A BCBA graphs direct-observation frequency data rather than relying on staff impressions that behavior “seems better.” Which attitude?",o:["Empiricism","Experimentation","Parsimony","Determinism"],a:0,e:"Objective measurement over subjective impression → empiricism."},
+ {q:"A functional analysis systematically presents and removes attention to test its effect on problem behavior. Which attitude?",o:["Empiricism","Replication","Experimentation","Philosophical doubt"],a:2,e:"Manipulating variables to test effects → experimentation."},
+ {q:"A published finding on a feeding intervention is repeated by two other clinics with the same outcome. Which attitude?",o:["Replication","Experimentation","Parsimony","Determinism"],a:0,e:"Same study, repeated, same results → replication."},
+ {q:"A seasoned BCBA says, “Even our best-supported procedures should be re-examined as new evidence comes in.” Which attitude?",o:["Empiricism","Fatalism","Philosophical doubt","Pragmatism"],a:2,e:"Continual questioning of established knowledge → philosophical doubt."},
+ {q:"Which of the following passes the Dead Man's Test and therefore counts as behavior?",o:["Sitting quietly with no movement for 10 minutes","Not hitting a peer","Raising a hand to ask a question","Remaining in a chair (absence of leaving)"],a:2,e:"Raising a hand is an action. A, B, and D are all things a dead man can “do” (absences of behavior)."},
+ {q:"A child gets a parent's attention by tapping their arm, saying “Mom,” or tugging their sleeve. Because these different-looking responses all produce the same effect, they belong to the same:",o:["Stimulus class","Response class","Response topography","Stimulus delta"],a:1,e:"Different topographies, same function → response class."},
+ {q:"Grandma always gives candy when asked; Dad never does. The child now asks Grandma often and rarely asks Dad. Grandma is functioning as a(n) ______ and Dad as a(n) ______.",o:["Motivating operation; discriminative stimulus","Stimulus delta; discriminative stimulus","Discriminative stimulus (SD); stimulus delta (SΔ)","Unconditioned reinforcer; conditioned punisher"],a:2,e:"Behavior reinforced in Grandma's presence (SD), never reinforced in Dad's presence (SΔ)."},
+ {q:"A child who hasn't eaten since breakfast works much harder for edible reinforcers in the afternoon session. Food deprivation is acting as a(n):",o:["Discriminative stimulus","Motivating operation","Stimulus delta","Conditioned reinforcer"],a:1,e:"Deprivation raises the VALUE of food and the current frequency of food-related behavior → motivating operation."},
+ {q:"A puff of air to the eye produces a blink; a sudden loud noise produces a startle. These are examples of ______ behavior, which is ______ by antecedent stimuli.",o:["Operant; emitted","Respondent; elicited","Operant; elicited","Respondent; emitted"],a:1,e:"Reflexes are respondent behavior, ELICITED by antecedent stimuli (S-R)."},
+ {q:"After a dentist's drill (paired with pain) has made the sound of the drill alone elicit tension, the dentist plays the drill sound repeatedly with no pain until the tension response fades. The fading process is:",o:["Habituation","Operant extinction","Respondent extinction","Negative punishment"],a:2,e:"CS (drill sound) presented repeatedly without the US (pain) until the CR fades → respondent extinction. (Habituation is the weakening of an UNconditioned reflex from repetition.)"},
+ {q:"In a study testing whether a token economy increases homework completion, homework completion is the ______ and the token economy is the ______.",o:["Independent variable; dependent variable","Dependent variable; independent variable","Stimulus class; response class","Antecedent; consequence"],a:1,e:"The behavior measured = dependent variable; the intervention manipulated = independent variable."},
+ {q:"A behavior analyst can reliably turn a behavior on and off by manipulating the environment, demonstrating a functional relation. This represents which level of scientific understanding?",o:["Description","Prediction","Control","Correlation"],a:2,e:"Functional relation = the control level, the highest level of scientific understanding."},
+];
+
+const LETTERS = ["A","B","C","D"];
+const STORAGE_KEY = "aba_exam1_answers";
+let answers = {};
+let graded = false;
+
+try { answers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ answers = {}; }
+
+const testQEl = document.getElementById('testQuestions');
+function buildTest(){
+  testQEl.innerHTML = "";
+  SECTIONS.forEach(sec=>{
+    const h = document.createElement('div');
+    h.className='sec-head'; h.textContent=sec.name;
+    testQEl.appendChild(h);
+    for(let i=sec.range[0]; i<=sec.range[1]; i++){
+      const idx=i-1, item=TEST[idx];
+      const box=document.createElement('div');
+      box.className='q'; box.id='q'+i; box.dataset.idx=idx;
+      let opts='';
+      item.o.forEach((txt,oi)=>{
+        const checked = answers[idx]===oi ? 'checked' : '';
+        const chosen = answers[idx]===oi ? ' chosen' : '';
+        opts += `<label class="opt${chosen}" data-oi="${oi}">
+          <input type="radio" name="q${idx}" value="${oi}" ${checked}>
+          <span class="letter">${LETTERS[oi]}.</span>${txt}
+          <span class="mark"></span></label>`;
+      });
+      box.innerHTML = `<div class="qtext"><span class="qnum">${i}.</span> ${item.q}</div>
+        ${opts}
+        <div class="exp"><b>Answer: ${LETTERS[item.a]}.</b> ${item.e}</div>`;
+      testQEl.appendChild(box);
+    }
+  });
+  testQEl.querySelectorAll('.opt').forEach(lbl=>{
+    lbl.addEventListener('click', ()=>{
+      if(graded) return;
+      const box = lbl.closest('.q');
+      const idx = +box.dataset.idx;
+      const oi = +lbl.dataset.oi;
+      answers[idx]=oi;
+      box.querySelectorAll('.opt').forEach(o=>o.classList.remove('chosen'));
+      lbl.classList.add('chosen');
+      const input = lbl.querySelector('input'); if(input) input.checked=true;
+      saveAnswers(); updateProgress();
+    });
+  });
+}
+function saveAnswers(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); }catch(e){} }
+function answeredCount(){ return Object.keys(answers).length; }
+function updateProgress(){
+  document.getElementById('progressTxt').textContent = `${answeredCount()} of 40 answered`;
+}
+
+function gradeTest(){
+  const missing = [];
+  for(let i=0;i<40;i++){ if(answers[i]===undefined) missing.push(i+1); }
+  const warn = document.getElementById('warnUnanswered');
+  if(missing.length){
+    warn.textContent = `You still have ${missing.length} unanswered question${missing.length>1?'s':''} (#${missing.join(', #')}). You can grade anyway — they'll be counted wrong.`;
+    warn.classList.add('show');
+  } else {
+    warn.classList.remove('show');
+  }
+  graded = true;
+  stopTimer();
+  let correct=0;
+  const secScores = SECTIONS.map(()=>({c:0,t:0}));
+  TEST.forEach((item,idx)=>{
+    const box=document.getElementById('q'+(idx+1));
+    box.classList.add('graded');
+    const chosen = answers[idx];
+    const secIdx = SECTIONS.findIndex(s=> (idx+1)>=s.range[0] && (idx+1)<=s.range[1]);
+    secScores[secIdx].t++;
+    const isCorrect = chosen===item.a;
+    if(isCorrect){ correct++; secScores[secIdx].c++; }
+    box.classList.toggle('correct', isCorrect);
+    box.classList.toggle('incorrect', !isCorrect);
+    box.querySelectorAll('.opt').forEach(lbl=>{
+      const oi=+lbl.dataset.oi;
+      const mark=lbl.querySelector('.mark');
+      if(oi===item.a){ lbl.classList.add('ans-correct'); mark.textContent='✓ correct'; }
+      if(oi===chosen && !isCorrect){ lbl.classList.add('ans-wrong'); mark.textContent='✗ your answer'; }
+    });
+  });
+  // Results panel
+  document.getElementById('scoreNum').innerHTML = `${correct}<span>/40</span>`;
+  const v = document.getElementById('verdict');
+  if(correct>=36){ v.textContent='🎉 Exam ready!'; v.className='verdict ready'; }
+  else if(correct>=30){ v.textContent='Solid — re-drill the sections you missed with flashcards.'; v.className='verdict solid'; }
+  else { v.textContent='Reread the study guide parts matching your missed sections, then retake just those tomorrow.'; v.className='verdict retry'; }
+  const bd = document.getElementById('breakdown'); bd.innerHTML='';
+  SECTIONS.forEach((s,i)=>{
+    const shortName = s.name.split('·')[1].trim();
+    const el=document.createElement('div'); el.className='bd';
+    el.innerHTML=`<b>${secScores[i].c}/${secScores[i].t}</b>${shortName}`;
+    bd.appendChild(el);
+  });
+  const res=document.getElementById('results'); res.classList.add('show');
+  showAllQuestions();
+  res.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function showAllQuestions(){ testQEl.querySelectorAll('.q').forEach(q=>q.style.display=''); testQEl.querySelectorAll('.sec-head').forEach(h=>h.style.display=''); }
+function showMissedOnly(){
+  testQEl.querySelectorAll('.q').forEach(q=> q.style.display = q.classList.contains('incorrect') ? '' : 'none');
+  testQEl.querySelectorAll('.sec-head').forEach(h=>h.style.display='none');
+}
+function retake(){
+  graded=false; answers={}; saveAnswers();
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('warnUnanswered').classList.remove('show');
+  buildTest(); updateProgress(); resetTimer();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* Timer */
+let timerId=null, timeLeft=50*60;
+const timerEl=document.getElementById('timer');
+const btnTimer=document.getElementById('btnTimer');
+function fmt(s){ const m=Math.floor(s/60), ss=s%60; return `${m}:${String(ss).padStart(2,'0')}`; }
+function startTimer(){
+  if(timerId) return;
+  timerEl.classList.remove('hidden'); timerEl.textContent=fmt(timeLeft);
+  btnTimer.textContent='Stop timer';
+  timerId=setInterval(()=>{
+    timeLeft--; timerEl.textContent=fmt(timeLeft);
+    if(timeLeft<=0){ stopTimer(); timerEl.textContent="Time!"; if(!graded) gradeTest(); }
+  },1000);
+}
+function stopTimer(){ if(timerId){ clearInterval(timerId); timerId=null; } btnTimer.textContent='Start 50-min timer'; }
+function resetTimer(){ stopTimer(); timeLeft=50*60; timerEl.textContent='50:00'; timerEl.classList.add('hidden'); }
+btnTimer.onclick=()=>{ if(timerId){ stopTimer(); } else { startTimer(); } };
+
+document.getElementById('btnGrade').onclick=gradeTest;
+document.getElementById('btnGradeBottom').onclick=gradeTest;
+document.getElementById('btnRetake').onclick=retake;
+document.getElementById('btnShowMissed').onclick=showMissedOnly;
+document.getElementById('btnShowAll').onclick=showAllQuestions;
+
+buildTest();
+updateProgress();
+</script>
+</body>
+</html>
