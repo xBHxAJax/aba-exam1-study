@@ -204,6 +204,8 @@
   .mini-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   .sec-head{font-family:'Fraunces',Georgia,serif;color:var(--gold);font-size:1.15rem;margin:22px 0 4px;padding-top:6px}
   .q{background:var(--paper);color:var(--ink);border-radius:12px;padding:16px 18px;margin:12px 0;box-shadow:0 6px 14px rgba(0,0,0,.22);border-left:5px solid transparent}
+  .q.trick{border-left-color:var(--gold)}
+  .trick-badge{display:inline-block;background:var(--gold);color:var(--desk-deep);font-weight:700;font-size:.72rem;letter-spacing:.02em;padding:4px 11px;border-radius:999px;margin-bottom:10px}
   .q.correct{border-left-color:var(--good)}
   .q.incorrect{border-left-color:var(--bad)}
   .q .qnum{font-weight:700;color:var(--desk-deep)}
@@ -592,7 +594,7 @@
 
 <!-- ================= PRACTICE TEST ================= -->
 <section class="view" id="view-test">
-  <p class="lead">40 questions. Answer them all, then hit <b>Grade my test</b> for your score, explanations, and a section breakdown. Your answers save automatically as you go.</p>
+  <p class="lead">40 questions. Answer them all, then hit <b>Grade my test</b> for your score, explanations, and a section breakdown. Your answers save automatically as you go.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
 
   <div class="results" id="results">
     <div class="score" id="scoreNum">0<span>/40</span></div>
@@ -822,7 +824,7 @@ const TEST = [
  {q:"A student earns a token after each correct math problem, and correct responding increases. Tokens are best described as:",o:["Unconditioned reinforcers","Unconditioned punishers","Conditioned reinforcers","Motivating operations"],a:2,e:"Tokens have value only through pairing with other reinforcers → conditioned reinforcers."},
  {q:"Jordan takes ibuprofen when he has a headache; the headache goes away, and he now reliably takes ibuprofen at the first sign of pain. Taking ibuprofen is maintained by:",o:["Positive reinforcement","Negative reinforcement","Positive punishment","Respondent conditioning"],a:1,e:"An aversive stimulus (headache) is REMOVED, behavior INCREASES → negative reinforcement (escape)."},
  {q:"A teacher gives a stern reprimand each time a student blurts out, and blurting decreases. The reprimand is functioning as a(n):",o:["Unconditioned punisher (positive punishment)","Conditioned punisher (positive punishment)","Conditioned punisher (negative punishment)","Conditioned reinforcer"],a:1,e:"Reprimands acquire punishing power through learning (conditioned); one is ADDED and behavior decreases → positive punishment with a conditioned punisher."},
- {q:"A mom puts her son in “time-out” every day for hitting, but hitting continues at the same rate for a month. The time-out is functioning as:",o:["Negative punishment","Positive punishment","Negative reinforcement","None of the above — behavior didn't change, so no punishment occurred"],a:3,e:"Punishment is defined by its EFFECT. No decrease in behavior = no punishment, regardless of intent."},
+ {q:"A mom puts her son in “time-out” every day for hitting, but hitting continues at the same rate for a month. The time-out is functioning as:",o:["Negative punishment","Positive punishment","Negative reinforcement","None of the above — behavior didn't change, so no punishment occurred"],a:3,e:"Punishment is defined by its EFFECT. No decrease in behavior = no punishment, regardless of intent.",trick:1},
  {q:"Which of the following is TRUE of negative reinforcement?",o:["It decreases the future frequency of behavior","It involves the removal of a stimulus and increases future behavior","It is another name for punishment","It requires a conditioned stimulus"],a:1,e:"Negative = removal; reinforcement = increase. It is not punishment."},
  {q:"Warmth provided to a cold infant, which increases the behavior that produced it, is a(n):",o:["Conditioned reinforcer","Unconditioned reinforcer","Unconditioned punisher","Discriminative stimulus"],a:1,e:"Warmth is survival-related and requires no learning → unconditioned reinforcer."},
  {q:"A therapist explains a client's aggression by saying he has “pent-up rage in his subconscious that must be released.” This explanation is an example of:",o:["Radical behaviorism","Determinism","Mentalism","Pragmatism"],a:2,e:"“Pent-up rage in the subconscious” is a hypothetical inner cause / explanatory fiction → mentalism."},
@@ -847,12 +849,12 @@ const TEST = [
  {q:"A functional analysis systematically presents and removes attention to test its effect on problem behavior. Which attitude?",o:["Empiricism","Replication","Experimentation","Philosophical doubt"],a:2,e:"Manipulating variables to test effects → experimentation."},
  {q:"A published finding on a feeding intervention is repeated by two other clinics with the same outcome. Which attitude?",o:["Replication","Experimentation","Parsimony","Determinism"],a:0,e:"Same study, repeated, same results → replication."},
  {q:"A seasoned BCBA says, “Even our best-supported procedures should be re-examined as new evidence comes in.” Which attitude?",o:["Empiricism","Fatalism","Philosophical doubt","Pragmatism"],a:2,e:"Continual questioning of established knowledge → philosophical doubt."},
- {q:"Which of the following passes the Dead Man's Test and therefore counts as behavior?",o:["Sitting quietly with no movement for 10 minutes","Not hitting a peer","Raising a hand to ask a question","Remaining in a chair (absence of leaving)"],a:2,e:"Raising a hand is an action. A, B, and D are all things a dead man can “do” (absences of behavior)."},
+ {q:"Which of the following passes the Dead Man's Test and therefore counts as behavior?",o:["Sitting quietly with no movement for 10 minutes","Not hitting a peer","Raising a hand to ask a question","Remaining in a chair (absence of leaving)"],a:2,e:"Raising a hand is an action. A, B, and D are all things a dead man can “do” (absences of behavior).",trick:1},
  {q:"A child gets a parent's attention by tapping their arm, saying “Mom,” or tugging their sleeve. Because these different-looking responses all produce the same effect, they belong to the same:",o:["Stimulus class","Response class","Response topography","Stimulus delta"],a:1,e:"Different topographies, same function → response class."},
  {q:"Grandma always gives candy when asked; Dad never does. The child now asks Grandma often and rarely asks Dad. Grandma is functioning as a(n) ______ and Dad as a(n) ______.",o:["Motivating operation; discriminative stimulus","Stimulus delta; discriminative stimulus","Discriminative stimulus (SD); stimulus delta (SΔ)","Unconditioned reinforcer; conditioned punisher"],a:2,e:"Behavior reinforced in Grandma's presence (SD), never reinforced in Dad's presence (SΔ)."},
  {q:"A child who hasn't eaten since breakfast works much harder for edible reinforcers in the afternoon session. Food deprivation is acting as a(n):",o:["Discriminative stimulus","Motivating operation","Stimulus delta","Conditioned reinforcer"],a:1,e:"Deprivation raises the VALUE of food and the current frequency of food-related behavior → motivating operation."},
  {q:"A puff of air to the eye produces a blink; a sudden loud noise produces a startle. These are examples of ______ behavior, which is ______ by antecedent stimuli.",o:["Operant; emitted","Respondent; elicited","Operant; elicited","Respondent; emitted"],a:1,e:"Reflexes are respondent behavior, ELICITED by antecedent stimuli (S-R)."},
- {q:"After a dentist's drill (paired with pain) has made the sound of the drill alone elicit tension, the dentist plays the drill sound repeatedly with no pain until the tension response fades. The fading process is:",o:["Habituation","Operant extinction","Respondent extinction","Negative punishment"],a:2,e:"CS (drill sound) presented repeatedly without the US (pain) until the CR fades → respondent extinction. (Habituation is the weakening of an UNconditioned reflex from repetition.)"},
+ {q:"After a dentist's drill (paired with pain) has made the sound of the drill alone elicit tension, the dentist plays the drill sound repeatedly with no pain until the tension response fades. The fading process is:",o:["Habituation","Operant extinction","Respondent extinction","Negative punishment"],a:2,e:"CS (drill sound) presented repeatedly without the US (pain) until the CR fades → respondent extinction. (Habituation is the weakening of an UNconditioned reflex from repetition.)",trick:1},
  {q:"In a study testing whether a token economy increases homework completion, homework completion is the ______ and the token economy is the ______.",o:["Independent variable; dependent variable","Dependent variable; independent variable","Stimulus class; response class","Antecedent; consequence"],a:1,e:"The behavior measured = dependent variable; the intervention manipulated = independent variable."},
  {q:"A behavior analyst can reliably turn a behavior on and off by manipulating the environment, demonstrating a functional relation. This represents which level of scientific understanding?",o:["Description","Prediction","Control","Correlation"],a:2,e:"Functional relation = the control level, the highest level of scientific understanding."},
 ];
@@ -874,7 +876,7 @@ function buildTest(){
     for(let i=sec.range[0]; i<=sec.range[1]; i++){
       const idx=i-1, item=TEST[idx];
       const box=document.createElement('div');
-      box.className='q'; box.id='q'+i; box.dataset.idx=idx;
+      box.className='q' + (item.trick ? ' trick' : ''); box.id='q'+i; box.dataset.idx=idx;
       let opts='';
       item.o.forEach((txt,oi)=>{
         const checked = answers[idx]===oi ? 'checked' : '';
@@ -884,7 +886,8 @@ function buildTest(){
           <span class="letter">${LETTERS[oi]}.</span>${txt}
           <span class="mark"></span></label>`;
       });
-      box.innerHTML = `<div class="qtext"><span class="qnum">${i}.</span> ${item.q}</div>
+      const trickTag = item.trick ? `<div class="trick-badge">⚠️ Classic trap — read carefully</div>` : '';
+      box.innerHTML = `${trickTag}<div class="qtext"><span class="qnum">${i}.</span> ${item.q}</div>
         ${opts}
         <div class="exp"><b>Answer: ${LETTERS[item.a]}.</b> ${item.e}</div>`;
       testQEl.appendChild(box);
