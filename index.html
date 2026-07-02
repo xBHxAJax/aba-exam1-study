@@ -1298,19 +1298,9 @@ const TEST_2 = [
  {q:"Reinforcers are commonly CLASSIFIED into which of the following broad categories used in preference and reinforcer assessments?",o:["Edible, tangible, activity, social, and automatic/sensory","Fixed, variable, interval, and ratio","Chained, tandem, mixed, and multiple","SD, SΔ, EO, and AO"],a:0,e:"Reinforcers are frequently classified by type — edibles, tangibles/leisure, activities, social (attention), and automatic/sensory. This guides assessment and programming."},
 ];
 
-/* The source answer key marks every correct answer as "A" (gameable). Shuffle each
-   question's options so the answer is spread across A–D. Seeding by question index keeps
-   the arrangement stable across reloads, so saved progress stays valid. */
-(function(){
-  const mul = (a)=>()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; };
-  TEST_2.forEach((item, qi)=>{
-    const rnd = mul((qi+1)*2654435761 >>> 0);
-    const order=[0,1,2,3];
-    for(let k=3;k>0;k--){ const j=Math.floor(rnd()*(k+1)); [order[k],order[j]]=[order[j],order[k]]; }
-    item.o = order.map(i=>item.o[i]);
-    item.a = order.indexOf(item.a);
-  });
-})();
+/* Note: the Exam 2 source answer key marks every correct answer as "A". That's handled
+   at render time — buildTest() shuffles each question's answer choices on every build for
+   both exams, so the correct answer is spread across A–D and can't be gamed. */
 
 const EXAM_CFG = {
   1:{cat:CAT_1, cards:CARDS_1, sections:SECTIONS_1, test:TEST_1, qCount:40, timerMin:50},
@@ -1353,20 +1343,25 @@ function buildTest(){
     const num = pos + 1;
     const box=document.createElement('div');
     box.className='q' + (item.trick ? ' trick' : ''); box.id='q'+(idx+1); box.dataset.idx=idx;
+    // Shuffle the answer choices too. data-oi stays the CANONICAL option index, so the
+    // stored answer and grading are independent of where the option is displayed — a
+    // reshuffle (or reload) never invalidates a saved choice.
+    const optOrder = shuffle([...Array(item.o.length).keys()]);
     let opts='';
-    item.o.forEach((txt,oi)=>{
+    optOrder.forEach((oi, slot)=>{
       const checked = answers[idx]===oi ? 'checked' : '';
       const chosen = answers[idx]===oi ? ' chosen' : '';
       opts += `<label class="opt${chosen}" data-oi="${oi}">
         <input type="radio" name="q${idx}" value="${oi}" ${checked}>
-        <span class="letter">${LETTERS[oi]}.</span>${txt}
+        <span class="letter">${LETTERS[slot]}.</span>${item.o[oi]}
         <span class="mark"></span></label>`;
     });
+    const correctLetter = LETTERS[optOrder.indexOf(item.a)];
     const trickTag = item.trick ? `<div class="trick-badge">⚠️ Classic trap — read carefully</div>` : '';
     const trapWhy = item.trickWhy ? `<div class="trap-why"><b>⚠️ Why this one trips people up:</b> ${item.trickWhy}</div>` : '';
     box.innerHTML = `${trickTag}<div class="qtext"><span class="qnum">${num}.</span> ${item.q}</div>
       ${opts}
-      <div class="exp"><b>Answer: ${LETTERS[item.a]}.</b> ${item.e}${trapWhy}</div>`;
+      <div class="exp"><b>Answer: ${correctLetter}.</b> ${item.e}${trapWhy}</div>`;
     testQEl.appendChild(box);
   });
   testQEl.querySelectorAll('.opt').forEach(lbl=>{
