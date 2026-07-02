@@ -886,7 +886,7 @@
 
 <!-- ================= PRACTICE TEST ================= -->
 <section class="view" id="view-test">
-  <p class="lead">Answer every question, then hit <b>Grade my test</b> for your score, explanations, and a section-by-section breakdown. Your answers save automatically as you go.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
+  <p class="lead">Answer every question, then hit <b>Grade my test</b> for your score, explanations, and a section-by-section breakdown. Your answers save automatically as you go, and the <b>question order is reshuffled every attempt</b> — just like the real exam.<br><span style="color:var(--gold);font-weight:700">⚠️ Classic trap</span> tags mark the questions examiners most love to catch you on — slow down and read those twice.</p>
 
   <div class="results" id="results">
     <div class="score" id="scoreNum">0<span>/40</span></div>
@@ -1344,30 +1344,30 @@ function setExam(n){
 const testQEl = document.getElementById('testQuestions');
 function buildTest(){
   testQEl.innerHTML = "";
-  SECTIONS.forEach(sec=>{
-    const h = document.createElement('div');
-    h.className='sec-head'; h.textContent=sec.name;
-    testQEl.appendChild(h);
-    for(let i=sec.range[0]; i<=sec.range[1]; i++){
-      const idx=i-1, item=TEST[idx];
-      const box=document.createElement('div');
-      box.className='q' + (item.trick ? ' trick' : ''); box.id='q'+i; box.dataset.idx=idx;
-      let opts='';
-      item.o.forEach((txt,oi)=>{
-        const checked = answers[idx]===oi ? 'checked' : '';
-        const chosen = answers[idx]===oi ? ' chosen' : '';
-        opts += `<label class="opt${chosen}" data-oi="${oi}">
-          <input type="radio" name="q${idx}" value="${oi}" ${checked}>
-          <span class="letter">${LETTERS[oi]}.</span>${txt}
-          <span class="mark"></span></label>`;
-      });
-      const trickTag = item.trick ? `<div class="trick-badge">⚠️ Classic trap — read carefully</div>` : '';
-      const trapWhy = item.trickWhy ? `<div class="trap-why"><b>⚠️ Why this one trips people up:</b> ${item.trickWhy}</div>` : '';
-      box.innerHTML = `${trickTag}<div class="qtext"><span class="qnum">${i}.</span> ${item.q}</div>
-        ${opts}
-        <div class="exp"><b>Answer: ${LETTERS[item.a]}.</b> ${item.e}${trapWhy}</div>`;
-      testQEl.appendChild(box);
-    }
+  // Shuffle the whole question order each build (fresh on load, on exam-switch, and on every retake).
+  // Display number = position in this shuffle; box.id / dataset.idx stay tied to the ORIGINAL TEST
+  // index so answers, grading, and the per-section breakdown remain correct in any order.
+  const order = shuffle([...Array(TEST.length).keys()]);
+  order.forEach((idx, pos)=>{
+    const item = TEST[idx];
+    const num = pos + 1;
+    const box=document.createElement('div');
+    box.className='q' + (item.trick ? ' trick' : ''); box.id='q'+(idx+1); box.dataset.idx=idx;
+    let opts='';
+    item.o.forEach((txt,oi)=>{
+      const checked = answers[idx]===oi ? 'checked' : '';
+      const chosen = answers[idx]===oi ? ' chosen' : '';
+      opts += `<label class="opt${chosen}" data-oi="${oi}">
+        <input type="radio" name="q${idx}" value="${oi}" ${checked}>
+        <span class="letter">${LETTERS[oi]}.</span>${txt}
+        <span class="mark"></span></label>`;
+    });
+    const trickTag = item.trick ? `<div class="trick-badge">⚠️ Classic trap — read carefully</div>` : '';
+    const trapWhy = item.trickWhy ? `<div class="trap-why"><b>⚠️ Why this one trips people up:</b> ${item.trickWhy}</div>` : '';
+    box.innerHTML = `${trickTag}<div class="qtext"><span class="qnum">${num}.</span> ${item.q}</div>
+      ${opts}
+      <div class="exp"><b>Answer: ${LETTERS[item.a]}.</b> ${item.e}${trapWhy}</div>`;
+    testQEl.appendChild(box);
   });
   testQEl.querySelectorAll('.opt').forEach(lbl=>{
     lbl.addEventListener('click', ()=>{
@@ -1394,7 +1394,7 @@ function gradeTest(){
   for(let i=0;i<QCOUNT;i++){ if(answers[i]===undefined) missing.push(i+1); }
   const warn = document.getElementById('warnUnanswered');
   if(missing.length){
-    warn.textContent = `You still have ${missing.length} unanswered question${missing.length>1?'s':''} (#${missing.join(', #')}). You can grade anyway — they'll be counted wrong.`;
+    warn.textContent = `You still have ${missing.length} unanswered question${missing.length>1?'s':''}. You can grade anyway — they'll be counted wrong.`;
     warn.classList.add('show');
   } else {
     warn.classList.remove('show');
