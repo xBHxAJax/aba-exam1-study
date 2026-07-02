@@ -242,6 +242,8 @@
   .results .bd{background:#F3ECDA;border-radius:9px;padding:9px 12px;font-size:.82rem;min-width:130px}
   .results .bd b{display:block;font-size:1.1rem;color:var(--desk-deep)}
   .results .after-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .results .retake-note{margin-top:12px;font-size:.82rem;color:var(--ink-soft)}
+  .results .retake-note b{color:var(--desk-deep)}
   .warn{display:none;background:#F3ECDA;border-left:4px solid var(--bad);color:var(--ink);border-radius:8px;
     padding:10px 14px;margin:10px 0;font-size:.88rem;font-weight:600}
   .warn.show{display:block}
@@ -603,10 +605,11 @@
     <div class="verdict" id="verdict"></div>
     <div class="breakdown" id="breakdown"></div>
     <div class="after-actions">
-      <button class="mini-btn" id="btnShowMissed">Show only what I missed</button>
+      <button class="mini-btn" id="btnRetake">🔄 Retake test (fresh start)</button>
+      <button class="mini-btn secondary" id="btnShowMissed">Show only what I missed</button>
       <button class="mini-btn secondary" id="btnShowAll">Show all questions</button>
-      <button class="mini-btn secondary" id="btnRetake">Retake test</button>
     </div>
+    <p class="retake-note">Take this test as many times as you want — <b>Retake</b> wipes every answer and starts a brand-new, blank run.</p>
   </div>
 
   <div class="testbar">
