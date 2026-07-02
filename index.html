@@ -317,7 +317,7 @@
     <div class="startgrid">
       <div class="startcard sc-guide" data-go="guide"><h3>📖 Study Guide</h3><p>Read the concepts in plain language, chunked into short sessions with parent-life examples.</p></div>
       <div class="startcard sc-flash" data-go="flash"><h3>🃏 Flashcards</h3><p>58 tap-to-flip cards. Sort by category; the ones you miss cycle back around.</p></div>
-      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>40 questions, auto-graded with explanations and a section-by-section breakdown.</p></div>
+      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>50 scenario questions, auto-graded with explanations and a section-by-section breakdown.</p></div>
     </div>
   </div>
 
@@ -377,7 +377,7 @@
     <div class="startgrid">
       <div class="startcard sc-guide" data-go="guide"><h3>📖 Study Guide</h3><p>Six parts in plain language, with the dense Schedules section broken into chunks.</p></div>
       <div class="startcard sc-flash" data-go="flash"><h3>🃏 Flashcards</h3><p>57 tap-to-flip cards across 6 categories. The ones you miss cycle back around.</p></div>
-      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>60 questions, auto-graded with explanations and a section-by-section breakdown.</p></div>
+      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>72 scenario questions, auto-graded with explanations and a section-by-section breakdown.</p></div>
     </div>
   </div>
 
@@ -1176,11 +1176,11 @@ document.getElementById('btnStudyAgain').onclick = startSession;
    PRACTICE TEST
    ============================================================ */
 const SECTIONS_1 = [
-  {name:"Section A · Contingencies", range:[1,10]},
-  {name:"Section B · Theorists, -isms & Branches", range:[11,20]},
-  {name:"Section C · The 7 Dimensions of ABA", range:[21,27]},
-  {name:"Section D · Assumptions of Science", range:[28,32]},
-  {name:"Section E · Key Terms & Concepts", range:[33,40]},
+  {id:'A', name:"Section A · Contingencies", range:[1,10]},
+  {id:'B', name:"Section B · Theorists, -isms & Branches", range:[11,20]},
+  {id:'C', name:"Section C · The 7 Dimensions of ABA", range:[21,27]},
+  {id:'D', name:"Section D · Assumptions of Science", range:[28,32]},
+  {id:'E', name:"Section E · Key Terms & Concepts", range:[33,40]},
 ];
 const TEST_1 = [
  {q:"Every time Maya whines in the grocery store, her dad hands her his phone. Whining in stores increases. For Maya, this is an example of:",o:["Negative reinforcement","Positive reinforcement","Positive punishment","Negative punishment"],a:1,e:"A stimulus (phone) is ADDED after whining, and whining INCREASES → positive reinforcement."},
@@ -1223,17 +1223,28 @@ const TEST_1 = [
  {q:"After a dentist's drill (paired with pain) has made the sound of the drill alone elicit tension, the dentist plays the drill sound repeatedly with no pain until the tension response fades. The fading process is:",o:["Habituation","Operant extinction","Respondent extinction","Negative punishment"],a:2,e:"CS (drill sound) presented repeatedly without the US (pain) until the CR fades → respondent extinction. (Habituation is the weakening of an UNconditioned reflex from repetition.)",trick:1,trickWhy:"<b>Habituation</b> is the tempting wrong answer. The key detail: the drill sound was <b>paired with pain</b>, which makes it a <b>conditioned</b> stimulus (CS). Presenting the CS with no pain until the tension fades is <b>respondent extinction</b>. Habituation applies only to <b>unlearned</b> reflexes that weaken with repetition — never to a response that had to be conditioned first."},
  {q:"In a study testing whether a token economy increases homework completion, homework completion is the ______ and the token economy is the ______.",o:["Independent variable; dependent variable","Dependent variable; independent variable","Stimulus class; response class","Antecedent; consequence"],a:1,e:"The behavior measured = dependent variable; the intervention manipulated = independent variable."},
  {q:"A behavior analyst can reliably turn a behavior on and off by manipulating the environment, demonstrating a functional relation. This represents which level of scientific understanding?",o:["Description","Prediction","Control","Correlation"],a:2,e:"Functional relation = the control level, the highest level of scientific understanding."},
+ // ---- Added scenario questions (2 per behavior set) ----
+ {q:"A child buckles her seatbelt and the car's warning chime stops. She now buckles the moment she sits down. For the child, buckling is maintained by:",o:["Negative reinforcement","Positive reinforcement","Positive punishment","Negative punishment"],a:0,e:"An aversive stimulus (the chime) is REMOVED after buckling and buckling INCREASES → negative reinforcement.",sec:'A'},
+ {q:"Every time a student slams his locker, the teacher assigns him an extra clean-up task. Locker-slamming drops sharply. The extra task is functioning as a(n):",o:["Positive punisher (positive punishment)","Negative punisher (negative punishment)","Unconditioned reinforcer","Conditioned reinforcer"],a:0,e:"A stimulus (the extra task) is ADDED after the behavior and the behavior DECREASES → positive punishment.",sec:'A'},
+ {q:"A graduate student argues that thoughts and feelings are themselves behavior, follow the same principles as public actions, and can be studied — just privately observed. This position is:",o:["Radical behaviorism","Methodological behaviorism","Mentalism","Structuralism"],a:0,e:"Treating private events as behavior governed by the same principles is Skinner's radical behaviorism.",sec:'B'},
+ {q:"A researcher trains rats to press levers under different reinforcement schedules in an operant chamber to uncover basic principles of behavior. This work belongs to:",o:["Experimental Analysis of Behavior (EAB)","Applied Behavior Analysis (ABA)","Methodological behaviorism","Respondent conditioning"],a:0,e:"Basic laboratory research discovering principles (Skinner box, schedules) is EAB, not applied work.",sec:'B'},
+ {q:"A BCBA writes a behavior plan so precise that a brand-new technician can carry it out exactly as intended without asking questions. Which dimension does this reflect?",o:["Technological","Conceptually systematic","Applied","Generality"],a:0,e:"Procedures written clearly and completely enough for anyone to replicate → Technological.",sec:'C'},
+ {q:"A skill taught in the therapy room now appears at home and at grandma's house, and is still going strong a year later. Which dimension?",o:["Generality","Effective","Behavioral","Analytic"],a:0,e:"Change that lasts over time and transfers across settings → Generality.",sec:'C'},
+ {q:"Before concluding a new teaching method works, a team introduces it, withdraws it, then reintroduces it (a reversal design) and watches behavior track the method each time. Which attitude of science is this?",o:["Experimentation","Replication","Parsimony","Empiricism"],a:0,e:"Manipulating a variable — introducing and withdrawing it — to test its effect is experimentation.",sec:'D'},
+ {q:"A clinician refuses to credit a client's progress to 'motivation' and instead records and graphs objective frequency data before drawing any conclusion. This reflects:",o:["Empiricism","Determinism","Philosophical doubt","Parsimony"],a:0,e:"Relying on objective observation and measurement over opinion → empiricism.",sec:'D'},
+ {q:"A child requests a snack by pointing, by signing, and by saying 'snack' — all three reliably get her the snack. Because they produce the same effect, these three responses form a single:",o:["Response class","Stimulus class","Response topography","Discriminated operant"],a:0,e:"Different topographies that produce the same effect belong to one response class.",sec:'E'},
+ {q:"A toddler jerks his hand back the instant he touches something hot, having never been taught to. This unlearned stimulus–response relation is a:",o:["Reflex (respondent behavior)","Operant","Discriminated operant","Conditioned response"],a:0,e:"An unlearned US→UR relation is a reflex — respondent behavior with survival value.",sec:'E'},
 ];
 
 const LETTERS = ["A","B","C","D"];
 
 const SECTIONS_2 = [
-  {name:"Section A · The Matching Law", range:[1,3]},
-  {name:"Section B · Contingencies & Consequences", range:[4,20]},
-  {name:"Section C · Antecedents & Motivation", range:[21,36]},
-  {name:"Section D · Preference & Reinforcer Assessments", range:[37,44]},
-  {name:"Section E · Schedules of Reinforcement", range:[45,57]},
-  {name:"Section F · Function-Based Application", range:[58,60]},
+  {id:'A', name:"Section A · The Matching Law", range:[1,3]},
+  {id:'B', name:"Section B · Contingencies & Consequences", range:[4,20]},
+  {id:'C', name:"Section C · Antecedents & Motivation", range:[21,36]},
+  {id:'D', name:"Section D · Preference & Reinforcer Assessments", range:[37,44]},
+  {id:'E', name:"Section E · Schedules of Reinforcement", range:[45,57]},
+  {id:'F', name:"Section F · Function-Based Application", range:[58,60]},
 ];
 const TEST_2 = [
  {q:"A therapist tracks a client's talk-outs across two staff members. The client talks out about twice as often to Staff A as to Staff B, and Staff A delivers attention for talk-outs about twice as often as Staff B. Plotted as relative rate of responding against relative rate of reinforcement, the data fall on a straight line with a slope near 1.0. What does this demonstrate?",o:["The matching law: relative response rate matches the relative rate of reinforcement","Behavioral contrast between the two staff members","That Staff A is a conditioned punisher","Spontaneous recovery of the talk-out response"],a:0,e:"The matching law (Herrnstein): the relative rate of a response matches the relative rate of reinforcement for it under concurrent schedules. A straight line with slope ≈ 1.0 is perfect matching."},
@@ -1296,6 +1307,19 @@ const TEST_2 = [
  {q:"An FBA indicates a student's screaming is maintained by adult attention. Which intervention is MOST consistent with the function?",o:["Planned ignoring (extinction of attention) plus reinforcing appropriate attention-seeking (e.g., raising a hand)","Time-out from the classroom","Escape extinction","Providing a break from work after screaming"],a:0,e:"For attention-maintained behavior, withhold attention for screaming (extinction) and teach/reinforce an appropriate way to recruit attention (DRA/FCT). Match the function."},
  {q:"A student's aggression is maintained by escape from academic tasks. Which intervention matches this function?",o:["Teach a functional communication response for a break and use escape extinction (task continues until criterion) rather than removing the task for aggression","Deliver enthusiastic verbal attention after each aggression","Give a preferred snack immediately after aggression","Use time-out from the classroom for aggression"],a:0,e:"For escape-maintained behavior, stop reinforcing escape via aggression (escape extinction) and teach an appropriate break request (FCT). Time-out would reinforce escape."},
  {q:"Reinforcers are commonly CLASSIFIED into which of the following broad categories used in preference and reinforcer assessments?",o:["Edible, tangible, activity, social, and automatic/sensory","Fixed, variable, interval, and ratio","Chained, tandem, mixed, and multiple","SD, SΔ, EO, and AO"],a:0,e:"Reinforcers are frequently classified by type — edibles, tangibles/leisure, activities, social (attention), and automatic/sensory. This guides assessment and programming."},
+ // ---- Added scenario questions (2 per behavior set) ----
+ {q:"A child can earn teacher attention by raising her hand or by calling out. The teacher responds to hand-raising about three times as often as calling out, and the child raises her hand about three times as often as she calls out. This proportional relationship illustrates the:",o:["Matching law","Premack principle","Response-cost effect","Behavioral contrast"],a:0,e:"Relative response rate matching the relative rate of reinforcement across concurrent options is the matching law.",sec:'A'},
+ {q:"A therapist wants a client to choose a communication device over vocal protests, without punishing the protests. The matching law suggests she should:",o:["Increase the relative rate of reinforcement for using the device","Place protests on a punishment contingency","Add a motivating operation for attention","Put the device on a thin fixed-ratio schedule"],a:0,e:"To reallocate behavior toward the device, raise its relative rate of reinforcement — out-reinforce the competing response.",sec:'A'},
+ {q:"A worker takes aspirin whenever he has a headache; the headache goes away and he now takes aspirin at the first twinge. Taking aspirin is maintained by:",o:["Negative reinforcement (escape)","Positive reinforcement","Positive punishment","Automatic reinforcement"],a:0,e:"An aversive stimulus (headache) is removed after the behavior and the behavior increases → negative reinforcement (escape).",sec:'B'},
+ {q:"A store gives a shopper loyalty points redeemable for many different products, so the points work no matter what the shopper currently wants. The points are best described as:",o:["Generalized conditioned reinforcers","Unconditioned reinforcers","Automatic reinforcers","Discriminative stimuli"],a:0,e:"A conditioned reinforcer paired with many backups, effective regardless of any single MO → generalized conditioned reinforcer.",sec:'B'},
+ {q:"A student only raises his hand to answer when the teacher is facing the class, because that is the only time answering has been acknowledged. The teacher facing the class is functioning as a(n):",o:["Discriminative stimulus (SD)","Motivating operation (MO)","Establishing operation (EO)","Stimulus delta (SΔ)"],a:0,e:"An antecedent that signals reinforcement is AVAILABLE for the response (acknowledgment) → discriminative stimulus.",sec:'C'},
+ {q:"A child ate a large lunch, so during the afternoon session snacks are no longer effective as reinforcers and she rarely works for them. Satiation here is acting as a(n):",o:["Abolishing operation (AO)","Establishing operation (EO)","Discriminative stimulus","Conditioned punisher"],a:0,e:"Satiation decreases the value of the reinforcer and abates behavior that produced it → abolishing operation.",sec:'C'},
+ {q:"A clinician lays out five toys, lets the child choose one, removes the chosen toy, and re-presents the remaining four — repeating until none are left — producing a ranked list. This is a:",o:["Multiple-stimulus without replacement (MSWO)","Paired-stimulus assessment","Single-stimulus assessment","Free-operant observation"],a:0,e:"Choose, then remove the selected item and re-present the rest, is MSWO — it yields a ranking and the array shrinks each trial.",sec:'D'},
+ {q:"After finding that a child approaches a certain toy most often, a clinician delivers that toy contingent on task completion and confirms task completion increases. This second step is a:",o:["Reinforcer assessment","Preference assessment","Free-operant observation","Paired-stimulus assessment"],a:0,e:"Testing whether the item actually increases behavior when delivered contingently is a reinforcer assessment (preference = what they pick; reinforcer = does it work).",sec:'D'},
+ {q:"A salesperson earns a commission after every 5th sale — reinforcement depends on a set number of responses. This is a:",o:["Fixed-ratio (FR) schedule","Variable-ratio (VR) schedule","Fixed-interval (FI) schedule","Variable-interval (VI) schedule"],a:0,e:"Reinforcement after a set NUMBER of responses (every 5th) = fixed ratio.",sec:'E'},
+ {q:"An angler checks her line at a fairly steady, moderate rate; a fish may bite after unpredictable amounts of time. This pattern is characteristic of a:",o:["Variable-interval (VI) schedule","Fixed-interval (FI) schedule","Variable-ratio (VR) schedule","Fixed-ratio (FR) schedule"],a:0,e:"Reinforcement for the first response after varying amounts of TIME produces a steady, moderate rate → variable interval.",sec:'E'},
+ {q:"An FBA shows a student throws his materials to get out of hard worksheets. The most function-matched plan is to:",o:["Teach a break request (FCT) and keep the task going until criterion (escape extinction)","Send the student to time-out for throwing","Give enthusiastic attention after each throw","Provide a preferred snack after throwing"],a:0,e:"For escape-maintained behavior, teach an appropriate break request and stop reinforcing escape (escape extinction). Time-out would reinforce the escape.",sec:'F'},
+ {q:"A child's screaming is maintained by adult attention. The most function-matched plan is to:",o:["Withhold attention for screaming and reinforce an appropriate way to get attention","Use time-out from the classroom","Provide a break from demands after screaming","Deliver a firm reprimand each time"],a:0,e:"For attention-maintained behavior: extinction of attention for screaming + reinforce an appropriate attention-recruiting response (DRA/FCT). A reprimand still delivers attention.",sec:'F'},
 ];
 
 /* Note: the Exam 2 source answer key marks every correct answer as "A". That's handled
@@ -1315,7 +1339,7 @@ function setExam(n){
   currentExam = n;
   const cfg = EXAM_CFG[n];
   CAT = cfg.cat; CARDS = cfg.cards; SECTIONS = cfg.sections; TEST = cfg.test;
-  QCOUNT = cfg.qCount; TIMER_MIN = cfg.timerMin;
+  QCOUNT = TEST.length; TIMER_MIN = cfg.timerMin;
   STORAGE_KEY = 'aba_exam' + n + '_answers';
   document.querySelectorAll('.exam-btn').forEach(b=>b.classList.toggle('active', +b.dataset.exam===n));
   document.querySelectorAll('.exam-content').forEach(el=>el.classList.toggle('active', +el.dataset.exam===n));
@@ -1384,6 +1408,15 @@ function updateProgress(){
   document.getElementById('progressTxt').textContent = `${answeredCount()} of ${QCOUNT} answered`;
 }
 
+// Section membership: use an explicit item.sec tag if present (new questions),
+// otherwise derive from the original numbering range (original questions).
+function sectionIdOf(idx){
+  const item = TEST[idx];
+  if(item.sec) return item.sec;
+  const s = SECTIONS.find(s=> s.range && (idx+1)>=s.range[0] && (idx+1)<=s.range[1]);
+  return s ? s.id : SECTIONS[SECTIONS.length-1].id;
+}
+
 function gradeTest(){
   const missing = [];
   for(let i=0;i<QCOUNT;i++){ if(answers[i]===undefined) missing.push(i+1); }
@@ -1397,15 +1430,15 @@ function gradeTest(){
   graded = true;
   stopTimer();
   let correct=0;
-  const secScores = SECTIONS.map(()=>({c:0,t:0}));
+  const secScores = {}; SECTIONS.forEach(s=>{ secScores[s.id]={c:0,t:0}; });
   TEST.forEach((item,idx)=>{
     const box=document.getElementById('q'+(idx+1));
     box.classList.add('graded');
     const chosen = answers[idx];
-    const secIdx = SECTIONS.findIndex(s=> (idx+1)>=s.range[0] && (idx+1)<=s.range[1]);
-    secScores[secIdx].t++;
+    const sid = sectionIdOf(idx);
+    secScores[sid].t++;
     const isCorrect = chosen===item.a;
-    if(isCorrect){ correct++; secScores[secIdx].c++; }
+    if(isCorrect){ correct++; secScores[sid].c++; }
     box.classList.toggle('correct', isCorrect);
     box.classList.toggle('incorrect', !isCorrect);
     box.querySelectorAll('.opt').forEach(lbl=>{
@@ -1422,10 +1455,11 @@ function gradeTest(){
   else if(correct>=Math.ceil(QCOUNT*0.75)){ v.textContent='Solid — re-drill the sections you missed with flashcards.'; v.className='verdict solid'; }
   else { v.textContent='Reread the study guide parts matching your missed sections, then retake just those tomorrow.'; v.className='verdict retry'; }
   const bd = document.getElementById('breakdown'); bd.innerHTML='';
-  SECTIONS.forEach((s,i)=>{
+  SECTIONS.forEach(s=>{
     const shortName = s.name.split('·')[1].trim();
+    const sc = secScores[s.id];
     const el=document.createElement('div'); el.className='bd';
-    el.innerHTML=`<b>${secScores[i].c}/${secScores[i].t}</b>${shortName}`;
+    el.innerHTML=`<b>${sc.c}/${sc.t}</b>${shortName}`;
     bd.appendChild(el);
   });
   const res=document.getElementById('results'); res.classList.add('show');
