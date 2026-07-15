@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABA Study System — Exams 1 & 2</title>
-<meta name="description" content="Everything for ABA Exams 1 & 2 in one place: study guides, flip-card decks, and graded practice tests.">
+<title>ABA Study System — Exams 1, 2 &amp; Final</title>
+<meta name="description" content="Everything for ABA Exams 1, 2 and the Final in one place: study guides, flip-card decks, and graded practice tests.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
@@ -29,6 +29,12 @@
     --cat-sched:#2E7D6B;       /* exam2: schedules */
     --cat-assess:#3A6EA5;      /* exam2: assessments */
     --cat-app:#B0812F;         /* exam2: application */
+    --cat-mo:#D95F43;          /* final: motivating operations */
+    --cat-stim:#7A5EA8;        /* final: stimulus control */
+    --cat-prompt:#2E7D6B;      /* final: prompts */
+    --cat-meas:#3A6EA5;        /* final: measurement & IOA */
+    --cat-core:#B0812F;        /* final: core principles */
+    --cat-study:#C2557A;       /* final: studies & foundations */
     --good:#2F7D5F;
     --bad:#B4543F;
     --radius:14px;
@@ -296,6 +302,7 @@
   <div class="exam-switch" id="examSwitch" role="group" aria-label="Choose which exam to study">
     <button class="exam-btn active" data-exam="1" type="button">Exam 1<small>Foundations &amp; Philosophy</small></button>
     <button class="exam-btn" data-exam="2" type="button">Exam 2<small>Reinforcement · Schedules · Assessment</small></button>
+    <button class="exam-btn" data-exam="3" type="button">Final<small>Cumulative · MOs · Measurement</small></button>
   </div>
   <nav class="tabs" id="tabs" role="tablist">
     <button class="tab active" data-view="overview" role="tab">Start Here</button>
@@ -432,6 +439,80 @@
     </ul>
   </div>
 </div><!-- /exam2 overview -->
+
+<div class="exam-content" data-exam="3">
+  <p class="lead">The Final is <b>cumulative</b> — the new material (Motivating Operations &amp; the CMOs, Stimulus Control, Prompts, and Measurement) plus everything from Exams 1 &amp; 2. Learn each term's <b>definition</b> first, then how it's <b>applied</b> — most questions describe a situation and ask which concept it is.</p>
+
+  <div class="factbar">
+    <div class="fact"><div class="n">100</div><div class="l">Points</div></div>
+    <div class="fact"><div class="n">110</div><div class="l">Minutes</div></div>
+    <div class="fact"><div class="n">Cumulative</div><div class="l">T/F · MC · Application</div></div>
+  </div>
+  <div class="callout" style="color:var(--ink)">Heaviest new topics: <b>the three CMOs</b>, <b>measurement &amp; IOA</b>, <b>prompts &amp; fading</b>, and <b>stimulus control / equivalence</b>. Exam 1 &amp; 2 material is fair game too — flip to those tabs for the full refreshers.</div>
+
+  <div class="panel">
+    <h2>Pick where to jump in</h2>
+    <div class="startgrid">
+      <div class="startcard sc-guide" data-go="guide"><h3>📖 Study Guide</h3><p>Seven parts, the five studies, and a worked application answer key.</p></div>
+      <div class="startcard sc-flash" data-go="flash"><h3>🃏 Flashcards</h3><p>74 tap-to-flip cards across 6 categories — the biggest deck of the three.</p></div>
+      <div class="startcard sc-test" data-go="test"><h3>✅ Practice Test</h3><p>50 auto-graded questions (20 true/false + 30 multiple choice) with explanations.</p></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>The 8-session plan</h2>
+    <p class="plain">The new material gets the most time; the rest is review.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Session</th><th>What to do</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Part 1 (Motivating Operations &amp; the CMOs) + those flashcards</td><td>15 min</td></tr>
+          <tr><td>2</td><td>Part 2 (Stimulus control, generalization, concept formation) + flashcards</td><td>15 min</td></tr>
+          <tr><td>3</td><td>Part 3 (Prompts &amp; transfer of stimulus control) + flashcards</td><td>15 min</td></tr>
+          <tr><td>4</td><td>Part 4 (Measurement &amp; IOA) + flashcards</td><td>15 min</td></tr>
+          <tr><td>5</td><td>Part 5 (Schedules &amp; core-principle refresher) — skim, star what's shaky</td><td>15 min</td></tr>
+          <tr><td>6</td><td>Part 6 (Science &amp; foundations refresher) + Part 7 (the studies)</td><td>15 min</td></tr>
+          <tr><td>7</td><td>Work the Application Answer Key out loud; redo flashcards you missed</td><td>20 min</td></tr>
+          <tr><td>8</td><td>Take the practice test (untimed, open guide); re-drill misses</td><td>25 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Micro-drills for stolen moments</h3>
+    <ul class="plain">
+      <li>Quiz out loud: "Surrogate = ___. Reflexive = ___. Transitive = ___." and "Deprivation does ___ to value. Satiation does ___."</li>
+      <li>Tag real life: "I hid the tablet so he'd ask for it — that's a transitive CMO." / "The bath running warns he'll have to get out — reflexive CMO."</li>
+      <li>Screenshot the <b>CMO table</b> (Part 1) and the mnemonic card below.</li>
+    </ul>
+    <div class="callout" style="color:var(--ink)"><b>The night before:</b> the CMO table, the measurement interval lengths, and the mnemonics. Sleep beats cramming.</div>
+  </div>
+
+  <div class="panel">
+    <h2>About the Application / short-answer part</h2>
+    <p class="plain">The real Final also has a written <b>Application / short-answer</b> section. Written answers can't be auto-graded here, so the model answers live in the <b>Study Guide → Application Answer Key</b>, and the same ideas are drilled in the <b>flashcards</b>. Work them out loud, then check yourself against the key.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Mnemonic cheat card (screenshot this)</h2>
+    <ul class="plain">
+      <li><b>MO two effects:</b> <em>value</em>-altering (<b>E</b>stablishing ↑ / <b>A</b>bolishing ↓) + <em>behavior</em>-altering (<b>E</b>vocative ↑ / <b>A</b>bative ↓). <b>EO evokes, AO abates.</b></li>
+      <li><b>Deprivation ↑ value (EO) · Satiation ↓ value (AO).</b></li>
+      <li><b>CMOs:</b> <b>S</b>urrogate = pairing/substitute · <b>R</b>eflexive = warning of worsening, works on its <b>own</b> removal (the one you'd eliminate) · <b>T</b>ransitive = makes <b>something else</b> a reinforcer (the hidden-item mand).</li>
+      <li><b>UMO</b> = biological (food/water/sleep/pain deprivation). <b>CMO</b> = learned.</li>
+      <li><b>Stimulus control shown</b> = higher responding to <b>SD</b> than <b>SΔ</b> (differential responding).</li>
+      <li><b>Concept = generalize WITHIN a class + discriminate BETWEEN classes.</b></li>
+      <li><b>Feature class</b> = look alike (physical) · <b>Arbitrary class</b> = grouped by learning history.</li>
+      <li><b>Equivalence = Reflexivity, Symmetry, Transitivity</b> (critical test: train A→B &amp; B→C, then test <b>C→A</b>).</li>
+      <li><b>Prompts:</b> response = help the behavior; stimulus = change the stimulus. <b>Time delay = manipulate TIME; MTL = manipulate PROMPT LEVEL.</b></li>
+      <li><b>Fading</b> = change a dimension (color/size), shape stays · <b>Shape transformation</b> = change the shape itself.</li>
+      <li><b>Intervals:</b> whole/partial ≤ ~15 s; MTS &lt; ~2 min. <b>Whole = UNDER-estimates · Partial = OVER-estimates · MTS = either way.</b></li>
+      <li><b>Permanent product</b> = measure the lasting outcome (no live watching).</li>
+      <li><b>IOA = agreement on the DV. Treatment integrity / procedural fidelity = the IV.</b></li>
+      <li><b>Limited hold</b> = a deadline to meet the schedule's response requirement.</li>
+      <li><b>Studies:</b> Test &amp; Heward '84 = MTS accuracy · Sidman '93 = coercion fallout · Neef '94 = rate/quality/delay/effort drive choice · Osborne '69 = free-time reinforcer · Herrnstein = matching (slope-1.0 line).</li>
+    </ul>
+  </div>
+</div><!-- /final overview -->
+
 </section>
 
 <!-- ================= STUDY GUIDE ================= -->
@@ -847,6 +928,212 @@
     </ol>
   </div>
 </div><!-- /exam2 guide -->
+
+<div class="exam-content" data-exam="3">
+  <div class="panel">
+    <h2>Contents</h2>
+    <nav class="toc">
+      <a href="#f1">Part 1 · Motivating Operations (the CMOs)</a>
+      <a href="#f2">Part 2 · Stimulus Control &amp; Concepts</a>
+      <a href="#f3">Part 3 · Prompts &amp; Transfer</a>
+      <a href="#f4">Part 4 · Measurement &amp; IOA</a>
+      <a href="#f5">Part 5 · Schedules &amp; Core Refresher</a>
+      <a href="#f6">Part 6 · Science &amp; Foundations Refresher</a>
+      <a href="#f7">Part 7 · The Studies</a>
+      <a href="#f8">Application Answer Key</a>
+    </nav>
+  </div>
+
+  <div class="panel" id="f1">
+    <h2>Part 1 · Motivating Operations <span style="font-size:.8rem;color:var(--ink-soft)">(biggest new topic)</span></h2>
+    <h3>The two effects EVERY MO has</h3>
+    <ul class="plain">
+      <li><b>Value-altering</b> — changes how effective a consequence is <em>right now</em>: <b>EO increases</b> value (deprivation) · <b>AO decreases</b> value (satiation). Hooks: <b>E</b>O <b>E</b>levates · <b>A</b>O <b>A</b>bolishes.</li>
+      <li><b>Behavior-altering</b> — changes the <em>current frequency</em> of behavior that gets it: <b>evocative</b> = increases now (goes with EOs) · <b>abative</b> = decreases now (goes with AOs).</li>
+    </ul>
+    <div class="callout"><b>Don't mix the two axes:</b> <em>value</em>-altering = establishing/abolishing; <em>behavior</em>-altering = evocative/abative. <b>An EO evokes; an AO abates.</b><br>Deprivation <b>increases</b> reinforcer effectiveness (EO). Satiation <b>decreases</b> it (AO).</div>
+    <h3>UMO vs. CMO</h3>
+    <ul class="plain">
+      <li><b>Unconditioned MO (UMO):</b> value-altering effect is <b>unlearned / biological</b> — food, water, sleep, oxygen, activity deprivation; painful stimulation; increased temperature; sexual deprivation.</li>
+      <li><b>Conditioned MO (CMO):</b> value-altering effect depends on a <b>learning history</b>. Three types: surrogate, reflexive, transitive.</li>
+    </ul>
+    <h3>The three CMOs — the table to memorize</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>CMO</th><th>What it does</th><th>Example</th><th>Key tell</th></tr></thead>
+        <tbody>
+          <tr><td><b>Surrogate (CMO-S)</b></td><td>A neutral stimulus <b>paired with</b> a UMO/other MO takes on that MO's effects</td><td>A room always linked with food → entering evokes food-seeking even when not hungry</td><td><b>PAIRING</b>; it substitutes for the MO</td></tr>
+          <tr><td><b>Reflexive (CMO-R)</b></td><td><b>Signals worsening</b> conditions; its own <b>onset</b> raises the value of its <b>own removal</b></td><td>Yellow cardstock predicts a hated task → seeing it evokes tantrum/escape</td><td>A <b>warning</b>; the one you'd <b>eliminate</b>; works on its <b>own</b> removal</td></tr>
+          <tr><td><b>Transitive (CMO-T)</b></td><td>Establishes <b>another stimulus</b> as a reinforcer and evokes behavior that got it</td><td>Sealed M&amp;M bag → makes "help/opening" valuable → evokes the mand "open!"</td><td>Makes <b>something else</b> a reinforcer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>The CMO discrimination questions:</b><br>• Which relates to <b>pairing</b>? → <b>Surrogate</b>.<br>• Which would you want <b>eliminated</b>, and which focuses on eliminating <b>itself</b>? → <b>Reflexive</b>.<br>• Which makes <b>something else</b> a reinforcer? → <b>Transitive</b>.<br>• Read the stem: "warning + bad event together" = reflexive; "neutral stimulus paired with an existing MO" = surrogate.</div>
+    <h3>MO vs. SD (they love this)</h3>
+    <p class="plain"><b>MO</b> changes <em>how much you want</em> the consequence (value). <b>SD</b> signals the consequence is <em>available</em>. Deprivation, the yellow cardstock, the sealed bag = <b>MOs</b>. The vending light = <b>SD</b>.</p>
+  </div>
+
+  <div class="panel" id="f2">
+    <h2>Part 2 · Stimulus Control, Generalization &amp; Concepts</h2>
+    <ul class="plain">
+      <li><b>SD:</b> the response <em>has been</em> reinforced in its presence → reinforcement <b>available</b>. <b>SΔ:</b> it has <em>not</em> → <b>unavailable</b>.</li>
+      <li><b>How do you know behavior is under stimulus control?</b> It occurs <b>more often given the SD than the SΔ</b> — <b>differential responding</b>.</li>
+      <li><b>SΔ nuance:</b> choosing the SΔ can mean no reinforcement <em>or</em> a lesser amount/quality/delay — it doesn't always mean zero.</li>
+      <li><b>Conditional discrimination:</b> the correct response depends on <b>more than one stimulus</b> — classic form is <b>matching-to-sample</b> (the sample tells you which comparison is correct).</li>
+      <li><b>Generalization:</b> responding similarly to stimuli that <b>share features</b> with the SD (more similarity → more generalization). <b>Discrimination:</b> responding differently to SD vs. SΔ. Opposite ends of one continuum.</li>
+    </ul>
+    <div class="callout"><b>Concept formation — be specific.</b> A concept requires <b>BOTH</b>: (1) <b>generalization WITHIN</b> a stimulus class (respond to all examples) <b>AND</b> (2) <b>discrimination BETWEEN</b> classes (don't respond to non-examples). One alone isn't a concept.</div>
+    <h3>Feature vs. Arbitrary stimulus classes</h3>
+    <ul class="plain">
+      <li><b>Feature class:</b> members share <b>common physical features</b> — all triangles, all red things. <em>If they look alike, it's a feature class.</em></li>
+      <li><b>Arbitrary class:</b> <b>no</b> physical similarity; grouped by <b>function / learning history</b> — {apple, milk, bread, chicken} = "food".</li>
+    </ul>
+    <h3>Stimulus equivalence (Sidman) &amp; salience</h3>
+    <ul class="plain">
+      <li><b>Reflexivity</b> — A=A (identity matching, untrained). <b>Symmetry</b> — if A→B then B→A. <b>Transitivity</b> — if A→B and B→C then A→C.</li>
+      <li><b>The critical test:</b> emergence of <b>untrained</b> relations — the <b>combined symmetry-and-transitivity</b> test: train <b>A→B</b> and <b>B→C</b>, then test <b>C→A</b> (reflexivity assumed).</li>
+      <li><b>Salience:</b> how noticeable a stimulus is; more salient features gain stimulus control faster (and can cause overselectivity).</li>
+    </ul>
+    <h3>Faulty stimulus control &amp; overselectivity</h3>
+    <ul class="plain">
+      <li><b>Faulty stimulus control:</b> control by an <b>irrelevant</b> feature (answer position, an incidental color) — happens when an irrelevant stimulus is <b>accidentally correlated</b> with reinforcement. <b>Fix:</b> vary the irrelevant features, randomize position, use multiple exemplars, fade deliberately.</li>
+      <li><b>Stimulus overselectivity:</b> control by only <b>one feature</b> (or a narrow subset) of a <b>complex</b> stimulus — common in autism.</li>
+      <li><b>Overselectivity vs. blocking:</b> overselectivity = narrow attention <em>within</em> a compound; <b>blocking</b> = a <b>previously learned</b> cue prevents a newly added cue from gaining control.</li>
+    </ul>
+  </div>
+
+  <div class="panel" id="f3">
+    <h2>Part 3 · Prompts &amp; Transfer of Stimulus Control</h2>
+    <div class="callout"><b>The big split:</b> <b>Response prompts</b> act on the <b>response</b> (verbal, gestural, model, physical) — <em>help the behavior</em>. <b>Stimulus prompts</b> act on the <b>antecedent / SD itself</b> (movement, position, redundancy/color) — <em>change the stimulus</em>.</div>
+    <h3>Fading strategies</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Strategy</th><th>What it does</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><b>Most-to-Least (MTL)</b></td><td>Start with the <b>most</b> intrusive prompt, fade to less over trials</td><td><b>New / errorless</b> acquisition</td></tr>
+          <tr><td><b>Least-to-Most (LTM)</b></td><td>Start with the <b>least</b> help; add more only as needed</td><td>Learner <b>may already</b> have the skill</td></tr>
+          <tr><td><b>Graduated guidance</b></td><td><b>Physical</b> help adjusted <b>moment-to-moment within</b> the response (often shadowing)</td><td>Real-time physical assistance</td></tr>
+          <tr><td><b>Time delay</b></td><td><b>Same</b> prompt, insert a <b>time gap</b> after the SD (constant or progressive)</td><td>Transferring control by <b>waiting</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Time delay vs. MTL:</b> time delay manipulates <b>TIME</b> (same prompt, delayed); MTL manipulates the <b>PROMPT LEVEL</b>.<br><b>MTL vs. graduated guidance:</b> MTL fades on a <b>preset plan across trials</b>; graduated guidance adjusts <b>in real time within each response</b>.</div>
+    <h3>Stimulus fading vs. stimulus shape transformation <span style="font-size:.8rem;color:var(--ink-soft)">(asked twice — nail it)</span></h3>
+    <ul class="plain">
+      <li><b>Stimulus fading:</b> gradually change a <b>stimulus dimension</b> (color, intensity, size) while the <b>shape stays the same</b> — a bold red letter fading to plain black.</li>
+      <li><b>Stimulus shape transformation:</b> gradually change the <b>actual SHAPE</b> into the target form — an outline of a dog morphing step-by-step into the printed word "dog".</li>
+      <li><b>The difference:</b> fading = change a feature/dimension, shape stays · shape transformation = change the shape itself.</li>
+      <li><b>Errorless learning:</b> using prompts (MTL, time delay, fading) to <b>prevent errors</b> during acquisition, so wrong responses aren't practiced.</li>
+    </ul>
+  </div>
+
+  <div class="panel" id="f4">
+    <h2>Part 4 · Measurement &amp; IOA <span style="font-size:.8rem;color:var(--ink-soft)">(big new topic)</span></h2>
+    <h3>Dimensional quantities of behavior</h3>
+    <ul class="plain">
+      <li><b>Repeatability:</b> <b>count</b> (a tally) · <b>rate / frequency</b> = count <b>per unit of time</b> · <b>celeration</b> = change in rate over time.</li>
+      <li><b>Temporal extent:</b> <b>duration</b> — how long the behavior lasts.</li>
+      <li><b>Temporal locus:</b> <b>response latency</b> = SD onset → <b>start</b> of the response · <b>interresponse time (IRT)</b> = time <b>between</b> consecutive responses.</li>
+      <li><b>Derived:</b> percentage, trials-to-criterion.</li>
+      <li><b>Which dimensions can be SHAPED?</b> Frequency, latency, duration, magnitude/intensity — <b>all of them</b>.</li>
+    </ul>
+    <h3>Continuous vs. interval (discontinuous) measurement</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Method</th><th>Score the interval if…</th><th>Bias</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><b>Whole-interval</b></td><td>behavior occurs the <b>ENTIRE</b> interval</td><td><b>UNDER</b>-estimates</td><td>behaviors you want to <b>increase</b> (on-task)</td></tr>
+          <tr><td><b>Partial-interval</b></td><td>behavior occurs at <b>ANY</b> point</td><td><b>OVER</b>-estimates</td><td>behaviors you want to <b>decrease</b></td></tr>
+          <tr><td><b>Momentary time sampling</b></td><td>behavior occurs at the <b>exact moment</b> the interval ends</td><td>either way; least biased when <b>short</b></td><td>groups / long observations</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>Interval lengths (know these):</b> whole- and partial-interval must be <b>short — generally ≤ ~15 seconds</b>. <b>Momentary time sampling: under ~2 minutes</b> is highly concordant with continuous measurement; longer intervals lose accuracy.</div>
+    <h3>Permanent product &amp; measurement errors</h3>
+    <ul class="plain">
+      <li><b>Permanent product:</b> measure behavior by its <b>lasting outcome</b> (completed worksheets, dishes washed). <b>Favorable because</b> you can measure <b>after the fact</b> — no live observation, less intrusive, saves time, and products can be re-scored.</li>
+      <li><b>Observer drift</b> — the observer's definition gradually <b>shifts</b>. <b>Reactivity</b> — being observed <b>changes</b> the behavior. <b>Observer bias</b> — expectations color what's recorded.</li>
+    </ul>
+    <div class="callout"><b>IOA vs. treatment integrity:</b> <b>IOA</b> = agreement between two observers on the <b>DEPENDENT</b> variable (the target behavior). Agreement on the <b>INDEPENDENT</b> variable (was the intervention delivered as designed?) is <b>treatment integrity / procedural fidelity</b> — <em>not</em> IOA. Assess <b>both</b>.</div>
+  </div>
+
+  <div class="panel" id="f5">
+    <h2>Part 5 · Schedules &amp; Core-Principle Refresher</h2>
+    <div class="callout"><b>Limited hold (new term):</b> a <b>deadline</b> for meeting a schedule's response requirement — once reinforcement becomes available, the response must occur <b>within a set time window</b> or that reinforcer is lost until the next opportunity. <em>Ex: a VI 5-min schedule with a 30-second limited hold.</em> Don't confuse it with the <b>post-reinforcement pause</b>.</div>
+    <ul class="plain">
+      <li><b>Ratio = # of responses; Interval = time. Fixed = set; Variable = averaged.</b> <b>VR gambles</b> (highest, most extinction-resistant); <b>FI scallops</b>. <b>CRF</b> → acquisition; <b>intermittent</b> → maintenance + extinction-resistance.</li>
+      <li>Compound: <b>CM-cued</b> (Chained &amp; Multiple have SDs) vs. <b>TM-muted</b> (Tandem &amp; Mixed have none); <b>concurrent</b> = two choices at once (the basis of the matching law).</li>
+    </ul>
+    <div class="tbl-scroll">
+      <table class="grid2">
+        <thead><tr><th></th><th>Adding a stimulus</th><th>Removing a stimulus</th></tr></thead>
+        <tbody>
+          <tr><th class="rowh">Increase behavior</th><td><b>Positive Reinforcement</b></td><td><b>Negative Reinforcement</b></td></tr>
+          <tr><th class="rowh">Decrease behavior</th><td><b>Positive Punishment</b></td><td><b>Negative Punishment</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="plain">
+      <li><b>Unconditioned</b> = works with no learning (food, water / pain). <b>Conditioned</b> = through pairing (tokens, praise / "no"). <b>Generalized</b> = paired with <b>many</b> backups, works regardless of any one MO (money, tokens). Applies to reinforcers <em>and</em> punishers.</li>
+      <li><b>Automatic</b> (behavior produces its own consequence) vs. <b>socially mediated</b> (someone delivers it).</li>
+      <li><b>Escape = Ends</b> a present aversive · <b>Avoidance = Averts</b> one that hasn't occurred (both negative reinforcement).</li>
+      <li><b>Premack:</b> a high-probability behavior reinforces a low-probability one ("first work, then play"). <b>Osborne (1969)</b> is the classroom demo.</li>
+      <li><b>Matching law (Herrnstein):</b> relative response rate matches relative reinforcement rate — a straight line, <b>slope ≈ 1.0</b>. <b>Neef (1994)</b>: rate, quality, delay, and effort each pull choice.</li>
+    </ul>
+    <div class="callout"><b>Three harmful side effects of punishment (Sidman 1993):</b> 1) <b>emotional / aggressive reactions</b>; 2) <b>escape and avoidance</b> of the punisher, the person delivering it, and the setting; 3) <b>suppression without new learning</b> — it doesn't teach a replacement, so the behavior often returns. <em>(Also acceptable: modeling of coercion; the punishing agent is negatively reinforced.)</em></div>
+  </div>
+
+  <div class="panel" id="f6">
+    <h2>Part 6 · Science &amp; Foundations Refresher</h2>
+    <ul class="plain">
+      <li><b>GET A CAB</b> — the 7 dimensions (Baer, Wolf &amp; Risley, 1968). <b>Generality is comprised of:</b> change that <b>lasts over time</b>, <b>appears in other settings</b>, and <b>spreads to other behaviors</b>.</li>
+      <li><b>Dr. PEEP²</b> — the 6 attitudes of science. <b>Determinism vs. free will = opposites</b>; determinism is required for a science of behavior.</li>
+      <li><b>IV</b> = what you <b>manipulate</b> (the intervention; "I change it"). <b>DV</b> = what you <b>measure</b> (the behavior; it depends on the IV).</li>
+      <li><b>Respondent behavior</b> = <b>elicited</b> by an antecedent stimulus (reflexive, <b>S-R</b>; Pavlov/Watson).</li>
+      <li><b>Three levels of scientific understanding:</b> <b>Description → Prediction (correlation) → Control (functional relation)</b>.</li>
+    </ul>
+  </div>
+
+  <div class="panel" id="f7">
+    <h2>Part 7 · The Studies <span style="font-size:.8rem;color:var(--ink-soft)">(likely direct questions)</span></h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Study</th><th>Known for</th></tr></thead>
+        <tbody>
+          <tr><td><b>Test &amp; Heward (1984)</b></td><td><b>Accuracy of momentary time sampling</b> — compared fixed- vs. variable-interval MTS observation schedules; interval length matters (shorter = more accurate)</td></tr>
+          <tr><td><b>Sidman (1993)</b></td><td><em>Reflections on Behavior Analysis and Coercion</em> — <b>coercion</b> = control via punishment/threat or negative reinforcement; it produces <b>undesirable side effects</b></td></tr>
+          <tr><td><b>Neef (1994)</b></td><td>Extended the <b>matching law</b>: reinforcer <b>rate, quality, delay, and response effort</b> each influence choice / time allocation</td></tr>
+          <tr><td><b>Osborne (1969)</b></td><td><b>Free time as a reinforcer</b> — free time contingent on <b>staying seated</b> sharply reduced out-of-seat behavior (a Premack / activity-reinforcer classic)</td></tr>
+          <tr><td><b>Herrnstein</b></td><td><b>Law of Effect / Matching Law</b> — response allocation <b>matches</b> relative reinforcement (the slope-1.0 line)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel" id="f8">
+    <h2>Application Answer Key <span style="font-size:.8rem;color:var(--ink-soft)">(the written section — work these out loud)</span></h2>
+    <ol class="plain">
+      <li><b>Describe an abolishing operation + example.</b> An MO that <b>decreases</b> the current value of a reinforcer and <b>abates</b> related behavior. <em>Ex: right after a big meal, food is a weak reinforcer, so working for a snack drops (satiation).</em></li>
+      <li><b>Define an establishing operation + example.</b> An MO that <b>increases</b> the current value of a reinforcer and <b>evokes</b> related behavior. <em>Ex: water deprivation → water is a strong reinforcer, so getting-a-drink behavior increases.</em></li>
+      <li><b>Reinforcement / punishment 2×2.</b> Add+increase = <b>positive reinforcement</b>; remove+increase = <b>negative reinforcement</b>; add+decrease = <b>positive punishment</b>; remove+decrease = <b>negative punishment</b>. (Positive/negative = add/remove, not good/bad.)</li>
+      <li><b>Conditioned reinforcer + two examples.</b> A stimulus that gained its reinforcing power through a history of <b>pairing</b> with existing reinforcers. <em>Ex: money; a token or sticker (also praise, grades).</em></li>
+      <li><b>SD vs. SΔ.</b> Given an <b>SD</b>, the response <b>has been reinforced</b> (reinforcement available) → more likely. Given an <b>SΔ</b>, it has <b>not</b> (unavailable) → less likely.</li>
+      <li><b>Three harmful side effects of punishment.</b> 1) emotional/aggressive reactions; 2) escape and avoidance of the punisher, the person, and the setting; 3) suppression <b>without teaching a replacement</b> (the behavior returns).</li>
+      <li><b>Label the three-term contingency + example.</b> <b>SD → R → S<sup>R+</sup></b> (antecedent → behavior → reinforcing consequence). <em>Ex: teacher asks "What's 2+2?" (SD) → child says "4" (R) → "Great job!" (S<sup>R+</sup>).</em></li>
+      <li><b>Define concept formation.</b> A repertoire requiring <b>generalization WITHIN a stimulus class</b> (respond to all examples) <b>AND discrimination BETWEEN classes</b> (not to non-examples). Both are necessary.</li>
+      <li><b>Name the three levels of scientific understanding.</b> 1) <b>Description</b> (observable, quantifiable facts), 2) <b>Prediction</b> (correlation), 3) <b>Control</b> (a functional relation — the highest level).</li>
+      <li><b>Two schedules + a key word each.</b> <b>Fixed Ratio (FR)</b> — reinforcement after a set <b>number</b> of responses; key words "every Nth / after each X responses." <b>Variable Interval (VI)</b> — first response after a <b>varying time</b>; key words "on average every X minutes / unpredictable time."</li>
+      <li><b>Which dimension of behavior can be shaped?</b> → <b>All of them</b> (frequency, latency, duration, intensity).</li>
+      <li><b>Generality is comprised of:</b> lasting over <b>time</b>, transfer across <b>settings</b>, and spread to <b>other behaviors</b>.</li>
+      <li><b>The M&amp;M bag the child can't open → which CMO?</b> <b>Transitive (CMO-T)</b> — the sealed bag establishes "help/opening" as a reinforcer and evokes the mand.</li>
+      <li><b>The yellow cardstock has become what kind of stimulus?</b> A <b>reflexive CMO (CMO-R)</b> — it warns of a worsening situation, raising the value of escape and evoking the tantrum.</li>
+      <li><b>The critical test for stimulus equivalence.</b> Emergence of untrained relations — the <b>combined symmetry-and-transitivity</b> test (train A→B and B→C, then test <b>C→A</b>), reflexivity assumed.</li>
+      <li><b>A deadline for meeting a schedule's response requirement =</b> <b>limited hold</b>.</li>
+      <li><b>Gradual change of an antecedent stimulus so the response occurs to a new / partly-changed stimulus =</b> <b>fading</b>.</li>
+    </ol>
+  </div>
+</div><!-- /final guide -->
+
 </section>
 
 <!-- ================= FLASHCARDS ================= -->
@@ -925,7 +1212,7 @@
 </section>
 
 <footer>
-  ABA Study System · Exams 1 &amp; 2 · self-contained, works offline once loaded.<br>
+  ABA Study System · Exams 1, 2 &amp; Final · self-contained, works offline once loaded.<br>
   Made for scenario practice: apply the concept, don't just recite it.
 </footer>
 
@@ -1094,6 +1381,102 @@ const CARDS_2 = [
  {c:"app", f:"Time-out for ESCAPE-maintained behavior?", b:`<b>Backfires.</b> Time-out is time-out <i>from positive reinforcement</i> — if the task is what they want to escape, removing them <b>reinforces escape</b> → behavior <b>increases</b>.`},
  {c:"app", f:"How do you make time-out MORE effective?", b:`Make <b>"time-in" rich with reinforcement</b> so removal actually costs something.<br><br>Keep time-out <b>brief</b>, and give <b>no attention</b> during it.`},
  {c:"app", f:"Attention-maintained problem behavior — best plan?", b:`<b>Extinction of attention</b> (planned ignoring) for the problem behavior <b>+</b> reinforce an <b>appropriate</b> way to recruit attention (e.g., raising a hand). Interventions must match the function.`},
+];
+
+const CAT_3 = {
+  mo:{name:"Motivating Operations", color:"var(--cat-mo)"},
+  stim:{name:"Stimulus Control", color:"var(--cat-stim)"},
+  prompt:{name:"Prompts", color:"var(--cat-prompt)"},
+  meas:{name:"Measurement & IOA", color:"var(--cat-meas)"},
+  core:{name:"Core Principles", color:"var(--cat-core)"},
+  study:{name:"Studies & Foundations", color:"var(--cat-study)"},
+};
+const CARDS_3 = [
+ // ---------- Motivating Operations ----------
+ {c:"mo", f:"The TWO effects every MO has", b:"<b>1. Value-altering</b> \u2014 changes how effective a consequence is now: <b>EO elevates</b> value (deprivation), <b>AO abolishes</b> value (satiation).<br><b>2. Behavior-altering</b> \u2014 changes current frequency: <b>Evocative</b> \u2191 (EOs), <b>Abative</b> \u2193 (AOs)."},
+ {c:"mo", f:"Establishing Operation (EO) vs. Abolishing Operation (AO)", b:"<b>EO</b> = <b>INCREASES</b> a reinforcer\u2019s value \u2192 <b>evokes</b> behavior (deprivation).<br><br><b>AO</b> = <b>DECREASES</b> a reinforcer\u2019s value \u2192 <b>abates</b> behavior (satiation).<br><br>Hook: <b>E</b>O <b>E</b>levates, <b>A</b>O <b>A</b>bolishes."},
+ {c:"mo", f:"Evocative vs. Abative effect", b:"These are the <b>behavior-altering</b> effects.<br><br><b>Evocative</b> = <b>increases</b> the current frequency of behavior that gets the consequence.<br><b>Abative</b> = <b>decreases</b> it.<br><br>(Value-altering = establishing/abolishing; behavior-altering = evocative/abative.)"},
+ {c:"mo", f:"Does deprivation increase or decrease reinforcer effectiveness?", b:"<b>INCREASES</b> it. Deprivation is an <b>establishing operation (EO)</b> \u2014 the reinforcer becomes more potent and related behavior is evoked."},
+ {c:"mo", f:"Does satiation increase or decrease reinforcer effectiveness?", b:"<b>DECREASES</b> it. Satiation is an <b>abolishing operation (AO)</b> \u2014 the reinforcer becomes weaker and related behavior is abated."},
+ {c:"mo", f:"Unconditioned MO (UMO) \u2014 define + examples", b:"An MO whose value-altering effect is <b>unlearned / biological</b>.<br><br>Examples: deprivation of <b>food, water, sleep, oxygen, activity</b>; <b>painful stimulation</b>; <b>increased temperature</b>."},
+ {c:"mo", f:"Conditioned MO (CMO) \u2014 define + the 3 types", b:"An MO whose value-altering effect depends on a <b>learning history</b>.<br><br>Three types: <b>Surrogate (CMO-S)</b>, <b>Reflexive (CMO-R)</b>, <b>Transitive (CMO-T)</b>."},
+ {c:"mo", f:"Surrogate CMO (CMO-S)", b:"A neutral stimulus <b>paired with</b> a UMO/other MO takes on that MO\u2019s value- and behavior-altering effects.<br><br><i>A room always linked with food \u2192 entering it evokes food-seeking even when not hungry.</i><br><br>This is the CMO of <b>PAIRING</b>."},
+ {c:"mo", f:"Reflexive CMO (CMO-R)", b:"A stimulus that <b>signals a worsening (or improving) situation</b>; its onset raises the value of its <b>own removal</b> and evokes escape/avoidance.<br><br><i>Yellow cardstock predicts a hated task \u2192 seeing it evokes tantrum.</i><br><br>The <b>warning</b> CMO \u2014 works on its <b>own</b> offset."},
+ {c:"mo", f:"Transitive CMO (CMO-T)", b:"Establishes <b>another stimulus</b> as a reinforcer and evokes behavior that got that other stimulus.<br><br><i>Sealed M&amp;M bag the child can\u2019t open \u2192 makes \u201copening/help\u201d valuable \u2192 evokes mand \u201copen!\u201d</i><br><br>Makes <b>something else</b> a reinforcer."},
+ {c:"mo", f:"Which CMO relates to PAIRING?", b:"<b>Surrogate (CMO-S)</b> \u2014 a neutral stimulus paired with an existing MO comes to substitute for it."},
+ {c:"mo", f:"Which CMO would someone want ELIMINATED?", b:"<b>Reflexive (CMO-R)</b> \u2014 it warns of a worsening situation, so we weaken/remove it (e.g., pair the demand context with reinforcement so it no longer signals \u201cworse\u201d)."},
+ {c:"mo", f:"Which CMO focuses on ELIMINATING ITSELF?", b:"<b>Reflexive (CMO-R)</b> \u2014 its onset makes its <b>own offset/removal</b> reinforcing, so it evokes behavior that gets rid of it."},
+ {c:"mo", f:"Which CMO makes SOMETHING ELSE a reinforcer?", b:"<b>Transitive (CMO-T)</b> \u2014 the classic \u201chide/withhold an item to evoke a mand\u201d setup."},
+ {c:"mo", f:"Which CMOs are often PRESENTED TOGETHER?", b:"The <b>reflexive (CMO-R)</b>: the warning stimulus and the worsening event are presented together (paired in time) to establish the relation.<br><br>(If the stem is really about pairing a neutral stimulus with an existing MO \u2192 that\u2019s the surrogate.)"},
+ {c:"mo", f:"M&M bag the child can\u2019t open \u2192 mand \u201copen!\u201d \u2014 which CMO?", b:"<b>Transitive CMO (CMO-T).</b><br><br>The sealed bag establishes the therapist\u2019s <b>help (opening)</b> as a reinforcer and evokes the mand."},
+ {c:"mo", f:"MO vs. SD", b:"<b>MO</b> changes <b>how much you want</b> the consequence (value) \u2014 deprivation, warning, establishing another reinforcer.<br><br><b>SD</b> signals the consequence is <b>available</b> for a response (history of differential reinforcement)."},
+
+ // ---------- Stimulus Control ----------
+ {c:"stim", f:"How do you KNOW a behavior is under stimulus control?", b:"It occurs <b>more often in the presence of the SD than the S\u0394</b> \u2014 <b>differential responding</b>. A higher rate/probability given the SD = stimulus control."},
+ {c:"stim", f:"SD vs. S\u0394", b:"<b>SD</b> = antecedent where the response <b>has been reinforced</b> \u2192 reinforcement <b>available</b>.<br><br><b>S\u0394</b> = antecedent where it has <b>not</b> \u2192 <b>unavailable</b> \u2192 behavior less likely."},
+ {c:"stim", f:"Choosing the S\u0394 \u2014 no reinforcement, or less?", b:"Classically, responding to the <b>S\u0394</b> \u2192 <b>no reinforcement (extinction)</b>.<br><br>But an S\u0394 can also signal a <b>lesser amount / quality / delay</b> of reinforcement \u2014 not always zero, sometimes just the <b>worse</b> option."},
+ {c:"stim", f:"Conditional discrimination \u2014 what must be present?", b:"A discrimination where the correct response <b>depends on more than one stimulus</b> \u2014 one stimulus\u2019s meaning is <b>conditional on another</b>.<br><br>Classic: <b>matching-to-sample</b> (a sample tells you which comparison is correct). Needs \u2265 2 sources of stimulus control."},
+ {c:"stim", f:"Stimulus generalization vs. discrimination", b:"<b>Generalization</b> = responding <b>similarly</b> to stimuli sharing features with the SD (spreads across a class).<br><br><b>Discrimination</b> = responding <b>differently</b> to different stimuli (SD vs. S\u0394). Two ends of one continuum."},
+ {c:"stim", f:"When is generalization more likely when an array is presented?", b:"When the array items are <b>highly similar to the trained SD</b> (share salient features). The more novel items resemble the training stimulus, the more responding <b>generalizes</b> to them."},
+ {c:"stim", f:"Concept formation \u2014 be specific!", b:"Requires <b>BOTH</b>:<br>1) <b>Generalization WITHIN a class</b> (respond to all examples), AND<br>2) <b>Discrimination BETWEEN classes</b> (not to non-examples).<br><br>Both are needed \u2014 one alone isn\u2019t a concept."},
+ {c:"stim", f:"Feature stimulus class", b:"Members share <b>common physical features/form</b> (they look alike). Created by shared physical dimensions.<br><br><i>Examples: all triangles, all red things, all \u201cbirds.\u201d</i><br><br>Look alike \u2192 feature class."},
+ {c:"stim", f:"Arbitrary stimulus class", b:"Members <b>don\u2019t</b> share physical features \u2014 grouped by <b>function/learning history</b>.<br><br><i>Examples: {apple, milk, bread} = \u201cfood\u201d; spoken \u201cdog,\u201d a dog picture, printed DOG.</i><br><br>No physical similarity \u2192 arbitrary."},
+ {c:"stim", f:"Stimulus equivalence \u2014 the 3 properties", b:"<b>Reflexivity</b> \u2014 match a stimulus to itself, A=A (identity matching).<br><b>Symmetry</b> \u2014 reverse a trained relation: if A\u2192B then B\u2192A.<br><b>Transitivity</b> \u2014 combine: if A\u2192B and B\u2192C then A\u2192C.<br><br>(Sidman) All three = an equivalence class."},
+ {c:"stim", f:"The critical TEST for stimulus equivalence", b:"Demonstrate <b>emergence of untrained relations</b> \u2014 the <b>combined symmetry-and-transitivity test</b>: train <b>A\u2192B</b> and <b>B\u2192C</b>, then test <b>C\u2192A</b> (reflexivity assumed)."},
+ {c:"stim", f:"Salience", b:"How <b>noticeable/prominent</b> a stimulus is in its context. More salient features acquire <b>stimulus control faster</b> (and can drive overselectivity)."},
+ {c:"stim", f:"Faulty stimulus control \u2014 when/how/avoid", b:"Responding comes under control of an <b>irrelevant feature or the wrong stimulus</b> (e.g., answer <b>position</b> or a color).<br><br><b>Happens when</b> an irrelevant stimulus is accidentally correlated with reinforcement.<br><b>Avoid it:</b> vary irrelevant features, randomize position, use multiple exemplars, fade the relevant dimension."},
+ {c:"stim", f:"Stimulus overselectivity vs. blocking", b:"<b>Overselectivity</b> = responding controlled by only <b>one feature/subset</b> of a complex stimulus (common in autism).<br><br><b>Blocking</b> = a <b>previously learned</b> cue <b>prevents</b> a newly added redundant cue from gaining control.<br><br>Narrow attention vs. prior learning blocking new learning."},
+
+ // ---------- Prompts ----------
+ {c:"prompt", f:"Response prompts vs. Stimulus prompts", b:"<b>Response prompts</b> act on the <b>response</b> (help the learner do it): verbal, gestural, model, physical.<br><br><b>Stimulus prompts</b> act on the <b>antecedent/SD itself</b> (change the materials): movement, position, redundancy (color/size).<br><br>Help the behavior vs. change the stimulus."},
+ {c:"prompt", f:"Most-to-Least (MTL) vs. Least-to-Most (LTM)", b:"<b>MTL</b> = start with the <b>most</b> intrusive prompt, fade to less. Good for new/errorless acquisition.<br><br><b>LTM</b> = start with the <b>least</b> help, add more as needed. Good when the learner <b>may already</b> have the skill."},
+ {c:"prompt", f:"Graduated guidance", b:"<b>Physical</b> prompting adjusted <b>moment-to-moment, within the response</b>, based on how much help is needed right now (hand-over-hand that lightens; shadowing)."},
+ {c:"prompt", f:"MTL vs. graduated guidance", b:"<b>MTL</b> fades on a <b>preset plan across trials</b>.<br><br><b>Graduated guidance</b> is adjusted <b>in real time, within each response</b>, and often includes <b>shadowing</b>."},
+ {c:"prompt", f:"Time delay (constant vs. progressive)", b:"Keep the <b>same</b> prompt but insert a <b>time gap</b> between the SD and the prompt.<br><br><b>Constant</b> = fixed delay (e.g., always 4 s). <b>Progressive</b> = gradually lengthening delay."},
+ {c:"prompt", f:"Time delay vs. MTL", b:"<b>Time delay</b> manipulates <b>TIME</b> (same prompt, delayed).<br><br><b>MTL</b> manipulates the <b>PROMPT LEVEL</b> (how intrusive the prompt is)."},
+ {c:"prompt", f:"Stimulus fading vs. stimulus shape transformation", b:"<b>Fading</b> = gradually change a <b>stimulus dimension</b> (color, size, intensity); the <b>shape stays</b>.<br><br><b>Shape transformation</b> = gradually change the <b>actual SHAPE</b> into the target form (a dog outline morphs into the word \u201cdog\u201d)."},
+ {c:"prompt", f:"Stimulus fading \u2014 example", b:"Highlight the correct answer in <b>bright color</b> and slowly <b>dim it</b> to normal; or oversize the target letter and shrink it. The controlling <b>dimension</b> fades; the form stays."},
+ {c:"prompt", f:"Stimulus shape transformation \u2014 example", b:"A <b>picture/outline</b> of an object gradually <b>morphs into the printed word</b>; a dotted traceable letter becomes a plain letter. The <b>shape itself</b> changes."},
+ {c:"prompt", f:"Errorless learning", b:"Using prompts (MTL, time delay, stimulus fading/shaping) to <b>prevent errors</b> during acquisition \u2014 the learner rarely makes a mistake, so wrong responses aren\u2019t practiced."},
+
+ // ---------- Measurement & IOA ----------
+ {c:"meas", f:"Dimensional quantities of behavior", b:"<b>Repeatability:</b> count, rate/frequency, celeration.<br><b>Temporal extent:</b> duration.<br><b>Temporal locus:</b> response latency, interresponse time (IRT).<br><b>Derived:</b> percentage, trials-to-criterion."},
+ {c:"meas", f:"Count vs. Rate vs. Duration vs. Latency vs. IRT", b:"<b>Count</b> = number of occurrences.<br><b>Rate/frequency</b> = count <b>per unit time</b>.<br><b>Duration</b> = how long it lasts.<br><b>Latency</b> = SD onset \u2192 <b>start</b> of response.<br><b>IRT</b> = time <b>between</b> consecutive responses."},
+ {c:"meas", f:"Which dimension of behavior can be SHAPED?", b:"<b>ALL of them</b> \u2014 frequency, latency, duration, magnitude/intensity. Shaping can differentially reinforce approximations of <b>any</b> measurable dimension."},
+ {c:"meas", f:"Whole-interval recording (WIR)", b:"Score the interval only if the behavior occurs the <b>ENTIRE</b> interval.<br><br><b>UNDER-estimates</b> behavior. Good for continuous behaviors you want to <b>increase</b> (on-task)."},
+ {c:"meas", f:"Partial-interval recording (PIR)", b:"Score the interval if the behavior occurs at <b>ANY point</b>.<br><br><b>OVER-estimates</b> behavior. Good for behaviors you want to <b>decrease</b>."},
+ {c:"meas", f:"Momentary time sampling (MTS)", b:"Score the interval if the behavior occurs at the <b>exact moment the interval ends</b>.<br><br>Can <b>over- or under-estimate</b>; least biased with <b>short</b> intervals. Good for groups / long sessions."},
+ {c:"meas", f:"Interval lengths \u2014 how long?", b:"<b>Whole &amp; partial interval:</b> short \u2014 generally <b>\u2264 ~15 seconds</b> (often 5\u201310 s).<br><br><b>Momentary time sampling:</b> keep relatively short \u2014 Cooper notes intervals <b>under ~2 minutes</b> are highly concordant with continuous measurement."},
+ {c:"meas", f:"Definition of interval recording", b:"A <b>discontinuous</b> measurement in which the observer divides the observation period into <b>brief equal intervals</b> and records whether the target behavior occurred within each."},
+ {c:"meas", f:"How do interval methods over/under-estimate true behavior?", b:"<b>Whole interval \u2192 UNDER-estimates.</b><br><b>Partial interval \u2192 OVER-estimates.</b><br><b>MTS \u2192 either way</b> (least biased with short intervals)."},
+ {c:"meas", f:"Permanent product \u2014 why favorable?", b:"Measuring behavior by its <b>lasting outcome</b> (completed worksheets, dishes washed, weight).<br><br>Favorable: measure <b>after the fact</b> (no live watching), often <b>more accurate &amp; less intrusive</b>, saves observer time, products can be <b>re-scored</b>."},
+ {c:"meas", f:"Common measurement errors", b:"<b>Observer drift</b> \u2014 definition shifts over time.<br><b>Reactivity</b> \u2014 being observed changes the behavior.<br><b>Observer bias/expectancy</b> \u2014 expectations color recording.<br>Also: poorly defined targets, overly complex codes."},
+ {c:"meas", f:"IOA \u2014 DV only, or DV + IV?", b:"Assess agreement on <b>BOTH</b>.<br><br><b>IOA</b> = agreement on the <b>dependent variable</b> (target behavior).<br><b>Treatment integrity / procedural fidelity</b> = agreement/consistency on the <b>independent variable</b> (was the intervention run as designed?)."},
+ {c:"meas", f:"What is agreement on the INDEPENDENT variable called?", b:"<b>Treatment integrity</b> (a.k.a. <b>procedural fidelity / procedural integrity / treatment fidelity</b>) \u2014 NOT \u201cIOA.\u201d IOA is reserved for the dependent variable."},
+
+ // ---------- Core Principles ----------
+ {c:"core", f:"Limited hold \u2014 define + example", b:"A <b>deadline</b> for meeting a schedule\u2019s response requirement: once reinforcement is available, the response must occur <b>within a set time window</b> or it\u2019s lost until next time.<br><br><i>VI 5-min with a 30-s limited hold \u2192 after 5 min, only 30 s to respond.</i>"},
+ {c:"core", f:"Reinforcement / punishment 2\u00d72", b:"<b>Add + increase</b> = Positive Reinforcement.<br><b>Remove + increase</b> = Negative Reinforcement.<br><b>Add + decrease</b> = Positive Punishment.<br><b>Remove + decrease</b> = Negative Punishment.<br><br>(+/\u2212 = add/remove, not good/bad.)"},
+ {c:"core", f:"Conditioned vs. unconditioned vs. generalized", b:"<b>Unconditioned</b> = works with no learning (food, pain).<br><b>Conditioned</b> = works via pairing (tokens, \u201cno\u201d).<br><b>Generalized</b> = paired with <b>many</b> backups, works regardless of any one MO (<b>money, tokens</b>). Applies to reinforcers AND punishers."},
+ {c:"core", f:"Escape vs. avoidance", b:"Both = negative reinforcement.<br><br><b>Escape = Ends</b> an aversive that\u2019s already present.<br><b>Avoidance = Averts</b> one that hasn\u2019t occurred yet."},
+ {c:"core", f:"Premack principle", b:"A <b>high-probability behavior</b> reinforces a <b>low-probability behavior</b> \u2014 \u201cfirst work, then play.\u201d<br><br><i>Osborne (1969): free time contingent on staying seated reduced out-of-seat behavior.</i>"},
+ {c:"core", f:"Matching law / Herrnstein\u2019s Law of Effect \u2014 the graph", b:"Under <b>concurrent schedules</b>, <b>relative response rate matches relative reinforcement rate</b>.<br><br>Graph: relative responding (y) vs. relative reinforcement (x) = a straight line, <b>slope \u2248 1.0</b>, perfect positive linear relationship."},
+ {c:"core", f:"Schedules in one breath", b:"<b>Ratio = # responses; Interval = time.</b> <b>Fixed = set; Variable = averaged.</b><br><br><b>VR gambles</b> (highest, most extinction-resistant); <b>FI scallops.</b> CRF = acquisition; intermittent = maintenance."},
+ {c:"core", f:"Compound schedules \u2014 which have SDs?", b:"<b>CM-cued:</b> <b>C</b>hained &amp; <b>M</b>ultiple have SDs (discriminated).<br><b>TM-muted:</b> <b>T</b>andem &amp; <b>M</b>ixed have none.<br><br><b>Concurrent</b> = two choices at once (basis of the matching law)."},
+ {c:"core", f:"3 harmful side effects of punishment (Sidman 1993)", b:"1) <b>Emotional/aggressive</b> reactions.<br>2) <b>Escape/avoidance</b> of the punisher, person, and setting.<br>3) <b>Suppression without teaching a replacement</b> (behavior returns).<br><br>(Also: modeling coercion; the punisher gets negatively reinforced.)"},
+
+ // ---------- Studies & Foundations ----------
+ {c:"study", f:"Test &amp; Heward (1984)", b:"<b>Accuracy of momentary time sampling.</b> Compared <b>fixed- vs. variable-interval</b> MTS observation schedules \u2014 a <b>measurement</b> study; MTS is valid/efficient, but <b>interval length matters</b> (shorter = more accurate)."},
+ {c:"study", f:"Sidman (1993)", b:"<b>Reflections on Behavior Analysis and Coercion.</b> Coercion = control via <b>punishment/threat</b> or <b>negative reinforcement</b> (removal of punishment); it produces <b>undesirable side effects</b> and shouldn\u2019t be the basis of therapy."},
+ {c:"study", f:"Neef (1994)", b:"Extended the <b>matching law</b>: <b>reinforcer rate, quality, delay, and response effort</b> each influence <b>choice/time allocation</b>, and you can assess which dimension matters most for an individual."},
+ {c:"study", f:"Osborne (1969)", b:"<b>Free-time as a reinforcer:</b> free time <b>contingent on staying seated</b> sharply <b>reduced out-of-seat behavior</b> in students at a school for the deaf. A Premack/activity-reinforcer classic."},
+ {c:"study", f:"7 Dimensions of ABA \u2014 mnemonic + who?", b:"<b>GET A CAB</b> \u2014 Generality, Effective, Technological, Applied, Conceptually systematic, Analytic, Behavioral.<br><br>Established by <b>Baer, Wolf &amp; Risley (1968)</b>."},
+ {c:"study", f:"Generality is comprised of\u2026", b:"Behavior change that <b>lasts over time</b> (maintenance), <b>appears in other settings/situations</b>, and <b>spreads to other behaviors</b> (response generalization)."},
+ {c:"study", f:"Attitudes of science \u2014 mnemonic", b:"<b>Dr. PEEP\u00b2</b>: Determinism, Replication, Parsimony, Empiricism, Experimentation, Philosophical doubt."},
+ {c:"study", f:"Determinism vs. Free Will", b:"<b>Opposites.</b> Determinism (behavior is lawful/caused) is required for a science of behavior; free will says behavior is uncaused. They do NOT align."},
+ {c:"study", f:"Independent vs. Dependent variable", b:"<b>IV</b> = what you <b>manipulate</b> (the intervention). Hook: <b>I</b> change it.<br><br><b>DV</b> = what you <b>measure</b> \u2014 the target <b>behavior</b>; it <b>depends</b> on the IV."},
+ {c:"study", f:"Respondent behavior / S-R psychology", b:"<b>Respondent</b> behavior is <b>elicited</b> by an antecedent stimulus (reflexive). <b>S-R</b> = stimulus\u2192response (Pavlov/Watson). Contrast with operant (A-B-C, emitted, Skinner)."},
+ {c:"study", f:"Three levels of scientific understanding", b:"<b>1) Description</b> (observable facts) \u2192 <b>2) Prediction</b> (correlation) \u2192 <b>3) Control</b> (a functional relation \u2014 the highest level)."},
 ];
 
 let filter = "all";
@@ -1333,9 +1716,73 @@ const TEST_2 = [
    at render time — buildTest() shuffles each question's answer choices on every build for
    both exams, so the correct answer is spread across A–D and can't be gamed. */
 
+const SECTIONS_3 = [
+  {id:'A', name:"Section A · Motivating Operations"},
+  {id:'B', name:"Section B · Stimulus Control & Concepts"},
+  {id:'C', name:"Section C · Prompts & Transfer"},
+  {id:'D', name:"Section D · Measurement & IOA"},
+  {id:'E', name:"Section E · Core Principles"},
+  {id:'F', name:"Section F · Studies & Foundations"},
+];
+const TEST_3 = [
+ // ---- Part I: True / False (20) ----
+ {q:"Deprivation is an abolishing operation.",o:["True","False"],a:1,e:"Deprivation is an ESTABLISHING operation (EO) \u2014 it increases a reinforcer's value and evokes related behavior. Satiation is the abolishing operation.",sec:'A'},
+ {q:"A reflexive CMO (CMO-R) establishes its own removal/termination as reinforcement.",o:["True","False"],a:0,e:"The reflexive CMO signals worsening; its onset makes its own offset reinforcing and evokes escape/avoidance behavior.",sec:'A'},
+ {q:"A surrogate CMO (CMO-S) acquires its effect by being paired with another motivating operation.",o:["True","False"],a:0,e:"The surrogate CMO is the pairing CMO \u2014 a neutral stimulus paired with a UMO/other MO takes on that MO's value- and behavior-altering effects.",sec:'A'},
+ {q:"A transitive CMO (CMO-T) makes another stimulus more effective as a reinforcer.",o:["True","False"],a:0,e:"The transitive CMO establishes the reinforcing effectiveness of ANOTHER stimulus and evokes behavior that produced it (e.g., the sealed-bag mand).",sec:'A'},
+ {q:"Whole-interval recording tends to overestimate the occurrence of behavior.",o:["True","False"],a:1,e:"Whole-interval recording UNDER-estimates behavior (the behavior must occur for the entire interval to be scored). Partial-interval over-estimates.",sec:'D'},
+ {q:"Partial-interval recording tends to overestimate behavior.",o:["True","False"],a:0,e:"Any occurrence at all scores the whole interval, so partial-interval recording tends to OVER-estimate.",sec:'D'},
+ {q:"Interobserver agreement (IOA) is a measure taken on the independent variable.",o:["True","False"],a:1,e:"IOA is taken on the DEPENDENT variable (the target behavior). Agreement/consistency on the independent variable is called treatment integrity / procedural fidelity.",sec:'D'},
+ {q:"Momentary time sampling records whether the behavior occurs at the moment the interval ends.",o:["True","False"],a:0,e:"That is the defining rule of MTS \u2014 occurrence is scored only at the end-of-interval moment.",sec:'D'},
+ {q:"A limited hold is a deadline for meeting a schedule's response requirement.",o:["True","False"],a:0,e:"Once reinforcement becomes available, the response must occur within a set time window (the limited hold) or the reinforcer is lost until the next opportunity.",sec:'E'},
+ {q:"Stimulus fading gradually changes the shape of the stimulus into the target form.",o:["True","False"],a:1,e:"Fading changes a stimulus DIMENSION (color, size, intensity) while the shape stays. Changing the actual shape is stimulus shape transformation/formation.",sec:'C'},
+ {q:"In most-to-least prompting, you begin with the least intrusive prompt.",o:["True","False"],a:1,e:"Most-to-least begins with the MOST intrusive prompt and fades to less. Least-to-most begins with the least help.",sec:'C'},
+ {q:"Response prompts operate on the antecedent stimulus itself.",o:["True","False"],a:1,e:"Response prompts help the RESPONSE (verbal, gestural, model, physical). Stimulus prompts operate on the antecedent/SD (movement, position, redundancy).",sec:'C'},
+ {q:"Concept formation requires only generalization within a class.",o:["True","False"],a:1,e:"It requires BOTH generalization within a class (respond to all examples) AND discrimination between classes (not to non-examples).",sec:'B'},
+ {q:"Members of a feature stimulus class share common physical features.",o:["True","False"],a:0,e:"A feature class is grouped by shared physical form (all triangles, all red things). An arbitrary class has no physical similarity.",sec:'B'},
+ {q:"Reflexivity, symmetry, and transitivity are the three properties of stimulus equivalence.",o:["True","False"],a:0,e:"Sidman's three defining properties. Emergence of all three (untrained) marks an equivalence class.",sec:'B'},
+ {q:"Negative reinforcement decreases the future frequency of behavior.",o:["True","False"],a:1,e:"Negative reinforcement INCREASES behavior (an aversive stimulus is removed). 'Negative' = removal, not decrease.",sec:'E'},
+ {q:"Determinism and free will are compatible, aligned assumptions.",o:["True","False"],a:1,e:"They are opposites. Determinism (behavior is lawful/caused) is required for a science of behavior; free will holds behavior is uncaused.",sec:'F'},
+ {q:"The matching law states that relative response rate matches the relative rate of reinforcement.",o:["True","False"],a:0,e:"Herrnstein's matching law \u2014 under concurrent schedules, responding is allocated in proportion to obtained reinforcement (slope \u2248 1.0).",sec:'E'},
+ {q:"Satiation increases the effectiveness of a reinforcer.",o:["True","False"],a:1,e:"Satiation DECREASES reinforcer effectiveness (an abolishing operation). Deprivation increases it.",sec:'A'},
+ {q:"Permanent product measurement requires observing the behavior as it occurs.",o:["True","False"],a:1,e:"Permanent product measures the lasting OUTCOME after the fact (completed worksheets, dishes washed), so live observation isn't required.",sec:'D'},
+ // ---- Part II: Multiple Choice (30) ----
+ {q:"A therapist gives a child a bag of M&M's the child cannot open, so the child mands 'open!'. The sealed bag is an example of a:",o:["Transitive CMO (CMO-T)","Surrogate CMO (CMO-S)","Reflexive CMO (CMO-R)","Discriminative stimulus (SD)"],a:0,e:"The sealed bag establishes the therapist's help (opening) as a reinforcer and evokes the mand \u2014 the definition of a transitive CMO.",sec:'A'},
+ {q:"A child hates cutting shapes. When she sees the yellow cardstock come out, she begins to tantrum. The yellow cardstock has most precisely become a:",o:["Reflexive CMO (CMO-R) / conditioned warning stimulus","Transitive CMO (CMO-T)","Generalized reinforcer","Unconditioned motivating operation"],a:0,e:"The cardstock signals a worsening situation (the aversive task), raising the value of escape and evoking the tantrum \u2014 a reflexive CMO / conditioned aversive warning stimulus.",sec:'A'},
+ {q:"A particular room is always associated with food. Entering that room now evokes food-seeking even when the person isn't hungry. This is a:",o:["Surrogate CMO (CMO-S)","Reflexive CMO (CMO-R)","Transitive CMO (CMO-T)","Stimulus delta"],a:0,e:"A neutral stimulus (the room) paired with a UMO (hunger/food) takes on its motivational effects \u2014 a surrogate CMO.",sec:'A'},
+ {q:"Which CMO makes ANOTHER stimulus function as a reinforcer?",o:["Transitive (CMO-T)","Surrogate (CMO-S)","Reflexive (CMO-R)","Unconditioned (UMO)"],a:0,e:"The transitive CMO establishes the reinforcing effectiveness of another stimulus and evokes behavior that has produced it.",sec:'A'},
+ {q:"Which CMO would a behavior analyst typically want to ELIMINATE or weaken?",o:["Reflexive (CMO-R)","Surrogate (CMO-S)","Transitive (CMO-T)","None \u2014 CMOs cannot be weakened"],a:0,e:"The reflexive CMO signals worsening and evokes escape/problem behavior; we weaken it (e.g., pairing the demand context with reinforcement so it no longer signals 'worse').",sec:'A'},
+ {q:"An establishing operation (EO):",o:["Increases the current value of a reinforcer and evokes related behavior","Decreases the value of a reinforcer and abates behavior","Signals that reinforcement is available for a response","Is defined by its suppressive effect on behavior"],a:0,e:"An EO is value-altering (increases effectiveness) and behavior-altering (evocative). Deprivation is the prototypical EO.",sec:'A'},
+ {q:"The behavior-altering effect that DECREASES the current frequency of a behavior is the:",o:["Abative effect","Evocative effect","Establishing effect","Reflexive effect"],a:0,e:"Abative = decreases current behavior (paired with AOs). Evocative = increases current behavior (paired with EOs).",sec:'A'},
+ {q:"Which of the following is an UNCONDITIONED motivating operation?",o:["Water deprivation","A token that has been paired with snacks","The word 'No'","Money"],a:0,e:"Water deprivation alters the value of water with no learning history \u2014 an unconditioned MO. Tokens, 'No,' and money are conditioned/generalized.",sec:'A'},
+ {q:"Which is a dimension of behavior that can be shaped?",o:["All of these","Frequency","Latency","Intensity"],a:0,e:"Shaping can differentially reinforce successive approximations of ANY measurable dimension \u2014 frequency, latency, duration, or magnitude/intensity.",sec:'D'},
+ {q:"Response latency is best defined as the time between:",o:["The onset of the SD and the start of the response","Two consecutive responses","The response and its consequence","The start and end of a single response"],a:0,e:"Latency = SD onset \u2192 start of the response. Time between consecutive responses is the interresponse time (IRT).",sec:'D'},
+ {q:"The time that elapses between two consecutive responses is the:",o:["Interresponse time (IRT)","Latency","Duration","Celeration"],a:0,e:"IRT measures temporal locus between responses. Latency is SD-to-response; duration is how long a response lasts.",sec:'D'},
+ {q:"Rate (frequency) of behavior is:",o:["A count per unit of time","The total number of occurrences","How long the behavior lasts","The time from the SD to the response"],a:0,e:"Rate standardizes count by time (e.g., 5 responses/minute), allowing comparison across sessions of different lengths.",sec:'D'},
+ {q:"A researcher wants to measure on-task behavior and worries about UNDER-estimating it. Which interval method most tends to under-estimate?",o:["Whole-interval recording","Partial-interval recording","Momentary time sampling","Event recording"],a:0,e:"Whole-interval recording requires the behavior for the entire interval, so brief lapses drop the score \u2014 it under-estimates.",sec:'D'},
+ {q:"For momentary time sampling to closely match continuous measurement, intervals should generally be:",o:["Relatively short (under about 2 minutes)","At least 10 minutes","Exactly 60 seconds regardless of behavior","As long as the whole session"],a:0,e:"Per Cooper, MTS intervals under ~2 minutes are highly concordant with continuous measurement; longer intervals lose accuracy.",sec:'D'},
+ {q:"Agreement/consistency measured on the INDEPENDENT variable (whether the intervention was implemented as designed) is called:",o:["Treatment integrity (procedural fidelity)","Interobserver agreement (IOA)","Social validity","Reactivity"],a:0,e:"IOA applies to the dependent variable; agreement on delivery of the independent variable is treatment integrity / procedural fidelity.",sec:'D'},
+ {q:"A matching-to-sample task, in which the correct comparison depends on the sample presented, is an example of:",o:["Conditional discrimination","Simple discrimination","Stimulus generalization","Response generalization"],a:0,e:"The correct response is conditional on more than one stimulus (sample + comparison) \u2014 a conditional discrimination.",sec:'B'},
+ {q:"The stimuli {milk, bread, apple, chicken} are grouped together as 'food.' This is best described as a(n):",o:["Arbitrary stimulus class","Feature stimulus class","Response class","Reflexive relation"],a:0,e:"The members share no common physical feature; they're grouped by a learned/functional relation \u2014 an arbitrary stimulus class.",sec:'B'},
+ {q:"A learner responds to only one feature (e.g., color) of a complex stimulus while ignoring other relevant features. This is:",o:["Stimulus overselectivity","Stimulus generalization","Reflexivity","Behavioral contrast"],a:0,e:"Overselectivity = restricted stimulus control by a subset of the available features of a compound stimulus (common in autism).",sec:'B'},
+ {q:"Most-to-least prompting is generally the best choice when:",o:["Teaching a brand-new skill and minimizing errors","The learner clearly already has the skill","You want to test for independence first","No physical guidance is possible"],a:0,e:"Starting with the most intrusive prompt and fading prevents errors during acquisition \u2014 ideal for new/errorless learning.",sec:'C'},
+ {q:"Time delay differs from most-to-least prompting because time delay manipulates:",o:["The time between the SD and the prompt (same prompt)","The intrusiveness/level of the prompt","The reinforcement schedule","The response topography"],a:0,e:"Time delay keeps the same prompt and inserts a delay (constant or progressive); MTL changes the prompt level/intrusiveness.",sec:'C'},
+ {q:"Graduated guidance is best described as:",o:["Physical prompts adjusted moment-to-moment within the response based on need","A fixed sequence of verbal prompts","Delivering the least intrusive prompt first","Changing the color of the stimulus"],a:0,e:"Graduated guidance adjusts physical assistance in real time (often with shadowing), unlike the preset fading schedule of MTL.",sec:'C'},
+ {q:"Adding a bright color to the correct answer to make it stand out is an example of a:",o:["Stimulus prompt (redundancy)","Response prompt (physical)","Response prompt (model)","Limited hold"],a:0,e:"Altering the antecedent stimulus itself (color/redundancy cue) is a stimulus prompt, not a prompt to the response.",sec:'C'},
+ {q:"A deadline for meeting the response requirement of a schedule of reinforcement is known as a:",o:["Limited hold","Post-reinforcement pause","Fixed-duration schedule","Stimulus control"],a:0,e:"The limited hold sets a time window in which the response must occur once reinforcement becomes available.",sec:'E'},
+ {q:"The gradual change of an antecedent stimulus that controls a response, so the response occurs to a partially changed or new stimulus, is:",o:["Fading","Errorless learning","A discriminative stimulus","A stimulus delta"],a:0,e:"That is the definition of (stimulus) fading \u2014 transferring stimulus control by gradually altering the controlling stimulus.",sec:'C'},
+ {q:"In the three-term contingency 'teacher asks a question \u2192 child answers \u2192 teacher praises,' the correct labels are:",o:["SD \u2192 R \u2192 S^R+ (antecedent, behavior, reinforcing consequence)","MO \u2192 SD \u2192 R","R \u2192 SD \u2192 S^R+","S^R+ \u2192 R \u2192 SD"],a:0,e:"Antecedent (SD) \u2192 Behavior (R) \u2192 Reinforcing consequence (S^R+) is the operant three-term contingency.",sec:'E'},
+ {q:"On the Herrnstein/matching-law graph, plotted points forming a straight line with a slope of 1.0 indicate:",o:["A perfect positive (linear) correlation between relative responding and relative reinforcement","A negative correlation","No relationship","A curvilinear relationship"],a:0,e:"A slope-1.0 straight line rising to the right = perfect matching: relative responding rises proportionally with relative reinforcement.",sec:'E'},
+ {q:"Osborne (1969) demonstrated that:",o:["Free time contingent on staying seated reduced out-of-seat behavior","Momentary time sampling is inaccurate at long intervals","Coercion produces harmful side effects","Reinforcer quality biases choice away from matching"],a:0,e:"Osborne (1969) used contingent free time (an activity reinforcer, Premack) to reduce out-of-seat behavior in students at a school for the deaf.",sec:'F'},
+ {q:"Sidman (1993), 'Reflections on Behavior Analysis and Coercion,' is primarily about:",o:["The side effects of coercion \u2014 punishment and negative reinforcement","The three properties of stimulus equivalence","The seven dimensions of ABA","Momentary time sampling accuracy"],a:0,e:"Sidman defined coercion as control via punishment/threat or negative reinforcement and argued it produces undesirable fallout.",sec:'F'},
+ {q:"Test & Heward (1984) is best known for studying:",o:["The accuracy of momentary time sampling (fixed- vs. variable-interval schedules)","Conditioned motivating operations","The matching law with academic tasks","Free time as a reinforcer"],a:0,e:"Test & Heward (1984) compared observation schedules for momentary time sampling \u2014 a measurement-accuracy study.",sec:'F'},
+ {q:"The critical test for stimulus equivalence is:",o:["Emergence of the combined symmetry-and-transitivity relation (train A\u2192B and B\u2192C, test C\u2192A)","Only reflexivity (A=A)","Only symmetry (if A\u2192B then B\u2192A)","Reinforcing every trained relation"],a:0,e:"The equivalence test simultaneously evaluates symmetry and transitivity (reflexivity assumed): after training A\u2192B and B\u2192C, test the untrained C\u2192A.",sec:'B'},
+];
+
 const EXAM_CFG = {
   1:{cat:CAT_1, cards:CARDS_1, sections:SECTIONS_1, test:TEST_1, qCount:40, timerMin:50},
   2:{cat:CAT_2, cards:CARDS_2, sections:SECTIONS_2, test:TEST_2, qCount:60, timerMin:80},
+  3:{cat:CAT_3, cards:CARDS_3, sections:SECTIONS_3, test:TEST_3, qCount:50, timerMin:110},
 };
 let currentExam = 1;
 let CAT, CARDS, SECTIONS, TEST, STORAGE_KEY, QCOUNT, TIMER_MIN;
@@ -1377,7 +1824,8 @@ function buildTest(){
     // Shuffle the answer choices too. data-oi stays the CANONICAL option index, so the
     // stored answer and grading are independent of where the option is displayed — a
     // reshuffle (or reload) never invalidates a saved choice.
-    const optOrder = shuffle([...Array(item.o.length).keys()]);
+    // 4-option questions shuffle; True/False stay in natural order.
+    const optOrder = item.o.length > 2 ? shuffle([...Array(item.o.length).keys()]) : [...Array(item.o.length).keys()];
     let opts='';
     optOrder.forEach((oi, slot)=>{
       const checked = answers[idx]===oi ? 'checked' : '';
@@ -1389,11 +1837,13 @@ function buildTest(){
         <span class="mark"></span></div>`;
     });
     const correctLetter = LETTERS[optOrder.indexOf(item.a)];
+    // For True/False, name the answer instead of a letter.
+    const correctLabel = item.o.length===2 ? item.o[item.a] : correctLetter;
     const trickTag = item.trick ? `<div class="trick-badge">⚠️ Classic trap — read carefully</div>` : '';
     const trapWhy = item.trickWhy ? `<div class="trap-why"><b>⚠️ Why this one trips people up:</b> ${item.trickWhy}</div>` : '';
     box.innerHTML = `${trickTag}<div class="qtext"><span class="qnum">${num}.</span> ${item.q}</div>
       ${opts}
-      <div class="exp"><b>Answer: ${correctLetter}.</b> ${item.e}${trapWhy}</div>`;
+      <div class="exp"><b>Answer: ${correctLabel}.</b> ${item.e}${trapWhy}</div>`;
     testQEl.appendChild(box);
   });
   testQEl.querySelectorAll('.opt').forEach(lbl=>{
