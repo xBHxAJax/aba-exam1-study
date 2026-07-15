@@ -289,7 +289,7 @@
   @media(max-width:520px){
     .testbar{position:static}
     .exam-btn small{display:none}
-    .exam-btn{padding:7px 20px;font-size:.95rem}
+    .exam-btn{padding:7px 11px;font-size:.86rem}
     .card{height:56vh}
     .face-body{padding:70px 20px 28px}
   }
@@ -303,6 +303,7 @@
     <button class="exam-btn active" data-exam="1" type="button">Exam 1<small>Foundations &amp; Philosophy</small></button>
     <button class="exam-btn" data-exam="2" type="button">Exam 2<small>Reinforcement · Schedules · Assessment</small></button>
     <button class="exam-btn" data-exam="3" type="button">Final<small>Cumulative · MOs · Measurement</small></button>
+    <button class="exam-btn" data-exam="4" type="button">All 3<small>Comprehensive · everything</small></button>
   </div>
   <nav class="tabs" id="tabs" role="tablist">
     <button class="tab active" data-view="overview" role="tab">Start Here</button>
@@ -513,13 +514,61 @@
   </div>
 </div><!-- /final overview -->
 
+<div class="exam-content" data-exam="4">
+  <p class="lead">Everything from <b>Exam 1, Exam 2, and the Final</b> in one place — one combined deck, one combined practice test, and all three study guides stacked end to end. This is the set to use when you want to review <b>all</b> the material at once.</p>
+
+  <div class="factbar">
+    <div class="fact"><div class="n">189</div><div class="l">Flashcards</div></div>
+    <div class="fact"><div class="n">184</div><div class="l">Questions</div></div>
+    <div class="fact"><div class="n">17</div><div class="l">Topic areas</div></div>
+  </div>
+  <div class="callout" style="color:var(--ink)">Every card and question is <b>tagged by which exam it came from</b> (E1 / E2 / F), so you can filter the deck to one topic, and the graded breakdown tells you exactly which exam's material is weakest.</div>
+
+  <div class="panel">
+    <h2>Pick where to jump in</h2>
+    <div class="startgrid">
+      <div class="startcard sc-guide" data-go="guide"><h3>📖 All Study Guides</h3><p>Exam 1, Exam 2, and the Final guides stacked in order — every part, table, and answer key.</p></div>
+      <div class="startcard sc-flash" data-go="flash"><h3>🃏 Master Deck</h3><p>All 189 cards across 17 topic areas. Filter to any single topic from any exam.</p></div>
+      <div class="startcard sc-test" data-go="test"><h3>✅ Full Practice Test</h3><p>All 184 questions, auto-graded, broken down by every topic area across the three exams.</p></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>How to use the comprehensive set</h2>
+    <ul class="plain">
+      <li><b>Don't take all 184 questions in one sitting.</b> It's a pool, not a timed exam. Use the topic filters on the deck, and treat the test as a diagnostic — the section breakdown shows which of the 17 topic areas to go re-drill.</li>
+      <li><b>Studying for one specific exam?</b> Use the <b>Exam 1</b>, <b>Exam 2</b>, or <b>Final</b> tabs instead — they're scoped, right-sized, and each has its own timer.</li>
+      <li><b>Some overlap is intentional.</b> The Final is cumulative, so a few ideas (the matching law, determinism vs. free will, the reinforcement/punishment 2×2) show up more than once. Seeing them again from a different angle is good practice, not a bug.</li>
+      <li><b>Progress is tracked separately</b> from the individual exams, so working through this set won't disturb your Exam 1 / Exam 2 / Final answers.</li>
+    </ul>
+    <div class="callout" style="color:var(--ink)"><b>Suggested order:</b> master the three exams individually first, then come here for a final mixed review — questions and answer choices are shuffled every attempt, so nothing can be memorized by position.</div>
+  </div>
+
+  <div class="panel">
+    <h2>What's inside</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Set</th><th>Topic areas</th><th>Cards</th><th>Questions</th></tr></thead>
+        <tbody>
+          <tr><td><b>Exam 1</b> · Foundations &amp; Philosophy</td><td>Contingencies · Theorists &amp; -isms · 7 Dimensions · Science · Key Terms</td><td>58</td><td>50</td></tr>
+          <tr><td><b>Exam 2</b> · Reinforcement, Schedules &amp; Assessment</td><td>Contingencies &amp; Consequences · Antecedents &amp; Motivation · Matching Law · Schedules · Assessments · Application</td><td>57</td><td>72</td></tr>
+          <tr><td><b>Final</b> · Cumulative</td><td>Motivating Operations · Stimulus Control · Prompts · Measurement &amp; IOA · Core Principles · Studies</td><td>74</td><td>62</td></tr>
+          <tr><td><b>Total</b></td><td><b>17 topic areas</b></td><td><b>189</b></td><td><b>184</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="plain">The Final's written <b>Application / short-answer</b> section isn't auto-gradable — its model answers are in the Final's study guide (stacked below in the Study Guide tab) under <b>Application Answer Key</b>.</p>
+  </div>
+</div><!-- /all overview -->
+
+
 </section>
 
 <!-- ================= STUDY GUIDE ================= -->
 <section class="view" id="view-guide">
 <div class="exam-content active" data-exam="1">
   <div class="panel">
-    <h2>Contents</h2>
+    <h2>Exam 1 · Contents</h2>
     <nav class="toc">
       <a href="#g1">Part 1 · The Four Contingencies</a>
       <a href="#g2">Part 2 · Theorists &amp; the "-isms"</a>
@@ -736,7 +785,7 @@
 
 <div class="exam-content" data-exam="2">
   <div class="panel">
-    <h2>Contents</h2>
+    <h2>Exam 2 · Contents</h2>
     <nav class="toc">
       <a href="#e2g1">Part 1 · Contingencies &amp; Consequences</a>
       <a href="#e2g2">Part 2 · Antecedents &amp; Motivation</a>
@@ -931,7 +980,7 @@
 
 <div class="exam-content" data-exam="3">
   <div class="panel">
-    <h2>Contents</h2>
+    <h2>Final · Contents</h2>
     <nav class="toc">
       <a href="#f1">Part 1 · Motivating Operations (the CMOs)</a>
       <a href="#f2">Part 2 · Stimulus Control &amp; Concepts</a>
@@ -1792,10 +1841,37 @@ const TEST_3 = [
  {q:"A clinician finds her client will take on a harder task when its reinforcer is higher quality and delivered sooner — showing that rate alone doesn't determine choice. This extension of the matching law is credited to:",o:["Neef (1994)","Osborne (1969)","Sidman (1993)","Test & Heward (1984)"],a:0,e:"Neef (and colleagues, 1994) extended the matching law by showing reinforcer RATE, QUALITY, DELAY, and response EFFORT each influence choice and time allocation.",sec:'F'},
 ];
 
+/* ---------- Comprehensive set (4): all three exams merged ----------
+   Built from the existing data rather than duplicated. Category keys and section ids are
+   namespaced by exam (1/2/3) because they collide otherwise (e.g. "cont" exists in both
+   Exam 1 and Exam 2). Original questions that predate section tags fall back to their own
+   exam's number ranges, exactly as sectionIdOf() does for a single exam. */
+function sectionIdIn(test, sections, idx){
+  const item = test[idx];
+  if(item.sec) return item.sec;
+  const s = sections.find(s=> s.range && (idx+1)>=s.range[0] && (idx+1)<=s.range[1]);
+  return s ? s.id : sections[sections.length-1].id;
+}
+const CAT_ALL = {}, CARDS_ALL = [], SECTIONS_ALL = [], TEST_ALL = [];
+[
+  {cat:CAT_1, cards:CARDS_1, sections:SECTIONS_1, test:TEST_1, pfx:'1', label:'E1'},
+  {cat:CAT_2, cards:CARDS_2, sections:SECTIONS_2, test:TEST_2, pfx:'2', label:'E2'},
+  {cat:CAT_3, cards:CARDS_3, sections:SECTIONS_3, test:TEST_3, pfx:'3', label:'F'},
+].forEach(src=>{
+  Object.entries(src.cat).forEach(([k,v])=>{ CAT_ALL[src.pfx+k] = {name: src.label+' · '+v.name, color: v.color}; });
+  src.cards.forEach(c=> CARDS_ALL.push(Object.assign({}, c, {c: src.pfx + c.c})));
+  src.sections.forEach(s=>{
+    const topic = s.name.split('·')[1].trim();
+    SECTIONS_ALL.push({id: src.pfx + s.id, name: src.label+' · '+topic, short: src.label+' '+topic});
+  });
+  src.test.forEach((item,idx)=> TEST_ALL.push(Object.assign({}, item, {sec: src.pfx + sectionIdIn(src.test, src.sections, idx)})));
+});
+
 const EXAM_CFG = {
   1:{cat:CAT_1, cards:CARDS_1, sections:SECTIONS_1, test:TEST_1, qCount:40, timerMin:50},
   2:{cat:CAT_2, cards:CARDS_2, sections:SECTIONS_2, test:TEST_2, qCount:60, timerMin:80},
   3:{cat:CAT_3, cards:CARDS_3, sections:SECTIONS_3, test:TEST_3, qCount:50, timerMin:110},
+  4:{cat:CAT_ALL, cards:CARDS_ALL, sections:SECTIONS_ALL, test:TEST_ALL, qCount:0, timerMin:240},
 };
 let currentExam = 1;
 let CAT, CARDS, SECTIONS, TEST, STORAGE_KEY, QCOUNT, TIMER_MIN;
@@ -1809,7 +1885,11 @@ function setExam(n){
   QCOUNT = TEST.length; TIMER_MIN = cfg.timerMin;
   STORAGE_KEY = 'aba_exam' + n + '_answers';
   document.querySelectorAll('.exam-btn').forEach(b=>b.classList.toggle('active', +b.dataset.exam===n));
-  document.querySelectorAll('.exam-content').forEach(el=>el.classList.toggle('active', +el.dataset.exam===n));
+  // The comprehensive set (4) stacks all three study guides; every other view uses its own block.
+  document.querySelectorAll('.exam-content').forEach(el=>{
+    const inGuide = !!el.closest('#view-guide');
+    el.classList.toggle('active', (n===4 && inGuide) ? true : (+el.dataset.exam===n));
+  });
   // flashcards → fresh deck for this exam
   filter='all'; flashStarted=false; buildChips();
   // practice test → load this exam's saved answers, rebuild
@@ -1947,7 +2027,7 @@ function gradeTest(){
   else { v.textContent='Reread the study guide parts matching your missed sections, then retake just those tomorrow.'; v.className='verdict retry'; }
   const bd = document.getElementById('breakdown'); bd.innerHTML='';
   SECTIONS.forEach(s=>{
-    const shortName = s.name.split('·')[1].trim();
+    const shortName = s.short || s.name.split('·')[1].trim();
     const sc = secScores[s.id];
     const sp = sc.t ? Math.round(sc.c/sc.t*100) : 0;
     const el=document.createElement('div'); el.className='bd';
